@@ -19,6 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.arin.app.ui.theme.ComarinappTheme
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.BufferedReader
+import java.io.FileReader
 
 //import androidx.core.content.ContextCompat
 
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
     var mom_number_: String = "01095444074"
     var dad_number_: String = "01099597899"
     lateinit var view_bg_image_: ImageView
+    lateinit var smsText : SmsTextValue
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,7 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
+        setSmsTextValue()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -77,6 +81,9 @@ class MainActivity : ComponentActivity() {
      //       var btn = findViewById<Button>(R.id.btn_sms1)
      //       btn.setBackgroundColor(color.toInt())
         }
+    }
+    fun setSmsTextValue() {
+
     }
     fun getBtBackgroundColor() : String {
         try {
