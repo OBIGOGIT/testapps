@@ -2,7 +2,10 @@ package com.arin.app
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +29,28 @@ class MainActivity : ComponentActivity() {
         getActionBar()!!.setTitle("장아린 전용 앱")
         setContentView(R.layout.main)
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_option, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item?.itemId) {
+            R.id.menu_change_bg_color -> {
+                Toast.makeText(this, "로그인 선택 됨", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.menu_change_bg_image -> {
+                Toast.makeText(this, "설정 선택 됨", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.menu_image_library -> {
+                Toast.makeText(this, "고객센터 선택 됨", Toast.LENGTH_SHORT).show()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
 
