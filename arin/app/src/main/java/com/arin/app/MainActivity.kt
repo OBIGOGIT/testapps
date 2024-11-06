@@ -51,6 +51,11 @@ class MainActivity : ComponentActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.menu_change_sms_text -> {
+                val intent = Intent(this, EditSmsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
             R.id.menu_image_library -> {
                 //Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
                 val image = ImageView(this)
@@ -59,10 +64,6 @@ class MainActivity : ComponentActivity() {
                     AlertDialog.Builder(this)
                 builder.setView(image);
                 builder.create().show();
-                return true
-            }
-            R.id.menu_change_sms_text -> {
-                Toast.makeText(this, "menu_change_sms_text", Toast.LENGTH_SHORT).show()
                 return true
             }
         }
