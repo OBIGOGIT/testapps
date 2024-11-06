@@ -1,5 +1,6 @@
 package com.arin.app
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -47,6 +48,7 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         registerBackgroundBgPicker()
+        requestAppPermission()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -73,6 +75,24 @@ class MainActivity : ComponentActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+    fun requestAppPermission() {
+        AlertDialog.Builder(this)
+            .setTitle("권한이 필요합니다.")
+            .setMessage("앱에서 사진을 불러오기 위해 권한이 필요합니다.")
+            .setPositiveButton("동의") { _, _ ->
+                requestPermissions(
+                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                            android.Manifest.permission.READ_MEDIA_IMAGES,
+                            android.Manifest.permission.SEND_SMS,
+                            android.Manifest.permission.CALL_PHONE,
+                        ),
+                    101
+                )
+            }
+            .setNegativeButton("취소") { _, _ -> }
+            .create()
+            .show()
     }
     fun registerBackgroundBgPicker() {
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
