@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
@@ -53,7 +54,15 @@ class SettingActivity : AppCompatActivity() {
         bClose!!.setOnClickListener(View.OnClickListener {
             finish();
         })
+        setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         activityResultActivityRauncher()
+    }
+    fun setImageViewImage(filepath : String) {
+        val imgFile = File(filepath)
+        if (imgFile.exists()) {
+            val imgBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+            current_bg_image_.setImageBitmap(imgBitmap)
+        }
     }
     fun activityResultActivityRauncher() {
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
