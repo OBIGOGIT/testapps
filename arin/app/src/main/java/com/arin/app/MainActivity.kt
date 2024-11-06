@@ -1,6 +1,5 @@
 package com.arin.app
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -12,17 +11,11 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.Window
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +24,8 @@ import com.arin.app.ui.theme.ComarinappTheme
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
-import androidx.core.content.ContextCompat
+
+//import androidx.core.content.ContextCompat
 
 class MainActivity : ComponentActivity() {
     //START values
@@ -57,8 +51,9 @@ class MainActivity : ComponentActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item?.itemId) {
             R.id.menu_change_bg -> {
-                setContentView(R.layout.background_setting)
-                return true
+                val intent = Intent(this, SettingActivity::class.java)
+                startActivity(intent)
+                //return true
             }
             R.id.menu_image_library -> {
                 Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
