@@ -23,7 +23,6 @@ import java.io.FileNotFoundException
 //import androidx.core.content.ContextCompat
 
 class MainActivity : ComponentActivity() {
-    //START values
     var TAG = "ARIN_MAIN"
     lateinit var context_: Context
     var mom_number_: String = "01095444074"
@@ -38,7 +37,6 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
-
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
