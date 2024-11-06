@@ -41,6 +41,7 @@ class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context_ = getApplicationContext();
+        //getActionBar()!!.setTitle("앱설정")
         setContentView(R.layout.activity_setting)
         //Log.e(TAG, "save dir : " + getContext().getFilesDir().getPath().toString())
         current_bg_image_ = findViewById(R.id.imageView_bg)

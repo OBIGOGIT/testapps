@@ -25,6 +25,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import android.graphics.Color
+import android.widget.Button
 import android.widget.LinearLayout
 import java.io.FileNotFoundException
 
@@ -46,6 +47,7 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
+
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -76,6 +78,8 @@ class MainActivity : ComponentActivity() {
         if(!color.isNullOrBlank()) {
             //Toast.makeText(applicationContext, color, Toast.LENGTH_SHORT).show()
             main.setBackgroundColor(color.toInt());
+     //       var btn = findViewById<Button>(R.id.btn_sms1)
+     //       btn.setBackgroundColor(color.toInt())
         }
     }
     fun getBtBackgroundColor() : String {
