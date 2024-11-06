@@ -37,15 +37,19 @@ class MainActivity : ComponentActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item?.itemId) {
             R.id.menu_change_bg_color -> {
-                Toast.makeText(this, "로그인 선택 됨", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "menu_change_bg_color", Toast.LENGTH_SHORT).show()
                 return true
             }
             R.id.menu_change_bg_image -> {
-                Toast.makeText(this, "설정 선택 됨", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "menu_change_bg_image", Toast.LENGTH_SHORT).show()
                 return true
             }
             R.id.menu_image_library -> {
-                Toast.makeText(this, "고객센터 선택 됨", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.menu_change_sms_text -> {
+                Toast.makeText(this, "menu_change_sms_text", Toast.LENGTH_SHORT).show()
                 return true
             }
         }
