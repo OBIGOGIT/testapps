@@ -24,6 +24,9 @@ import com.arin.app.ui.theme.ComarinappTheme
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import android.graphics.Color
+import android.widget.LinearLayout
+import java.io.FileNotFoundException
 
 //import androidx.core.content.ContextCompat
 
@@ -42,6 +45,7 @@ class MainActivity : ComponentActivity() {
         view_bg_image_ = findViewById(R.id.bg)
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
+        setBgColor()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -66,7 +70,30 @@ class MainActivity : ComponentActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+    fun setBgColor() {
+        var main = findViewById(R.id.main_layout) as LinearLayout
+        var color = getBtBackgroundColor()
+        if(!color.isNullOrBlank()) {
+            //Toast.makeText(applicationContext, color, Toast.LENGTH_SHORT).show()
+            main.setBackgroundColor(color.toInt());
+        }
+    }
+    fun getBtBackgroundColor() : String {
+        try {
+            val inFs = getContext()!!.openFileInput("bg_color.txt")
 
+            val txt = ByteArray(inFs.available()) //byte[]형의 변수 txt를 선언
+            inFs.read(txt) //읽어온 데이터를 저장
+            val str = String(txt) //txt를 문자열로 변환
+            Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "color value " + str)//
+            inFs.close()
+            return str;
+        } catch (e : FileNotFoundException) {
+            e.printStackTrace();
+        }
+        return ""
+    }
     fun setImageViewImage(filepath : String) {
         val imgFile = File(filepath)
         if (imgFile.exists()) {
