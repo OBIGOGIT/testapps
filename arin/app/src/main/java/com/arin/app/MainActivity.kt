@@ -1,32 +1,23 @@
 package com.arin.app
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.arin.app.ui.theme.ComarinappTheme
 import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
-import android.graphics.Color
-import android.widget.Button
-import android.widget.LinearLayout
 import java.io.FileNotFoundException
 
 //import androidx.core.content.ContextCompat
@@ -61,7 +52,13 @@ class MainActivity : ComponentActivity() {
                 return true
             }
             R.id.menu_image_library -> {
-                Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
+                val image = ImageView(this)
+                image.setImageResource(R.drawable.library_card);
+                val builder: AlertDialog.Builder =
+                    AlertDialog.Builder(this)
+                builder.setView(image);
+                builder.create().show();
                 return true
             }
             R.id.menu_change_sms_text -> {
