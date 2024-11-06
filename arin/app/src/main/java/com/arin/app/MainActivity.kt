@@ -1,6 +1,7 @@
 package com.arin.app
 
 import android.os.Bundle
+import android.view.Window
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +17,7 @@ import com.arin.app.ui.theme.ComarinappTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getActionBar()!!.setTitle("장아린 전용 앱")
         setContentView(R.layout.main)
         /*enableEdgeToEdge()
         setContent {
