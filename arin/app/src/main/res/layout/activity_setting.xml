@@ -10,10 +10,27 @@
     android:layout_height="match_parent"
     tools:context=".SettingActivity">
 
+    <Button
+        android:id="@+id/btn_bgColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="배경색설정하기" />
 
     <Button
+        android:id="@+id/btn_bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="배경이미지설정하기" />
+    <Button
         android:id="@+id/btn_close"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="close" />
+
+    <ImageView
+        android:id="@+id/imageView_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ham" />
+
 </LinearLayout>
