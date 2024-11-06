@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
             R.id.menu_change_bg -> {
                 val intent = Intent(this, SettingActivity::class.java)
                 startActivity(intent)
-                //return true
+                return true
             }
             R.id.menu_image_library -> {
                 Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
