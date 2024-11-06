@@ -31,6 +31,7 @@ import com.arin.app.ui.theme.ComarinappTheme
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import androidx.core.content.ContextCompat
 
 class MainActivity : ComponentActivity() {
     //START values
@@ -48,7 +49,6 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         registerBackgroundBgPicker()
-        requestAppPermission()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -56,12 +56,8 @@ class MainActivity : ComponentActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item?.itemId) {
-            R.id.menu_change_bg_color -> {
-                Toast.makeText(this, "menu_change_bg_color", Toast.LENGTH_SHORT).show()
-                return true
-            }
-            R.id.menu_change_bg_image -> {
-                Toast.makeText(this, "menu_change_bg_image", Toast.LENGTH_SHORT).show()
+            R.id.menu_change_bg -> {
+                setContentView(R.layout.background_setting)
                 return true
             }
             R.id.menu_image_library -> {
@@ -75,24 +71,6 @@ class MainActivity : ComponentActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
-    fun requestAppPermission() {
-        AlertDialog.Builder(this)
-            .setTitle("권한이 필요합니다.")
-            .setMessage("앱에서 사진을 불러오기 위해 권한이 필요합니다.")
-            .setPositiveButton("동의") { _, _ ->
-                requestPermissions(
-                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                            android.Manifest.permission.READ_MEDIA_IMAGES,
-                            android.Manifest.permission.SEND_SMS,
-                            android.Manifest.permission.CALL_PHONE,
-                        ),
-                    101
-                )
-            }
-            .setNegativeButton("취소") { _, _ -> }
-            .create()
-            .show()
     }
     fun registerBackgroundBgPicker() {
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

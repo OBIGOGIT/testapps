@@ -1,0 +1,35 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ham
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id bg
+id btn_call2dad
+id btn_call2mom
+id btn_sms1
+id btn_sms2
+id btn_sms3
+id btn_sms4
+id button
+id imageView
+id main_layout
+id menu_change_bg
+id menu_change_sms_text
+id menu_image_library
+layout background_setting
+layout main
+menu menu_option
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
+string app_name
+style Theme.Comarinapp
+xml backup_rules
+xml data_extraction_rules
