@@ -40,8 +40,7 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
-        smsText = SmsTextValue()
-        smsText.LoadSmsTextValue(getContext().getFilesDir().getPath())
+        SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
 
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

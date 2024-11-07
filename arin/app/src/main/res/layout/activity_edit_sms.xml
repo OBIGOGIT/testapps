@@ -10,9 +10,32 @@
     android:layout_height="match_parent"
     tools:context=".EditSmsActivity">
 
-    <TextView
-        android:id="@+id/textEdut_sms1"
+    <EditText
+        android:id="@+id/editText_sms0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="empty" />
+
+    <EditText
+        android:id="@+id/editText_sms1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="empty" />
+
+    <EditText
+        android:id="@+id/editText_sms2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="empty" />
+
+    <EditText
+        android:id="@+id/editText_sms3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="empty" />
+    <Button
+        android:id="@+id/btn_smsApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="apply" />
 </LinearLayout>
