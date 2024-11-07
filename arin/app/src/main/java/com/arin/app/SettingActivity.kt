@@ -33,7 +33,7 @@ import yuku.ambilwarna.AmbilWarnaDialog
 
 class SettingActivity : AppCompatActivity() {
     var TAG = "ARIN_SETTING"
-    val filename : String = "bg_color.txt"
+    val file_bg_color_ : String = "bg_color.txt"
     lateinit var context_: Context
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     lateinit var current_bg_image_: ImageView
@@ -80,7 +80,7 @@ class SettingActivity : AppCompatActivity() {
     }
     fun storeFileUsingStream(color : String?) {
         // API 24 이상에서, MODE_PRIVATE 사용 안하면, SecurityException 발생
-        getContext()!!.openFileOutput(filename, Context.MODE_PRIVATE).use {
+        getContext()!!.openFileOutput(file_bg_color_, Context.MODE_PRIVATE).use {
             it.write(color!!.toByteArray())
         }
     }
