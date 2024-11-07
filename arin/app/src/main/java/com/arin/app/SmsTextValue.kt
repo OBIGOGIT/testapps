@@ -66,8 +66,8 @@ class SmsTextValue {
         else
             return smsArray
     }
-    fun setSmsText( context: Context ,smsArr :Array<String>) {
-        val fos = context.openFileOutput("sms" + ".txt", Context.MODE_PRIVATE)
+    fun setSmsText(smsArr :Array<String>) {
+        val fos = context_.openFileOutput("sms" + ".txt", Context.MODE_PRIVATE)
         val out = PrintWriter(fos)
         for (s in smsArr) {
             out.println(s);

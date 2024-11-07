@@ -13,11 +13,10 @@ import androidx.core.view.WindowInsetsCompat
 
 class EditSmsActivity : AppCompatActivity() {
     var TAG = "ARIN_EDITSMS"
-    lateinit var context_: Context
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
-        context_ = getApplicationContext();
         setContentView(R.layout.activity_edit_sms)
         var bSmsapply = findViewById<Button>(R.id.btn_smsApply)
         bSmsapply!!.setOnClickListener(View.OnClickListener {
@@ -42,6 +41,6 @@ class EditSmsActivity : AppCompatActivity() {
                                   sms2.text.toString(),
                                   sms3.text.toString())
 
-        SmsTextValue.getInstance().setSmsText(context_, smsArray)
+        SmsTextValue.getInstance().setSmsText(smsArray)
     }
 }
