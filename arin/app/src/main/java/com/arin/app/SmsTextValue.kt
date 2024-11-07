@@ -18,7 +18,8 @@ class SmsTextValue {
     lateinit var smsTextFile_ : String
     var default_smsTextArray:Array<String> = arrayOf("엄마 나 일어났어",
                                      "엄마 어디야?",
-                                     "엄마 휴대폰 시간 더 줘")
+                                     "엄마 휴대폰 시간 더 줘",
+                                     "엄마 사랑해")
     companion object {
         private var instance: SmsTextValue? = null
 
