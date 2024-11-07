@@ -1,0 +1,118 @@
+[
+    {
+        "merged": "com.arin.app-debug-71:/layout_activity_setting.xml.flat",
+        "source": "com.arin.app-main-73:/layout/activity_setting.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/layout_activity_edit_sms.xml.flat",
+        "source": "com.arin.app-main-73:/layout/activity_edit_sms.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/layout_main.xml.flat",
+        "source": "com.arin.app-main-73:/layout/main.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/navigation_nav_graph2.xml.flat",
+        "source": "com.arin.app-main-73:/navigation/nav_graph2.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/drawable_ham.png.flat",
+        "source": "com.arin.app-main-73:/drawable/ham.png"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/navigation_nav_graph.xml.flat",
+        "source": "com.arin.app-main-73:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/xml_backup_rules.xml.flat",
+        "source": "com.arin.app-main-73:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.arin.app-main-73:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/xml_data_extraction_rules.xml.flat",
+        "source": "com.arin.app-main-73:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/drawable_library_card.png.flat",
+        "source": "com.arin.app-main-73:/drawable/library_card.png"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.arin.app-main-73:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.arin.app-main-73:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.arin.app-main-73:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/menu_menu_option.xml.flat",
+        "source": "com.arin.app-main-73:/menu/menu_option.xml"
+    },
+    {
+        "merged": "com.arin.app-debug-71:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.arin.app-main-73:/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]

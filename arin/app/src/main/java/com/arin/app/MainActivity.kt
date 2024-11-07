@@ -5,9 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -83,10 +86,39 @@ class MainActivity : ComponentActivity() {
      //       btn.setBackgroundColor(color.toInt())
         }
     }
+    fun sendSms(message: String) {
+        val SmsManager = SmsManager.getDefault()
+        SmsManager.sendTextMessage(mom_number_, null, message + "[by mom app]", null, null)
+        Toast.makeText(
+            this@MainActivity,
+            "예쁜 엄마에게 " + message + "라고 보라고 보냈어요",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
     fun setSmsTextValue() {
         var smsArray = SmsTextValue.getInstance().getText();
+        var btn_sms0 = findViewById<Button>(R.id.btn_sms0)
+        btn_sms0.setText(smsArray[0].toString())
+        btn_sms0!!.setOnClickListener(View.OnClickListener {
+            sendSms(btn_sms0.getText().toString())
+        })
 
+        var btn_sms1 = findViewById<Button>(R.id.btn_sms1)
+        btn_sms1.setText(smsArray[1].toString())
+        btn_sms1!!.setOnClickListener(View.OnClickListener {
+            sendSms(btn_sms1.getText().toString())
+        })
+        var btn_sms2 = findViewById<Button>(R.id.btn_sms2)
+        btn_sms2.setText(smsArray[2].toString())
+        btn_sms2!!.setOnClickListener(View.OnClickListener {
+            sendSms(btn_sms2.getText().toString())
+        })
 
+        var btn_sms3 = findViewById<Button>(R.id.btn_sms3)
+        btn_sms3.setText(smsArray[3].toString())
+        btn_sms3!!.setOnClickListener(View.OnClickListener {
+            sendSms(btn_sms3.getText().toString())
+        })
     }
     fun getBtBackgroundColor() : String {
         try {
