@@ -128,7 +128,6 @@ class MainActivity : ComponentActivity() {
         btn_sms2!!.setOnClickListener(View.OnClickListener {
             sendSms(btn_sms2.getText().toString())
         })
-
         var btn_sms3 = findViewById<Button>(R.id.btn_sms3)
         btn_sms3.setText(smsArray[3].toString())
         btn_sms3!!.setOnClickListener(View.OnClickListener {

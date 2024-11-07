@@ -25,7 +25,7 @@ class SmsTextValue {
             }
     }
     fun initize(path: String , context: Context) {
-        var file = path + "sms" + ".txt"
+        var file = path + "/sms" + ".txt"
         Log.d(TAG, "smsText file " + file)
         smsTextFile_ = file
         context_ = context
