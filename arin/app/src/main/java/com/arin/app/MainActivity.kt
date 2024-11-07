@@ -84,6 +84,8 @@ class MainActivity : ComponentActivity() {
         }
     }
     fun setSmsTextValue() {
+        var smsArray = SmsTextValue.getInstance().getText();
+
 
     }
     fun getBtBackgroundColor() : String {

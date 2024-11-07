@@ -7,10 +7,6 @@ import java.io.File
 import java.io.FileReader
 import java.io.PrintWriter
 
-
-
-
-//getContext().getFilesDir().getPath() + "/arin_bg.png"
 class SmsTextValue {
 
     var TAG = "ARIN_SmsTextValue"
@@ -29,11 +25,10 @@ class SmsTextValue {
             }
     }
     fun initize(path: String , context: Context) {
-        var file = path + "/smsText.txt"
+        var file = path + "sms" + ".txt"
         Log.d(TAG, "smsText file " + file)
         smsTextFile_ = file
         context_ = context
-        //getText()
     }
     fun getText() : Array<out String?> {
         val imgFile = File(smsTextFile_)
