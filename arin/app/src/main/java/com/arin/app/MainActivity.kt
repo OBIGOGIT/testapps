@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
@@ -43,8 +44,8 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
+        setCallButton()
         SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
-
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -63,7 +64,6 @@ class MainActivity : ComponentActivity() {
                 return true
             }
             R.id.menu_image_library -> {
-                //Toast.makeText(this, "menu_image_library", Toast.LENGTH_SHORT).show()
                 val image = ImageView(this)
                 image.setImageResource(R.drawable.library_card);
                 val builder: AlertDialog.Builder =
@@ -73,7 +73,6 @@ class MainActivity : ComponentActivity() {
                 return true
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
     fun setBgColor() {
@@ -85,6 +84,21 @@ class MainActivity : ComponentActivity() {
      //       var btn = findViewById<Button>(R.id.btn_sms1)
      //       btn.setBackgroundColor(color.toInt())
         }
+    }
+    fun setCallButton() {
+        var calldad = findViewById<Button>(R.id.btn_call2dad)
+        calldad!!.setOnClickListener(View.OnClickListener {
+            call(dad_number_)
+        })
+        var callmom = findViewById<Button>(R.id.btn_call2mom)
+        callmom!!.setOnClickListener(View.OnClickListener {
+            call(mom_number_)
+        })
+    }
+    fun call(phonenum: String) {
+        var intent = Intent(Intent.ACTION_CALL)
+        intent.data = Uri.parse("tel:" + phonenum)
+        startActivity(intent)
     }
     fun sendSms(message: String) {
         val SmsManager = SmsManager.getDefault()
@@ -136,6 +150,7 @@ class MainActivity : ComponentActivity() {
         }
         return ""
     }
+
     fun setImageViewImage(filepath : String) {
         val imgFile = File(filepath)
         if (imgFile.exists()) {
