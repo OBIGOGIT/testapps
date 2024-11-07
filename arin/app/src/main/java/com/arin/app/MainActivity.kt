@@ -40,12 +40,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         getActionBar()!!.setTitle("장아린 전용 앱")
         setContentView(R.layout.main)
-        view_bg_image_ = findViewById(R.id.bg)
         context_ = getApplicationContext();
+        SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
+        view_bg_image_ = findViewById(R.id.bg)
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
         setCallButton()
-        SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
+        setSmsTextValue()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
