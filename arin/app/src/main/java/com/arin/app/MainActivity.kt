@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
     var TAG = "ARIN_MAIN"
     lateinit var context_: Context
     var mom_number_: String = "01095444074"
-    var dad_number_: String = "01099597899"
+    var dad_number_: String = "01093597899"
     lateinit var view_bg_image_: ImageView
     lateinit var smsText : SmsTextValue
 
