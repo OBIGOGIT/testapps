@@ -23,6 +23,7 @@ class EditSmsActivity : AppCompatActivity() {
         bSmsapply!!.setOnClickListener(View.OnClickListener {
             Log.e(TAG, "user sms text apply")
             EditSmsTextApply()
+            finish()
         })
         /*
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
