@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "com.arin.app"
+rootProject.name = "arin"
 include(":app")
  

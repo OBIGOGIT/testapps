@@ -1,6 +1,7 @@
 package com.arin.app
 
 import android.app.AlertDialog
+import android.app.ComponentCaller
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -25,7 +26,9 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.BufferedReader
 import java.io.FileReader
-
+import kotlin.math.log
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.ActivityResultLauncher
 //import androidx.core.content.ContextCompat
 
 class MainActivity : ComponentActivity() {
@@ -36,6 +39,17 @@ class MainActivity : ComponentActivity() {
     lateinit var view_bg_image_: ImageView
     lateinit var smsText : SmsTextValue
 
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+
+    private fun setResultSignUp(){
+        resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+            if (result.resultCode == RESULT_OK) {
+                val name = result.data?.getStringExtra("name") ?: ""
+                Log.d(TAG, "setResultSignUp " + name)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getActionBar()!!.setTitle("장아린 전용 앱")
@@ -43,11 +57,25 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
         view_bg_image_ = findViewById(R.id.bg)
+        setResultSignUp()
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
         setCallButton()
         setSmsTextValue()
     }
+/*
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?,
+        caller: ComponentCaller
+    ) {
+        Log.d(TAG, "onActivityResult@@@@@@@@@@@" + data!!.getStringExtra("name"))
+        //super.onActivityResult(requestCode, resultCode, data, caller)
+        if(resultCode == RESULT_OK) {
+            Log.d(TAG, "@@@@@@@@@@@" + data!!.getStringExtra("name"))
+        }
+    }*/
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
         return true
@@ -57,11 +85,13 @@ class MainActivity : ComponentActivity() {
             R.id.menu_change_bg -> {
                 val intent = Intent(this, SettingActivity::class.java)
                 startActivity(intent)
+                resultLauncher.launch(intent)
                 return true
             }
             R.id.menu_change_sms_text -> {
                 val intent = Intent(this, EditSmsActivity::class.java)
                 startActivity(intent)
+                resultLauncher.launch(intent)
                 return true
             }
             R.id.menu_image_library -> {

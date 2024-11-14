@@ -1,6 +1,7 @@
 package com.arin.app
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,8 +24,12 @@ class EditSmsActivity : AppCompatActivity() {
         var bSmsapply = findViewById<Button>(R.id.btn_smsApply)
         bSmsapply!!.setOnClickListener(View.OnClickListener {
             Log.e(TAG, "user sms text apply")
-            if(EditSmsTextApply())
+            if(EditSmsTextApply()) {
+                var res = Intent(this@EditSmsActivity,MainActivity::class.java);
+                res.putExtra("name", "editsms");
+                setResult(RESULT_OK , res)
                 finish()
+            }
         })
         /*
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
