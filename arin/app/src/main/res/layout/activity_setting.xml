@@ -17,6 +17,11 @@
         android:text="배경색설정하기" />
 
     <Button
+        android:id="@+id/btn_buttonColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="버튼색 설정하기" />
+    <Button
         android:id="@+id/btn_bgImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

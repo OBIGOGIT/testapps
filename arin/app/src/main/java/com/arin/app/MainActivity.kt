@@ -51,6 +51,7 @@ class MainActivity : ComponentActivity() {
                 } else if (name == "setting") {
                     setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
                     setBgColor()
+                    setBtnColor()
                 }
             }
         }
@@ -66,22 +67,10 @@ class MainActivity : ComponentActivity() {
         view_bg_image_ = findViewById(R.id.bg)
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
+        setBtnColor()
         setCallButton()
         setSmsTextValue()
     }
-/*
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?,
-        caller: ComponentCaller
-    ) {
-        Log.d(TAG, "onActivityResult@@@@@@@@@@@" + data!!.getStringExtra("name"))
-        //super.onActivityResult(requestCode, resultCode, data, caller)
-        if(resultCode == RESULT_OK) {
-            Log.d(TAG, "@@@@@@@@@@@" + data!!.getStringExtra("name"))
-        }
-    }*/
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
         return true
@@ -112,12 +101,31 @@ class MainActivity : ComponentActivity() {
     }
     fun setBgColor() {
         var main = findViewById(R.id.main_layout) as LinearLayout
-        var color = getBtBackgroundColor()
+        var color = getColor("bg")
         if(!color.isNullOrBlank()) {
             //Toast.makeText(applicationContext, color, Toast.LENGTH_SHORT).show()
             main.setBackgroundColor(color.toInt());
      //       var btn = findViewById<Button>(R.id.btn_sms1)
      //       btn.setBackgroundColor(color.toInt())
+        }
+    }
+    fun setBtnColor() {
+        var color = getColor("btn")
+        if(!color.isNullOrBlank()) {
+            //Toast.makeText(applicationContext, color, Toast.LENGTH_SHORT).show()
+            //main.setBackgroundColor(color.toInt());
+            var btn = findViewById<Button>(R.id.btn_sms0)
+            btn.setTextColor(color.toInt())
+            btn = findViewById<Button>(R.id.btn_sms1)
+            btn.setTextColor(color.toInt())
+            btn = findViewById<Button>(R.id.btn_sms2)
+            btn.setTextColor(color.toInt())
+            btn = findViewById<Button>(R.id.btn_sms3)
+            btn.setTextColor(color.toInt())
+            btn = findViewById<Button>(R.id.btn_call2mom)
+            btn.setTextColor(color.toInt())
+            btn = findViewById<Button>(R.id.btn_call2dad)
+            btn.setTextColor(color.toInt())
         }
     }
     fun setCallButton() {
@@ -168,14 +176,20 @@ class MainActivity : ComponentActivity() {
             sendSms(btn_sms3.getText().toString())
         })
     }
-    fun getBtBackgroundColor() : String {
+    fun getColor(pos : String) : String {
+        var fname = ""
+        if(pos == "bg") {
+            fname = "bg_color.txt";
+        } else {
+            fname = "btn_color.txt";
+        }
         try {
-            val inFs = getContext()!!.openFileInput("bg_color.txt")
+            val inFs = getContext()!!.openFileInput(fname)
 
             val txt = ByteArray(inFs.available()) //byte[]형의 변수 txt를 선언
             inFs.read(txt) //읽어온 데이터를 저장
             val str = String(txt) //txt를 문자열로 변환
-            Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
             Log.d(TAG, "color value " + str)//
             inFs.close()
             return str;

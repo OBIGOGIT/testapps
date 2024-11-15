@@ -35,7 +35,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class    MainActivity extends Activity {
     private static final String TAG = "CustomTabsDemo";
 
     private static final Uri URL = Uri.parse("https://peconn.github.io/starters/");

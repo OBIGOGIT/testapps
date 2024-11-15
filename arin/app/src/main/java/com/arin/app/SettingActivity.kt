@@ -34,6 +34,7 @@ import yuku.ambilwarna.AmbilWarnaDialog
 class SettingActivity : AppCompatActivity() {
     var TAG = "ARIN_SETTING"
     val file_bg_color_ : String = "bg_color.txt"
+    val file_btn_color_ : String = "btn_color.txt"
     lateinit var context_: Context
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     lateinit var current_bg_image_: ImageView
@@ -48,7 +49,12 @@ class SettingActivity : AppCompatActivity() {
         var bBgColor = findViewById<Button>(R.id.btn_bgColor)
         bBgColor!!.setOnClickListener(View.OnClickListener {
             Log.e(TAG, "bg color")
-            openBgColorSelectView();
+            openBgColorSelectView("bg");
+        })
+        var bBtnColor = findViewById<Button>(R.id.btn_buttonColor)
+        bBtnColor!!.setOnClickListener(View.OnClickListener {
+            Log.e(TAG, "button color")
+            openBgColorSelectView("btn");
         })
         var bBgImage = findViewById<Button>(R.id.btn_bgImage)
         bBgImage!!.setOnClickListener(View.OnClickListener {
@@ -65,7 +71,7 @@ class SettingActivity : AppCompatActivity() {
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         activityResultActivityRauncher()
     }
-    fun openBgColorSelectView() {
+    fun openBgColorSelectView(pos : String) {
         val color = Color.parseColor("#00B700")
         AmbilWarnaDialog(this, color,
             object : AmbilWarnaDialog.OnAmbilWarnaListener {
@@ -76,15 +82,21 @@ class SettingActivity : AppCompatActivity() {
                 override fun onOk(dialog: AmbilWarnaDialog?, color: Int) {
                     Log.d(TAG, "button background changed " + color)//
                     //btn_change_bgimage_.setBackgroundColor(color)
-                    storeFileUsingStream(color.toString())
+                    storeFileUsingStream(pos,color.toString())
                     //btn_change_bgimage_.setTextColor(color)
                 }
             }).show()
     }
-    fun storeFileUsingStream(color : String?) {
+    fun storeFileUsingStream(pos : String,color : String?) {
         // API 24 이상에서, MODE_PRIVATE 사용 안하면, SecurityException 발생
-        getContext()!!.openFileOutput(file_bg_color_, Context.MODE_PRIVATE).use {
-            it.write(color!!.toByteArray())
+        if (pos == "bg") {
+            getContext()!!.openFileOutput(file_bg_color_, Context.MODE_PRIVATE).use {
+                it.write(color!!.toByteArray())
+            }
+        } else {
+            getContext()!!.openFileOutput(file_btn_color_, Context.MODE_PRIVATE).use {
+                it.write(color!!.toByteArray())
+            }
         }
     }
     fun setImageViewImage(filepath : String) {
