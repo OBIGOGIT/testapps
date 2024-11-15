@@ -21,10 +21,12 @@
         <activity
             android:name=".EditSmsActivity"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+            android:label="sms 설정"
             android:exported="true" />
         <activity
             android:name=".SettingActivity"
             android:exported="true"
+            android:label="앱세팅"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".MainActivity"
