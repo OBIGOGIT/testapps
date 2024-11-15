@@ -25,9 +25,9 @@ class EditSmsActivity : AppCompatActivity() {
         bSmsapply!!.setOnClickListener(View.OnClickListener {
             Log.e(TAG, "user sms text apply")
             if(EditSmsTextApply()) {
-                var res = Intent(this@EditSmsActivity,MainActivity::class.java);
-                res.putExtra("name", "editsms");
-                setResult(RESULT_OK , res)
+                var intent = Intent(this@EditSmsActivity,MainActivity::class.java);
+                intent.putExtra("name", "editsms");
+                setResult(RESULT_OK , intent)
                 finish()
             }
         })

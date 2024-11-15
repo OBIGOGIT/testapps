@@ -53,11 +53,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getActionBar()!!.setTitle("장아린 전용 앱")
+        setResultSignUp()
         setContentView(R.layout.main)
         context_ = getApplicationContext();
         SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
         view_bg_image_ = findViewById(R.id.bg)
-        setResultSignUp()
+
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
         setCallButton()
@@ -84,13 +85,11 @@ class MainActivity : ComponentActivity() {
         when(item?.itemId) {
             R.id.menu_change_bg -> {
                 val intent = Intent(this, SettingActivity::class.java)
-                startActivity(intent)
                 resultLauncher.launch(intent)
                 return true
             }
             R.id.menu_change_sms_text -> {
                 val intent = Intent(this, EditSmsActivity::class.java)
-                startActivity(intent)
                 resultLauncher.launch(intent)
                 return true
             }
