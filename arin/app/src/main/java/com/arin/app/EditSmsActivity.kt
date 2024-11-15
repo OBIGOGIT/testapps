@@ -26,7 +26,7 @@ class EditSmsActivity : AppCompatActivity() {
             Log.e(TAG, "user sms text apply")
             if(EditSmsTextApply()) {
                 var intent = Intent(this@EditSmsActivity,MainActivity::class.java);
-                intent.putExtra("name", "editsms");
+                intent.putExtra("from", "editsms");
                 setResult(RESULT_OK , intent)
                 finish()
             }

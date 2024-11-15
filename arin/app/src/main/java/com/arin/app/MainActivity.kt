@@ -44,8 +44,14 @@ class MainActivity : ComponentActivity() {
     private fun setResultSignUp(){
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if (result.resultCode == RESULT_OK) {
-                val name = result.data?.getStringExtra("name") ?: ""
+                val name = result.data?.getStringExtra("from") ?: ""
                 Log.d(TAG, "setResultSignUp " + name)
+                if(name == "editsms") {
+                    setSmsTextValue()
+                } else if (name == "setting") {
+                    setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
+                    setBgColor()
+                }
             }
         }
     }
@@ -58,7 +64,6 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext();
         SmsTextValue.getInstance().initize(getContext().getFilesDir().getPath() , context_)
         view_bg_image_ = findViewById(R.id.bg)
-
         setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
         setBgColor()
         setCallButton()

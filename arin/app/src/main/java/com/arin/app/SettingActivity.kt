@@ -58,7 +58,7 @@ class SettingActivity : AppCompatActivity() {
         var bClose = findViewById<Button>(R.id.btn_close)
         bClose!!.setOnClickListener(View.OnClickListener {
             var res = Intent(this@SettingActivity,MainActivity::class.java);
-            res.putExtra("name", "editsms");
+            res.putExtra("from", "setting");
             setResult(RESULT_OK , res)
             finish();
         })
