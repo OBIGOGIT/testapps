@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class EditSmsActivity : AppCompatActivity() {
-    var TAG = "ARIN_EDITSMS"
+    var TAG = "EDITSMS"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

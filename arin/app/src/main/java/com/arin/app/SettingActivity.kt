@@ -32,7 +32,7 @@ import java.io.OutputStream
 import yuku.ambilwarna.AmbilWarnaDialog
 
 class SettingActivity : AppCompatActivity() {
-    var TAG = "ARIN_SETTING"
+    var TAG = "SETTING"
     val file_bg_color_ : String = "bg_color.txt"
     val file_btn_color_ : String = "btn_color.txt"
     lateinit var context_: Context

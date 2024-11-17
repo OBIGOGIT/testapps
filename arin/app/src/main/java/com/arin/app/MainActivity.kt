@@ -32,7 +32,7 @@ import androidx.activity.result.ActivityResultLauncher
 //import androidx.core.content.ContextCompat
 
 class MainActivity : ComponentActivity() {
-    var TAG = "ARIN_MAIN"
+    var TAG = "MAIN"
     lateinit var context_: Context
     var mom_number_: String = "01095444074"
     var dad_number_: String = "01093597899"

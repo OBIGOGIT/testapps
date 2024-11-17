@@ -9,7 +9,7 @@ import java.io.PrintWriter
 
 class SmsTextValue {
 
-    var TAG = "ARIN_SmsTextValue"
+    var TAG = "SMSAPI"
     lateinit var context_: Context
     lateinit var smsTextFile_ : String
     var default_smsTextArray:Array<String> = arrayOf("엄마 나 일어났어",
