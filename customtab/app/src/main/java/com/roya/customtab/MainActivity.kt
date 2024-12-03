@@ -1,6 +1,8 @@
 package com.roya.customtab
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,22 +16,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.roya.customtab.ui.theme.CustomtabTheme
 
 class MainActivity : ComponentActivity() {
+    lateinit var context_: Context
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
+        context_ = getApplicationContext();
+        var btn_customtab_open : Button = findViewById<Button>(R.id.customtab_open)
 
-        /*enableEdgeToEdge()
-        setContent {
-            CustomtabTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }*/
+        btn_customtab_open.setOnClickListener {
+
+        }
+
     }
+    fun isChromeEnabled(context: Context): Boolean
+            = context.packageManager.getPackageInfo("com.android.chrome", 0)!!.applicationInfo!!.enabled
 }
 
 @Composable
