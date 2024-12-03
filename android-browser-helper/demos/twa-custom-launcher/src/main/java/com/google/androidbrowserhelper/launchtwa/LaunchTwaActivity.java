@@ -40,7 +40,7 @@ import androidx.browser.trusted.TrustedWebActivityIntentBuilder;
 
 public class LaunchTwaActivity extends Activity {
     private static final Uri LAUNCH_URI =
-            Uri.parse("https://github.com/GoogleChrome/android-browser-helper");
+            Uri.parse("https://rroya.tistory.com");
 
     private final TrustedWebActivityIntentBuilder builder = new TrustedWebActivityIntentBuilder(
             LAUNCH_URI);
