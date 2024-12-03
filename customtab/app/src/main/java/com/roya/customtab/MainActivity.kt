@@ -13,6 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.roya.customtab.ui.theme.CustomtabTheme
 
+//
+
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
+import android.net.Uri;
+//
 
 class MainActivity : ComponentActivity() {
     lateinit var context_: Context
@@ -28,6 +34,19 @@ class MainActivity : ComponentActivity() {
         btn_open_.setOnClickListener {
             var enable = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
             txtview_log_.setText("isChromeEnabled " + enable)
+            //
+            val uri = Uri.parse("http://bm.hosoft.kr/")
+            val intentBuilder = CustomTabsIntent.Builder()
+            intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.black))
+            intentBuilder.setSecondaryToolbarColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.black
+                )
+            )
+            val customTabsIntent = intentBuilder.build()
+            customTabsIntent.launchUrl(this, uri)
+            //
         }
 
     }
