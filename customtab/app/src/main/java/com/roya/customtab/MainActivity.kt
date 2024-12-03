@@ -22,6 +22,7 @@ import com.roya.customtab.ui.theme.CustomtabTheme
 class MainActivity : ComponentActivity() {
     lateinit var context_: Context
     lateinit var btn_ctab_open_: Button
+    var agb_installed = false
     lateinit var btn_idt_open_: Button
     lateinit var txtview_log_: TextView
     lateinit var uri_: Uri
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
+        agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
         uri_ = Uri.parse("http://rroya.tistory.com/")
 
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
@@ -45,8 +47,7 @@ class MainActivity : ComponentActivity() {
 
     }
     fun openBrsByCustomTab(){
-        var enable = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-        txtview_log_.setText("isChromeEnabled " + enable)
+        txtview_log_.setText("isChromeEnabled " + agb_installed)
         val intentBuilder = CustomTabsIntent.Builder().setInitialActivityHeightPx(
             100,
             ACTIVITY_HEIGHT_FIXED
@@ -58,12 +59,10 @@ class MainActivity : ComponentActivity() {
     fun openBrsByIntent() {
         val i = Intent("com.obigo.automotivebrowser")
         if(i == null ) {
-            //txtview_log_.setText("OBIGO", "BOOT brs failed.... not existed ")
         } else {
-            //txtview_log_.setText("OBIGO", "BOOT brs load START  ")
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri_);
-            val textBodyString = "__android_roya__"
+            val textBodyString = "[ROYA_AGB] working"
             i.putExtra(Intent.EXTRA_TEXT, textBodyString)
             startActivity(i);
         }
