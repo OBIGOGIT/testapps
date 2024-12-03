@@ -5,13 +5,13 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/customtab_open"
+        android:id="@+id/btn_open"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtview_log"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
