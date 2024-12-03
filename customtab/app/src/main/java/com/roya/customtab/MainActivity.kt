@@ -35,15 +35,16 @@ class MainActivity : ComponentActivity() {
             var enable = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
             txtview_log_.setText("isChromeEnabled " + enable)
             //
-            val uri = Uri.parse("http://bm.hosoft.kr/")
+            val uri = Uri.parse("http://rroya.tistory.com/")
             val intentBuilder = CustomTabsIntent.Builder()
-            intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.black))
+            intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.teal_200))
             intentBuilder.setSecondaryToolbarColor(
                 ContextCompat.getColor(
                     this,
-                    R.color.black
+                    R.color.teal_200
                 )
             )
+            intentBuilder.setInitialActivityHeightPx(400, CustomTabsIntent.ACTIVITY_HEIGHT_FIXED);
             val customTabsIntent = intentBuilder.build()
             customTabsIntent.launchUrl(this, uri)
             //
