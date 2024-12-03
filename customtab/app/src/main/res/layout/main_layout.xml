@@ -5,7 +5,12 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btn_open"
+        android:id="@+id/btn_ctab_open"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+    <Button
+        android:id="@+id/btn_idt_open"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />

@@ -1,53 +1,83 @@
 package com.roya.customtab
 
+//
+
 import android.content.Context
-import android.content.pm.PackageInfo
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_ADJUSTABLE
+import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_FIXED
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.ContextCompat
 import com.roya.customtab.ui.theme.CustomtabTheme
 
-//
 
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
-import android.net.Uri;
 //
 
 class MainActivity : ComponentActivity() {
     lateinit var context_: Context
-    lateinit var btn_open_: Button
+    lateinit var btn_ctab_open_: Button
+    lateinit var btn_idt_open_: Button
     lateinit var txtview_log_: TextView
+    lateinit var uri_: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
-        btn_open_ = findViewById<Button>(R.id.btn_open)
+        uri_ = Uri.parse("http://rroya.tistory.com/")
+
+        btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
+        btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
+
         txtview_log_ = findViewById<TextView>(R.id.txtview_log)
-        btn_open_.setOnClickListener {
-            var enable = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-            txtview_log_.setText("isChromeEnabled " + enable)
-            //
-            val uri = Uri.parse("http://rroya.tistory.com/")
-            val intentBuilder = CustomTabsIntent.Builder()
-            intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.teal_200))
-            intentBuilder.setSecondaryToolbarColor(
-                ContextCompat.getColor(
-                    this,
-                    R.color.teal_200
-                )
+        btn_idt_open_.setOnClickListener {
+            openBrsByIntent()
+        }
+        btn_ctab_open_.setOnClickListener {
+            openBrsByCustomTab()
+        }
+
+    }
+    fun openBrsByCustomTab(){
+        var enable = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
+        txtview_log_.setText("isChromeEnabled " + enable)
+        //
+
+        val intentBuilder = CustomTabsIntent.Builder().setInitialActivityHeightPx(
+            100,
+            ACTIVITY_HEIGHT_FIXED
+        );
+        intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.teal_200))
+        intentBuilder.setSecondaryToolbarColor(
+            ContextCompat.getColor(
+                this,
+                R.color.teal_200
             )
-            intentBuilder.setInitialActivityHeightPx(400, CustomTabsIntent.ACTIVITY_HEIGHT_FIXED);
-            val customTabsIntent = intentBuilder.build()
-            customTabsIntent.launchUrl(this, uri)
-            //
+        )
+        intentBuilder.setUrlBarHidingEnabled(true)
+        val customTabsIntent = intentBuilder.build()
+        customTabsIntent.launchUrl(this, uri_)
+        //
+
+    }
+    fun openBrsByIntent() {
+        val i = Intent("com.obigo.automotivebrowser")
+        if(i == null ) {
+            //txtview_log_.setText("OBIGO", "BOOT brs failed.... not existed ")
+        } else {
+            //txtview_log_.setText("OBIGO", "BOOT brs load START  ")
+            i.setAction(Intent.ACTION_VIEW);
+            i.setData(uri_);
+            startActivity(i);
         }
 
     }
