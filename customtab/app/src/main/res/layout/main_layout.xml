@@ -8,12 +8,12 @@
         android:id="@+id/btn_ctab_open"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="customtab open" />
     <Button
         android:id="@+id/btn_idt_open"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="intent open" />
 
     <TextView
         android:id="@+id/txtview_log"

@@ -6,11 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_ADJUSTABLE
 import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_FIXED
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,9 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.roya.customtab.ui.theme.CustomtabTheme
-
-
-//
 
 class MainActivity : ComponentActivity() {
     lateinit var context_: Context
@@ -50,24 +47,13 @@ class MainActivity : ComponentActivity() {
     fun openBrsByCustomTab(){
         var enable = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
         txtview_log_.setText("isChromeEnabled " + enable)
-        //
-
         val intentBuilder = CustomTabsIntent.Builder().setInitialActivityHeightPx(
             100,
             ACTIVITY_HEIGHT_FIXED
         );
-        intentBuilder.setToolbarColor(ContextCompat.getColor(this, R.color.teal_200))
-        intentBuilder.setSecondaryToolbarColor(
-            ContextCompat.getColor(
-                this,
-                R.color.teal_200
-            )
-        )
         intentBuilder.setUrlBarHidingEnabled(true)
         val customTabsIntent = intentBuilder.build()
         customTabsIntent.launchUrl(this, uri_)
-        //
-
     }
     fun openBrsByIntent() {
         val i = Intent("com.obigo.automotivebrowser")
@@ -77,6 +63,8 @@ class MainActivity : ComponentActivity() {
             //txtview_log_.setText("OBIGO", "BOOT brs load START  ")
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri_);
+            val textBodyString = "__android_roya__"
+            i.putExtra(Intent.EXTRA_TEXT, textBodyString)
             startActivity(i);
         }
 
@@ -87,6 +75,7 @@ class MainActivity : ComponentActivity() {
             packageManager.getPackageInfo(packageName, 0)
             true
         } catch (e: Exception) {
+            Log.e("ROYA", "isPackageInstalled failed");
             false
         }
 
