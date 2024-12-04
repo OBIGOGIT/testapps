@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-        uri_ = Uri.parse("http://rroya.tistory.com/")
+        uri_ = Uri.parse("https://brk.obigo.com/launcher-v2")
 
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
@@ -53,6 +53,7 @@ class MainActivity : ComponentActivity() {
             ACTIVITY_HEIGHT_FIXED
         );
         intentBuilder.setUrlBarHidingEnabled(true)
+        //intentBuilder.putExtra("roya", "working.....") not working
         val customTabsIntent = intentBuilder.build()
         customTabsIntent.launchUrl(this, uri_)
     }
@@ -62,8 +63,7 @@ class MainActivity : ComponentActivity() {
         } else {
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri_);
-            val textBodyString = "[ROYA] working"
-            //it.putExtra(OBAConstants.KEY_EXTRA_DIALOG_MSG, getString(R.string.OBAGB_26000_SharedScreen));
+            //i.putExtra(OBAConstants.KEY_EXTRA_DIALOG_MSG, getString(R.string.OBAGB_26000_SharedScreen));
             i.putExtra("roya", "working.....")
             startActivity(i);
         }

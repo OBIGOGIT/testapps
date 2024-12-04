@@ -3,6 +3,44 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/sample_width"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="width" />
+
+        <EditText
+            android:id="@+id/sample_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="height" />
+
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/sample_EditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="test site" />
+
+    <EditText
+        android:id="@+id/sample_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="useragent" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mobile"
+        android:id="@+id/checkBox"/>
 
     <Button
         android:id="@+id/btn_ctab_open"
@@ -14,10 +52,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="intent open" />
-
     <TextView
         android:id="@+id/txtview_log"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="5"
         android:text="TextView" />
 </LinearLayout>
