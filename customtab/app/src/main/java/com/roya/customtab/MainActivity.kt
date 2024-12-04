@@ -62,8 +62,9 @@ class MainActivity : ComponentActivity() {
         } else {
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri_);
-            val textBodyString = "[ROYA_AGB] working"
-            i.putExtra(Intent.EXTRA_TEXT, textBodyString)
+            val textBodyString = "[ROYA] working"
+            //it.putExtra(OBAConstants.KEY_EXTRA_DIALOG_MSG, getString(R.string.OBAGB_26000_SharedScreen));
+            i.putExtra("roya", "working.....")
             startActivity(i);
         }
 
