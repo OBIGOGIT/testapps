@@ -20,8 +20,6 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="height" />
-
-
     </LinearLayout>
     <EditText
         android:id="@+id/sample_EditText2"
@@ -36,12 +34,17 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="useragent" />
+    <EditText
+        android:id="@+id/sample_zoom_factor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="zoom factor" />
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mobile"
         android:id="@+id/checkBox"/>
-
     <Button
         android:id="@+id/btn_ctab_open"
         android:layout_width="match_parent"
