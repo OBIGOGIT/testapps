@@ -25,14 +25,13 @@ class MainActivity : ComponentActivity() {
     var agb_installed = false
     lateinit var btn_idt_open_: Button
     lateinit var txtview_log_: TextView
-    lateinit var uri_: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-        uri_ = Uri.parse("https://brk.obigo.com/launcher-v2")
+
 
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
@@ -48,6 +47,7 @@ class MainActivity : ComponentActivity() {
     }
     fun openBrsByCustomTab(){
         txtview_log_.setText("isChromeEnabled " + agb_installed)
+        val uri = Uri.parse("https://rroya.tistory.com")
         val intentBuilder = CustomTabsIntent.Builder().setInitialActivityHeightPx(
             100,
             ACTIVITY_HEIGHT_FIXED
@@ -55,14 +55,15 @@ class MainActivity : ComponentActivity() {
         intentBuilder.setUrlBarHidingEnabled(true)
         //intentBuilder.putExtra("roya", "working.....") not working
         val customTabsIntent = intentBuilder.build()
-        customTabsIntent.launchUrl(this, uri_)
+        customTabsIntent.launchUrl(this, uri)
     }
     fun openBrsByIntent() {
         val i = Intent("com.obigo.automotivebrowser")
+        val uri = Uri.parse("https://brk.obigo.com/launcher-v2")
         if(i == null ) {
         } else {
             i.setAction(Intent.ACTION_VIEW);
-            i.setData(uri_);
+            i.setData(uri);
             //i.putExtra(OBAConstants.KEY_EXTRA_DIALOG_MSG, getString(R.string.OBAGB_26000_SharedScreen));
             i.putExtra("roya", "working.....")
             startActivity(i);
