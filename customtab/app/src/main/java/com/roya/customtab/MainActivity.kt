@@ -56,18 +56,25 @@ class MainActivity : ComponentActivity() {
         val customTabsIntent = intentBuilder.build()
         customTabsIntent.launchUrl(this, uri)
     }
+
     fun openBrsByIntent() {
         val i = Intent("com.obigo.automotivebrowser")
         val uri = Uri.parse("https://brk.obigo.com/launcher-v2")
         if(i == null ) {
         } else {
+            /*
+            {"serviceName":"왓챠","hostUrl":"https://watcha.com/automobile/intro","zoomFactor":1,"userAgent":"Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36","whiteList":["https://watcha.com/"]}
+            */
+            var config = "'{\"serviceName\":\"왓챠\",\"hostUrl\":\"https://watcha.com/automobile/intro\",\"zoomFactor\":1,\"userAgent\":\"Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36\",\"whiteList\":[\"https://watcha.com/\"]}'"
+
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri);
-            //i.putExtra(OBAConstants.KEY_EXTRA_DIALOG_MSG, getString(R.string.OBAGB_26000_SharedScreen));
+            i.putExtra("oba.openurl.url","https://rroya.tistory.com/")//KEY_EXTRA_OPENURL_URL
+            i.putExtra("oba.openurl.type","1")//KEY_EXTRA_OPENURL_TYPE
+            i.putExtra("oba.openurl.config","config")//KEY_EXTRA_OPENURL_CONFIG
             i.putExtra("roya", "working.....")
             startActivity(i);
         }
-
     }
     fun isPackageInstalled(ctx: Context, packageName: String): Boolean {
         return try {
