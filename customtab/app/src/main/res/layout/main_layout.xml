@@ -9,12 +9,12 @@
         android:layout_height="wrap_content">
         <EditText
             android:id="@+id/sample_width"
-            android:layout_width="wrap_content"
+            android:inputType="number"
+        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:hint="width"
             android:text="" />
-
         <EditText
             android:id="@+id/sample_height"
             android:layout_width="wrap_content"
@@ -30,7 +30,6 @@
         android:textSize="20sp"
         android:hint="test site"
         android:text="" />
-
     <EditText
         android:id="@+id/sample_EditText"
         android:layout_width="wrap_content"
@@ -50,6 +49,12 @@
         android:layout_height="wrap_content"
         android:text="mobile"
         android:id="@+id/checkBox"/>
+    <TextView
+        android:id="@+id/txtview_log"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:maxLines="5"
+        android:text="TextView" />
     <Button
         android:id="@+id/btn_ctab_open"
         android:layout_width="match_parent"
@@ -60,10 +65,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="intent open" />
-    <TextView
-        android:id="@+id/txtview_log"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="5"
-        android:text="TextView" />
+
 </LinearLayout>

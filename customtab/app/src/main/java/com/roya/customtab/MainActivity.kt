@@ -32,7 +32,6 @@ class MainActivity : ComponentActivity() {
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
 
-
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
 
