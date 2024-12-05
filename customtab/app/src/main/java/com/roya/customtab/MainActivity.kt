@@ -1,7 +1,5 @@
 package com.roya.customtab
 
-//
-
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -42,7 +40,6 @@ class MainActivity : ComponentActivity() {
         btn_ctab_open_.setOnClickListener {
             openBrsByCustomTab()
         }
-
     }
     fun openBrsByCustomTab(){
         txtview_log_.setText("isChromeEnabled " + agb_installed)
@@ -59,20 +56,21 @@ class MainActivity : ComponentActivity() {
 
     fun openBrsByIntent() {
         val i = Intent("com.obigo.automotivebrowser")
-        val uri = Uri.parse("https://brk.obigo.com/launcher-v2")
+        val uri = Uri.parse("https://watcha.com/automobile/intro")
         if(i == null ) {
         } else {
             /*
             {"serviceName":"왓챠","hostUrl":"https://watcha.com/automobile/intro","zoomFactor":1,"userAgent":"Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36","whiteList":["https://watcha.com/"]}
             */
-            var config = "'{\"serviceName\":\"왓챠\",\"hostUrl\":\"https://watcha.com/automobile/intro\",\"zoomFactor\":1,\"userAgent\":\"Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36\",\"whiteList\":[\"https://watcha.com/\"]}'"
+            var config = " {\"hostUrl\":\"https:\\/\\/watcha.com\\/automobile\\/intro\",\"userAgent\":\"Mozilla\\/5.0 (X11; ccNC; Linux aarch64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/92.0.4515.131 Mobile Safari\\/537.36\",\"zoomFactor\":3,\"whiteList\":\"[\\\"https:\\\\\\/\\\\\\/watcha.com\\\\\\/\\\"]\"}"
 
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri);
             i.putExtra("oba.openurl.url","https://rroya.tistory.com/")//KEY_EXTRA_OPENURL_URL
             i.putExtra("oba.openurl.type","1")//KEY_EXTRA_OPENURL_TYPE
-            i.putExtra("oba.openurl.config","config")//KEY_EXTRA_OPENURL_CONFIG
-            i.putExtra("roya", "working.....")
+            //
+            //i.putExtra("oba.openurl.config",config)//KEY_EXTRA_OPENURL_CONFIG
+            i.putExtra("roya", config)
             startActivity(i);
         }
     }
