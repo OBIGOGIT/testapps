@@ -66,8 +66,9 @@
         android:layout_height="wrap_content"
         android:text="intent open" />
     <Button
-        android:id="@+id/btn_kill_agb"
+        android:id="@+id/btn_idt_json"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="kill agb" />
+        android:text="json" />
+
 </LinearLayout>

@@ -15,16 +15,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.content.ContextCompat
 import com.roya.customtab.ui.theme.CustomtabTheme
+import org.json.JSONArray
+import org.json.JSONObject
+
 
 class MainActivity : ComponentActivity() {
     lateinit var context_: Context
     lateinit var btn_ctab_open_: Button
-    lateinit var btn_kill_agb_: Button
     var agb_installed = false
     lateinit var btn_idt_open_: Button
+    lateinit var btn_json_: Button
     lateinit var txtview_log_: TextView
+    var isTest = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
-        btn_kill_agb_ = findViewById<Button>(R.id.btn_kill_agb)
+        btn_json_ = findViewById<Button>(R.id.btn_idt_json)
 
         txtview_log_ = findViewById<TextView>(R.id.view_json)
         btn_idt_open_.setOnClickListener {
@@ -43,9 +47,30 @@ class MainActivity : ComponentActivity() {
         btn_ctab_open_.setOnClickListener {
             openBrsByCustomTab()
         }
-        btn_kill_agb_.setOnClickListener {
-            killAgb()
+        btn_json_.setOnClickListener {
+            txtview_log_.setText(makeIntetJsonData())
         }
+    }
+    fun makeIntetJsonData() : String {
+        /*
+        if (isTest) {
+            var config =  "{" + //\"hostUrl\":\"https:\\/\\/watcha.com\\/automobile\\/intro\"," +
+                    //"\"userAgent\":\"Mozilla\\/5.0 (X11; ccNC; Linux aarch64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/92.0.4515.131 Mobile Safari\\/537.36\"," +
+                    //"\"width\":300,\"height\":700," +
+                    "zoomFactor:1}" //+
+                    //"\"whiteList\":\"[\\\"https:\\\\\\/\\\\\\/watcha.com\\\\\\/\\\"]\"}"
+            return config;
+        }*/
+        val jsonMain = JSONObject()
+        val jsonArray = JSONArray()
+        var jsonObject = JSONObject();
+
+        jsonObject.put("zoomFactor", 3)
+        jsonObject.put("userAgent", "Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
+        jsonArray.put(jsonObject)
+        jsonMain.put("dataSet", jsonArray);
+        Log.e("ROYA", "json: " + jsonObject.toString());
+        return jsonObject.toString();
     }
 
     fun openBrsByCustomTab(){
@@ -69,7 +94,6 @@ class MainActivity : ComponentActivity() {
             /*
             {"serviceName":"왓챠","hostUrl":"https://watcha.com/automobile/intro","zoomFactor":1,"userAgent":"Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36","whiteList":["https://watcha.com/"]}
             */
-            var config = " {\"hostUrl\":\"https:\\/\\/watcha.com\\/automobile\\/intro\",\"userAgent\":\"Mozilla\\/5.0 (X11; ccNC; Linux aarch64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/92.0.4515.131 Mobile Safari\\/537.36\",\"width\":300,\"height\":700,\"zoomFactor\":3,\"whiteList\":\"[\\\"https:\\\\\\/\\\\\\/watcha.com\\\\\\/\\\"]\"}"
 
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri);
@@ -85,8 +109,10 @@ class MainActivity : ComponentActivity() {
                 var commandline = w.text.toString() + "x" + h.text.toString()
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
             }
+            //Log.e("ROYA", "json: " + jsontest());
+            //i.putExtra("oba.content.config", jsontest())
+            i.putExtra("oba.content.config", makeIntetJsonData())
 
-            i.putExtra("oba.content.config", config)
 
             startActivity(i);
         }
@@ -101,12 +127,6 @@ class MainActivity : ComponentActivity() {
             false
         }
 
-    }
-    fun killAgb() {
-        val i = Intent("com.obigo.automotivebrowser")
-        val uri = Uri.parse("https://watcha.com/automobile/intro")
-        i.putExtra("oba.content.terminate", " terminate")
-        startActivity(i);
     }
 }
 
