@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.browser.customtabs.CustomTabsIntent
@@ -20,6 +21,7 @@ import com.roya.customtab.ui.theme.CustomtabTheme
 class MainActivity : ComponentActivity() {
     lateinit var context_: Context
     lateinit var btn_ctab_open_: Button
+    lateinit var btn_kill_agb_: Button
     var agb_installed = false
     lateinit var btn_idt_open_: Button
     lateinit var txtview_log_: TextView
@@ -32,15 +34,20 @@ class MainActivity : ComponentActivity() {
 
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
+        btn_kill_agb_ = findViewById<Button>(R.id.btn_kill_agb)
 
-        txtview_log_ = findViewById<TextView>(R.id.txtview_log)
+        txtview_log_ = findViewById<TextView>(R.id.view_json)
         btn_idt_open_.setOnClickListener {
             openBrsByIntent()
         }
         btn_ctab_open_.setOnClickListener {
             openBrsByCustomTab()
         }
+        btn_kill_agb_.setOnClickListener {
+            killAgb()
+        }
     }
+
     fun openBrsByCustomTab(){
         txtview_log_.setText("isChromeEnabled " + agb_installed)
         val uri = Uri.parse("https://rroya.tistory.com")
@@ -62,15 +69,25 @@ class MainActivity : ComponentActivity() {
             /*
             {"serviceName":"왓챠","hostUrl":"https://watcha.com/automobile/intro","zoomFactor":1,"userAgent":"Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36","whiteList":["https://watcha.com/"]}
             */
-            var config = " {\"hostUrl\":\"https:\\/\\/watcha.com\\/automobile\\/intro\",\"userAgent\":\"Mozilla\\/5.0 (X11; ccNC; Linux aarch64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/92.0.4515.131 Mobile Safari\\/537.36\",\"zoomFactor\":3,\"whiteList\":\"[\\\"https:\\\\\\/\\\\\\/watcha.com\\\\\\/\\\"]\"}"
+            var config = " {\"hostUrl\":\"https:\\/\\/watcha.com\\/automobile\\/intro\",\"userAgent\":\"Mozilla\\/5.0 (X11; ccNC; Linux aarch64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/92.0.4515.131 Mobile Safari\\/537.36\",\"width\":300,\"height\":700,\"zoomFactor\":3,\"whiteList\":\"[\\\"https:\\\\\\/\\\\\\/watcha.com\\\\\\/\\\"]\"}"
 
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri);
             i.putExtra("oba.openurl.url","https://rroya.tistory.com/")//KEY_EXTRA_OPENURL_URL
             i.putExtra("oba.openurl.type","1")//KEY_EXTRA_OPENURL_TYPE
-            //
+
             //i.putExtra("oba.openurl.config",config)//KEY_EXTRA_OPENURL_CONFIG
-            i.putExtra("roya", config)
+            var w = findViewById<EditText>(R.id.input_width)
+            var h = findViewById<EditText>(R.id.input_height)
+            if (w.text.toString().isEmpty() || h.text.toString().isEmpty()) {
+                Log.e("ROYA", "please input width / height");
+            } else {
+                var commandline = w.text.toString() + "x" + h.text.toString()
+                i.putExtra("agb-content-window-size", commandline.toString())//width,height
+            }
+
+            i.putExtra("oba.content.config", config)
+
             startActivity(i);
         }
     }
@@ -84,6 +101,12 @@ class MainActivity : ComponentActivity() {
             false
         }
 
+    }
+    fun killAgb() {
+        val i = Intent("com.obigo.automotivebrowser")
+        val uri = Uri.parse("https://watcha.com/automobile/intro")
+        i.putExtra("oba.content.terminate", " terminate")
+        startActivity(i);
     }
 }
 
