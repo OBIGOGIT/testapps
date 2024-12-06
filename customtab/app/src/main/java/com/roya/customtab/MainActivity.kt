@@ -52,23 +52,21 @@ class MainActivity : ComponentActivity() {
         }
     }
     fun makeIntetJsonData() : String {
-        /*
-        if (isTest) {
-            var config =  "{" + //\"hostUrl\":\"https:\\/\\/watcha.com\\/automobile\\/intro\"," +
-                    //"\"userAgent\":\"Mozilla\\/5.0 (X11; ccNC; Linux aarch64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/92.0.4515.131 Mobile Safari\\/537.36\"," +
-                    //"\"width\":300,\"height\":700," +
-                    "zoomFactor:1}" //+
-                    //"\"whiteList\":\"[\\\"https:\\\\\\/\\\\\\/watcha.com\\\\\\/\\\"]\"}"
-            return config;
-        }*/
         val jsonMain = JSONObject()
         val jsonArray = JSONArray()
         var jsonObject = JSONObject();
-
-        jsonObject.put("zoomFactor", 3)
+//hostUrl
+        jsonObject.put("hosturl", "https://www.naver.com/")
+///zoom factor
+        jsonObject.put("zoomFactor", 1)
+///user agent
         jsonObject.put("userAgent", "Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
         jsonArray.put(jsonObject)
-        jsonMain.put("dataSet", jsonArray);
+///white list
+        var wlist = JSONArray();
+        wlist.put("https://watcha.com/");
+        wlist.put("https://watcha.com/2");
+        jsonObject.put("whiteList",wlist)
         Log.e("ROYA", "json: " + jsonObject.toString());
         return jsonObject.toString();
     }
