@@ -27,18 +27,29 @@ class MainActivity : ComponentActivity() {
     lateinit var btn_idt_open_: Button
     lateinit var btn_json_: Button
     lateinit var txtview_log_: TextView
-    var isTest = true
 
+    //edittexts
+    lateinit var input_width_: EditText
+    lateinit var input_height_: EditText
+    lateinit var input_ua_: EditText
+    lateinit var input_zoomFactor_: EditText
+    lateinit var input_hosturl_: EditText
+    lateinit var input_whitelist_: EditText
+    var isTest = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-
+        setDefaultWindowSize()
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
+        input_ua_ = findViewById<EditText>(R.id.input_ua)
+        input_hosturl_ = findViewById<EditText>(R.id.input_hosturl)
+        input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
+        input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
 
         txtview_log_ = findViewById<TextView>(R.id.view_json)
         btn_idt_open_.setOnClickListener {
@@ -50,22 +61,51 @@ class MainActivity : ComponentActivity() {
         btn_json_.setOnClickListener {
             txtview_log_.setText(makeIntetJsonData())
         }
+
+    }
+    fun setDefaultWindowSize() {
+        val display = this.applicationContext?.resources?.displayMetrics
+        val deviceWidth = display?.widthPixels
+        val deviceHeight = display?.heightPixels
+
+        input_width_ = findViewById<EditText>(R.id.input_width)
+        input_width_.setText(deviceWidth.toString())
+
+        input_height_ = findViewById<EditText>(R.id.input_height)
+        input_height_.setText(deviceHeight.toString())
+    }
+    fun Wihtelist(input : String) : List<String> {
+        val splitData = input.split(";")
+        return splitData
+    }
+    fun checkInputData() :Boolean {
+        if(input_zoomFactor_.text.isEmpty() ||
+            input_ua_.text.isEmpty()||
+            input_hosturl_.text.isEmpty()||
+            input_whitelist_.text.isEmpty())
+            return false;
+        return true
     }
     fun makeIntetJsonData() : String {
         val jsonMain = JSONObject()
         val jsonArray = JSONArray()
         var jsonObject = JSONObject();
 //hostUrl
-        jsonObject.put("hosturl", "https://www.naver.com/")
+        jsonObject.put("hosturl", input_hosturl_.text.toString())
 ///zoom factor
-        jsonObject.put("zoomFactor", 1)
+        jsonObject.put("zoomFactor", input_zoomFactor_.text.toString())
 ///user agent
-        jsonObject.put("userAgent", "Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
+        jsonObject.put("userAgent", input_hosturl_.text.toString())
         jsonArray.put(jsonObject)
 ///white list
+        Log.e("ROYA", "white list string: " + input_whitelist_.text.toString())
+        var user_wlist = Wihtelist(input_whitelist_.text.toString())
         var wlist = JSONArray();
-        wlist.put("https://watcha.com/");
-        wlist.put("https://watcha.com/2");
+        //val iter = user_wlist.iterator() // list의 첫 번째 원소
+        for(w in user_wlist) {
+            wlist.put(w.toString());
+            Log.e("ROYA", "wlist.put: " + w.toString());
+        }
         jsonObject.put("whiteList",wlist)
         Log.e("ROYA", "json: " + jsonObject.toString());
         return jsonObject.toString();
@@ -86,7 +126,7 @@ class MainActivity : ComponentActivity() {
 
     fun openBrsByIntent() {
         val i = Intent("com.obigo.automotivebrowser")
-        val uri = Uri.parse("https://watcha.com/automobile/intro")
+        val uri = Uri.parse(input_hosturl_.text.toString())
         if(i == null ) {
         } else {
             /*
@@ -95,16 +135,14 @@ class MainActivity : ComponentActivity() {
 
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri);
-            i.putExtra("oba.openurl.url","https://rroya.tistory.com/")//KEY_EXTRA_OPENURL_URL
+            i.putExtra("oba.openurl.url",input_hosturl_.text.toString())//KEY_EXTRA_OPENURL_URL
             i.putExtra("oba.openurl.type","1")//KEY_EXTRA_OPENURL_TYPE
 
             //i.putExtra("oba.openurl.config",config)//KEY_EXTRA_OPENURL_CONFIG
-            var w = findViewById<EditText>(R.id.input_width)
-            var h = findViewById<EditText>(R.id.input_height)
-            if (w.text.toString().isEmpty() || h.text.toString().isEmpty()) {
+            if (input_width_.text.toString().isEmpty() || input_height_.text.toString().isEmpty()) {
                 Log.e("ROYA", "please input width / height");
             } else {
-                var commandline = w.text.toString() + "x" + h.text.toString()
+                var commandline = input_width_.text.toString() + "x" + input_height_.text.toString()
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
             }
             //Log.e("ROYA", "json: " + jsontest());
