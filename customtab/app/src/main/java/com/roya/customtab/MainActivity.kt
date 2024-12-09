@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_FIXED
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-        setDefaultWindowSize()
+        setDefaultValues()
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
@@ -63,7 +64,7 @@ class MainActivity : ComponentActivity() {
         }
 
     }
-    fun setDefaultWindowSize() {
+    fun setDefaultValues() {
         val display = this.applicationContext?.resources?.displayMetrics
         val deviceWidth = display?.widthPixels
         val deviceHeight = display?.heightPixels
@@ -101,13 +102,11 @@ class MainActivity : ComponentActivity() {
         Log.e("ROYA", "white list string: " + input_whitelist_.text.toString())
         var user_wlist = Wihtelist(input_whitelist_.text.toString())
         var wlist = JSONArray();
-        //val iter = user_wlist.iterator() // list의 첫 번째 원소
+
         for(w in user_wlist) {
             wlist.put(w.toString());
-            Log.e("ROYA", "wlist.put: " + w.toString());
         }
         jsonObject.put("whiteList",wlist)
-        Log.e("ROYA", "json: " + jsonObject.toString());
         return jsonObject.toString();
     }
 
@@ -125,6 +124,10 @@ class MainActivity : ComponentActivity() {
     }
 
     fun openBrsByIntent() {
+        if (!checkInputData()) {
+            Toast.makeText(this@MainActivity, "미입력있음", Toast.LENGTH_SHORT).show()
+            return;
+        }
         val i = Intent("com.obigo.automotivebrowser")
         val uri = Uri.parse(input_hosturl_.text.toString())
         if(i == null ) {
@@ -145,11 +148,10 @@ class MainActivity : ComponentActivity() {
                 var commandline = input_width_.text.toString() + "x" + input_height_.text.toString()
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
             }
-            //Log.e("ROYA", "json: " + jsontest());
-            //i.putExtra("oba.content.config", jsontest())
-            i.putExtra("oba.content.config", makeIntetJsonData())
 
-
+            var json = makeIntetJsonData();
+            txtview_log_.setText(json)
+            i.putExtra("oba.content.config", json)
             startActivity(i);
         }
     }
