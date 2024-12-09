@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:hint="useragent"
-        android:text="Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 " />
+        android:text="user agent" />
     <EditText
         android:id="@+id/input_zoomfactor"
         android:layout_width="wrap_content"
@@ -51,16 +51,12 @@
         android:textSize="20sp"
         android:hint="white list : seperate ;"
         android:text="" />
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mobile"
-        android:id="@+id/checkBox"/>
     <TextView
         android:id="@+id/view_json"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:maxLines="5"
+        android:textSize="20sp"
         android:text="TextView" />
     <Button
         android:id="@+id/btn_ctab_open"

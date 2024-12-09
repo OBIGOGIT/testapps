@@ -74,6 +74,8 @@ class MainActivity : ComponentActivity() {
 
         input_height_ = findViewById<EditText>(R.id.input_height)
         input_height_.setText(deviceHeight.toString())
+
+        input_ua_.setText("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
     }
     fun Wihtelist(input : String) : List<String> {
         val splitData = input.split(";")
