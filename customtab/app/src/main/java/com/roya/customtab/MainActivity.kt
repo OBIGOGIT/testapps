@@ -43,7 +43,6 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-        setDefaultValues()
         btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
@@ -51,8 +50,8 @@ class MainActivity : ComponentActivity() {
         input_hosturl_ = findViewById<EditText>(R.id.input_hosturl)
         input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
         input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
-
         txtview_log_ = findViewById<TextView>(R.id.view_json)
+        setDefaultValues()
         btn_idt_open_.setOnClickListener {
             openBrsByIntent()
         }
@@ -62,6 +61,7 @@ class MainActivity : ComponentActivity() {
         btn_json_.setOnClickListener {
             txtview_log_.setText(makeIntetJsonData())
         }
+
 
     }
     fun setDefaultValues() {
