@@ -19,15 +19,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.roya.customtab.ui.theme.CustomtabTheme
 import org.json.JSONArray
 import org.json.JSONObject
-
+//for config
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.ActivityResultLauncher
 
 class MainActivity : ComponentActivity() {
+    var TAG = "MAIN"
     lateinit var context_: Context
     lateinit var btn_ctab_open_: Button
     var agb_installed = false
     lateinit var btn_idt_open_: Button
     lateinit var btn_json_: Button
     lateinit var txtview_log_: TextView
+
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     //edittexts
     lateinit var input_width_: EditText
@@ -36,7 +41,7 @@ class MainActivity : ComponentActivity() {
     lateinit var input_zoomFactor_: EditText
     lateinit var input_hosturl_: EditText
     lateinit var input_whitelist_: EditText
-    var isTest = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +66,30 @@ class MainActivity : ComponentActivity() {
         btn_json_.setOnClickListener {
             txtview_log_.setText(makeIntetJsonData())
         }
-
-
+        setResultSignUp()
+        findViewById<Button>(R.id.btn_config).setOnClickListener {
+            val intent = Intent(this, ConfigActivity::class.java)
+            resultLauncher.launch(intent)
+        }
     }
+    private fun setResultSignUp() {
+        resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+            if (result.resultCode == RESULT_OK) {
+                val name = result.data?.getStringExtra("from") ?: ""
+                Log.d("ROYA", "setResultSignUp " + name)
+                /*
+                if(name == "editsms") {
+                    setSmsTextValue()
+                } else if (name == "setting") {
+                    setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
+                    setBgColor()
+                    setBtnColor()
+                }
+                */
+            }
+        }
+    }
+
     fun setDefaultValues() {
         val display = this.applicationContext?.resources?.displayMetrics
         val deviceWidth = display?.widthPixels
