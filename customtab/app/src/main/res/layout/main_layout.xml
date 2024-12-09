@@ -60,10 +60,10 @@
         android:textSize="20sp"
         android:text="TextView" />
     <Button
-        android:id="@+id/btn_ctab_open"
+        android:id="@+id/btn_load_default_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="customtab open" />
+        android:text="load default value" />
     <Button
         android:id="@+id/btn_idt_open"
         android:layout_width="match_parent"

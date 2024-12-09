@@ -26,7 +26,7 @@ import androidx.activity.result.ActivityResultLauncher
 class MainActivity : ComponentActivity() {
     var TAG = "MAIN"
     lateinit var context_: Context
-    lateinit var btn_ctab_open_: Button
+    lateinit var btn_load_default_setting_: Button
     var agb_installed = false
     lateinit var btn_idt_open_: Button
     lateinit var btn_json_: Button
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.main_layout)
         context_ = getApplicationContext()
         agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
-        btn_ctab_open_ = findViewById<Button>(R.id.btn_ctab_open)
+        btn_load_default_setting_ = findViewById<Button>(R.id.btn_load_default_setting)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
         input_ua_ = findViewById<EditText>(R.id.input_ua)
@@ -60,8 +60,8 @@ class MainActivity : ComponentActivity() {
         btn_idt_open_.setOnClickListener {
             openBrsByIntent()
         }
-        btn_ctab_open_.setOnClickListener {
-            openBrsByCustomTab()
+        btn_load_default_setting_.setOnClickListener {
+            Log.e("ROYA", "TODO load default setting value")
         }
         btn_json_.setOnClickListener {
             txtview_log_.setText(makeIntetJsonData())

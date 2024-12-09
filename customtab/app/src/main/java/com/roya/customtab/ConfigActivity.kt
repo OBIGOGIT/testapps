@@ -16,8 +16,7 @@ class ConfigActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.config_layout)
-        //Toast.makeText(this@ConfigActivity, "config ", Toast.LENGTH_SHORT).show()
-        btn_close_ = findViewById<Button>(R.id.btn_close)
+        btn_close_ = findViewById<Button>(R.id.btn_config_close)
         btn_close_.setOnClickListener {
             Log.e(TAG, "config finish")
             finish()
