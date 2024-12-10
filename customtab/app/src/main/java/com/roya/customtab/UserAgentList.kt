@@ -5,6 +5,8 @@ import android.util.Log
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
+import java.io.FileWriter
+import java.io.IOException
 import java.io.InputStream
 import java.io.PrintWriter
 
@@ -39,14 +41,19 @@ class UserAgentList {
             Log.e("ROYA","default_UaArray")
             return default_UaArray;
         }
+        var index = 0
         var uaList = arrayOf<String>("","","","","","","","","","")
-        val inputStream: InputStream = file.inputStream()
-        var index : Int  = 0
-        val inputString = inputStream.reader().use {
-            uaList[index] = it.readText().toString()
-            it.readText()
-            Log.e("ROYA","UaArray : " + it.readText().toString())
-            index++
+        try {
+            BufferedReader(FileReader(file)).use { br ->
+                var line: String?
+                while (br.readLine().also { line = it } != null) {
+                    //println(line)
+                    uaList[index++] = line.toString()
+                    Log.e("ROYA","getline :" +line)
+                }
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
 
         return uaList
@@ -55,9 +62,16 @@ class UserAgentList {
         var uafile =  File(ua_list_file_)
         uafile.delete()
         uafile.createNewFile()
+        val fileWriter = FileWriter(uafile)
         for (s in uaArr) {
-            uafile.writeText(s)
+            //uafile.writeText(s)
+            if(s.isNotEmpty()) {
+                fileWriter.write(s + System.lineSeparator())
+                //fileWriter.write()
+                Log.e("ROYA", "file Write : " + s)
+            }
         }
+        fileWriter.close()
         /*
         Log.e("ROYA","ua_list_file_  : "+ua_list_file_)
         val fos = context_.openFileOutput("ua" + ".txt", Context.MODE_PRIVATE)
