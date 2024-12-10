@@ -5,6 +5,7 @@ import android.util.Log
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
+import java.io.InputStream
 import java.io.PrintWriter
 
 class UserAgentList {
@@ -29,48 +30,42 @@ class UserAgentList {
     fun Initialize(path: String, context: Context) {
         Log.e("ROYA" , "Initialize")
         context_ = context
-        var file = path + "/ua" + ".txt"
-        ua_list_file_ = file
+        ua_list_file_ = path + "/ua" + ".txt"
     }
+
     fun getUaList() : Array<String> {
         val file = File(ua_list_file_)
         if (!file.exists()) {
+            Log.e("ROYA","default_UaArray")
             return default_UaArray;
         }
-        var uaArray = arrayOf<String>()
-
-        var reader: BufferedReader? = null
-        var i : Int = 0
-        try {
-            reader = BufferedReader(FileReader(ua_list_file_))
-            var line: String
-
-            while (reader.readLine().also { line = it } != null) {
-                // Process each line
-                Log.d(TAG, "ua: " + i + " : " + line)
-                uaArray[i++] = line.toString()
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "ua read ERROR ${e.message}")
-        } finally {
-            try {
-                reader?.close()
-            } catch (e: Exception) {
-                Log.e(TAG, "ua  ERROR: while closing the file: ${e.message}")
-            }
+        var uaList = arrayOf<String>("","","","","","","","","","")
+        val inputStream: InputStream = file.inputStream()
+        var index : Int  = 0
+        val inputString = inputStream.reader().use {
+            uaList[index] = it.readText().toString()
+            it.readText()
+            Log.e("ROYA","UaArray : " + it.readText().toString())
+            index++
         }
-        if (i == 0)
-            return default_UaArray;
-        else
-            return uaArray
+
+        return uaList
     }
     fun SaveUaText(uaArr :Array<String>) {
+        var uafile =  File(ua_list_file_)
+        uafile.delete()
+        uafile.createNewFile()
+        for (s in uaArr) {
+            uafile.writeText(s)
+        }
+        /*
+        Log.e("ROYA","ua_list_file_  : "+ua_list_file_)
         val fos = context_.openFileOutput("ua" + ".txt", Context.MODE_PRIVATE)
         val out = PrintWriter(fos)
         for (s in uaArr) {
             Log.e(TAG, "save ua : " + s)
+            out.println(s);
         }
         out.close();
-
-    }
+    */}
 }
