@@ -5,8 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -80,6 +84,35 @@ class MainActivity : ComponentActivity() {
         findViewById<Button>(R.id.btn_ua_config).setOnClickListener {
             val intent = Intent(this, UaActivity::class.java)
             resultLauncher.launch(intent)
+        }
+
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        val showButton = findViewById<View>(R.id.show_button)
+        var spinnerItems = arrayOf("Java", "PHP", "Kotlin", "Javascript", "Python", "Swift")
+
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItem = spinnerItems[position]
+                Toast.makeText(
+                    this@MainActivity,
+                    "Selected item: $selectedItem",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do nothing
+            }
         }
     }
     private fun setResultSignUp() {
