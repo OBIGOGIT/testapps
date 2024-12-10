@@ -11,10 +11,13 @@ class UserAgentList {
     var TAG = "UA"
     lateinit var context_: Context
     lateinit var ua_list_file_ : String
-    var default_UaArray:Array<String> = arrayOf("ua 1",
-        "ua 2",
-        "ua 3",
-        "ua 4")
+    var default_UaArray:Array<String> = arrayOf("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
+                                                "Mozilla/5.0 (X11; ccIC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
+                                                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 ",
+                                                "Mozilla/5.0 (X11; CrOS x86_64 14526.89.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.133 Safari/537.36",
+                                                "Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Build/KLP) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30",
+                                                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+        )
     companion object {
         private var instance: UserAgentList? = null
 
