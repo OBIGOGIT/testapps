@@ -23,7 +23,8 @@ class UserAgentList {
                 instance = it
             }
     }
-    fun initize(path: String, context: Context) {
+    fun Initialize(path: String, context: Context) {
+        Log.e("ROYA" , "Initialize")
         context_ = context
         var file = path + "/ua" + ".txt"
         ua_list_file_ = file

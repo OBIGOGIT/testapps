@@ -42,6 +42,8 @@ class MainActivity : ComponentActivity() {
     lateinit var input_hosturl_: EditText
     lateinit var input_whitelist_: EditText
 
+    //lateinit var ua_list : UserAgentList
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,9 @@ class MainActivity : ComponentActivity() {
         input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
         input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
         txtview_log_ = findViewById<TextView>(R.id.view_json)
+        Log.e("TAG" , "path : " + context_.getFilesDir().getPath())
+        UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
+
         setDefaultValues()
         btn_idt_open_.setOnClickListener {
             openBrsByIntent()
