@@ -83,9 +83,10 @@
             android:layout_height="wrap_content"
             android:text="ua save"/>
         <Button
-            android:id="@+id/btn_ua_config_close"
+            android:id="@+id/btn_ua_config_reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ua close"/>
+            android:text="reset ua"/>
+
     </LinearLayout>
 </LinearLayout>

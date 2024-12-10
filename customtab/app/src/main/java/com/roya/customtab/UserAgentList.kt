@@ -47,7 +47,6 @@ class UserAgentList {
             BufferedReader(FileReader(file)).use { br ->
                 var line: String?
                 while (br.readLine().also { line = it } != null) {
-                    //println(line)
                     uaList[index++] = line.toString()
                     Log.e("ROYA","getline :" +line)
                 }
@@ -55,8 +54,11 @@ class UserAgentList {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
         return uaList
+    }
+    fun resetUaList() {
+        var uafile =  File(ua_list_file_)
+        uafile.delete()
     }
     fun SaveUaText(uaArr :Array<String>) {
         var uafile =  File(ua_list_file_)
@@ -67,19 +69,9 @@ class UserAgentList {
             //uafile.writeText(s)
             if(s.isNotEmpty()) {
                 fileWriter.write(s + System.lineSeparator())
-                //fileWriter.write()
                 Log.e("ROYA", "file Write : " + s)
             }
         }
         fileWriter.close()
-        /*
-        Log.e("ROYA","ua_list_file_  : "+ua_list_file_)
-        val fos = context_.openFileOutput("ua" + ".txt", Context.MODE_PRIVATE)
-        val out = PrintWriter(fos)
-        for (s in uaArr) {
-            Log.e(TAG, "save ua : " + s)
-            out.println(s);
-        }
-        out.close();
-    */}
+    }
 }

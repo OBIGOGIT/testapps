@@ -1,5 +1,6 @@
 package com.roya.customtab
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -13,6 +14,7 @@ class UaActivity : AppCompatActivity() {
 
     lateinit var btn_ua_config_save_: Button
     lateinit var btn_ua_config_close_: Button
+    lateinit var btn_ua_config_reset_: Button
     lateinit var input_ua_config_ua1_: EditText
     lateinit var input_ua_config_ua2_: EditText
     lateinit var input_ua_config_ua3_: EditText
@@ -64,12 +66,20 @@ class UaActivity : AppCompatActivity() {
             }
         }
     }
+    fun SetResIntent() {
+        var intent = Intent(this@UaActivity,MainActivity::class.java);
+        intent.putExtra("from", "UaActivity");
+        setResult(RESULT_OK , intent)
+    }
+
     fun SetButtonEvent() {
-        btn_ua_config_close_ = findViewById<Button>(R.id.btn_ua_config_close)
-        btn_ua_config_close_.setOnClickListener {
-            Log.e("ROYA", "ua config finish")
+        btn_ua_config_reset_ = findViewById<Button>(R.id.btn_ua_config_reset)
+        btn_ua_config_reset_.setOnClickListener {
+            UserAgentList.getInstance().resetUaList()
+            SetResIntent()
             finish()
         }
+
         btn_ua_config_save_ = findViewById<Button>(R.id.btn_ua_config_save)
         btn_ua_config_save_.setOnClickListener {
             Log.e("ROYA", "try ua save")
@@ -82,7 +92,8 @@ class UaActivity : AppCompatActivity() {
                 }
             }
             UserAgentList.getInstance().SaveUaText(uaList)
-
+            SetResIntent()
+            finish()
         }
 
     }

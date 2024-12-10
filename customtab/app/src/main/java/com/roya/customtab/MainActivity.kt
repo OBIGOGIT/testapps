@@ -42,10 +42,11 @@ class MainActivity : ComponentActivity() {
     //edittexts
     lateinit var input_width_: EditText
     lateinit var input_height_: EditText
-    lateinit var input_ua_: EditText
+    //lateinit var input_ua_: EditText
     lateinit var input_zoomFactor_: EditText
     lateinit var input_hosturl_: EditText
     lateinit var input_whitelist_: EditText
+    lateinit var user_agent_:String
 
     //lateinit var ua_list : UserAgentList
 
@@ -58,13 +59,14 @@ class MainActivity : ComponentActivity() {
         btn_load_default_setting_ = findViewById<Button>(R.id.btn_load_default_setting)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
-        input_ua_ = findViewById<EditText>(R.id.input_ua)
+        //input_ua_ = findViewById<EditText>(R.id.input_ua)
         input_hosturl_ = findViewById<EditText>(R.id.input_hosturl)
         input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
         input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
         txtview_log_ = findViewById<TextView>(R.id.view_json)
         Log.e("TAG" , "path : " + context_.getFilesDir().getPath())
         UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
+        user_agent_ = UserAgentList.getInstance().getUaList()[0]
 
         setDefaultValues()
         btn_idt_open_.setOnClickListener {
@@ -85,10 +87,11 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, UaActivity::class.java)
             resultLauncher.launch(intent)
         }
-
+        setUaSpinner()
+    }
+    fun setUaSpinner () {
         val spinner = findViewById<Spinner>(R.id.spinner)
-        val showButton = findViewById<View>(R.id.show_button)
-        var spinnerItems = arrayOf("Java", "PHP", "Kotlin", "Javascript", "Python", "Swift")
+        var spinnerItems = UserAgentList.getInstance().getUaList()
 
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
@@ -103,11 +106,7 @@ class MainActivity : ComponentActivity() {
                 id: Long
             ) {
                 val selectedItem = spinnerItems[position]
-                Toast.makeText(
-                    this@MainActivity,
-                    "Selected item: $selectedItem",
-                    Toast.LENGTH_SHORT
-                ).show()
+                user_agent_ = selectedItem;
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -120,15 +119,9 @@ class MainActivity : ComponentActivity() {
             if (result.resultCode == RESULT_OK) {
                 val name = result.data?.getStringExtra("from") ?: ""
                 Log.d("ROYA", "setResultSignUp " + name)
-                /*
-                if(name == "editsms") {
-                    setSmsTextValue()
-                } else if (name == "setting") {
-                    setImageViewImage(getContext().getFilesDir().getPath() + "/arin_bg.png")
-                    setBgColor()
-                    setBtnColor()
+                if( name == "UaActivity") {
+                    setUaSpinner()
                 }
-                */
             }
         }
     }
@@ -144,7 +137,7 @@ class MainActivity : ComponentActivity() {
         input_height_ = findViewById<EditText>(R.id.input_height)
         input_height_.setText(deviceHeight.toString())
 
-        input_ua_.setText("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
+        //input_ua_.setText("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
     }
     fun Wihtelist(input : String) : List<String> {
         val splitData = input.split(";")
@@ -152,7 +145,7 @@ class MainActivity : ComponentActivity() {
     }
     fun checkInputData() :Boolean {
         if(input_zoomFactor_.text.isEmpty() ||
-            input_ua_.text.isEmpty()||
+            //input_ua_.text.isEmpty()||
             input_hosturl_.text.isEmpty()||
             input_whitelist_.text.isEmpty())
             return false;
@@ -167,7 +160,7 @@ class MainActivity : ComponentActivity() {
 ///zoom factor
         jsonObject.put("zoomFactor", input_zoomFactor_.text.toString())
 ///user agent
-        jsonObject.put("userAgent", input_hosturl_.text.toString())
+        jsonObject.put("userAgent", user_agent_.toString())
         jsonArray.put(jsonObject)
 ///white list
         Log.e("ROYA", "white list string: " + input_whitelist_.text.toString())
