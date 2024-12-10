@@ -3,19 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:id="@+id/main"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".UaActivity">
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/input_ua_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"/>
-
-    <Button
-        android:id="@+id/btn_ua_close"
+        android:text="input_ua_1"/>
+    <EditText
+        android:id="@+id/input_ua_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ua close"/>
+        android:text="input_ua_2"/>
+    <EditText
+        android:id="@+id/input_ua_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="input_ua_3"/>
+    <EditText
+        android:id="@+id/input_ua_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="input_ua_4"/>
+    <EditText
+        android:id="@+id/input_ua_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="input_ua_5"/>
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_ua_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ua save"/>
+        <Button
+            android:id="@+id/btn_ua_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ua close"/>
+    </LinearLayout>
 </LinearLayout>
