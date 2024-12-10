@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
 
 class ConfigActivity : AppCompatActivity() {
@@ -28,4 +29,5 @@ class ConfigActivity : AppCompatActivity() {
             insets
         }
     }
+
 }
