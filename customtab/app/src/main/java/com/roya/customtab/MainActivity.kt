@@ -156,7 +156,7 @@ class MainActivity : ComponentActivity() {
 //hostUrl
         jsonObject.put("hosturl", input_hosturl_.text.toString())
 ///zoom factor
-        jsonObject.put("zoomFactor", input_zoomFactor_.text.toString())
+        jsonObject.put("zoomFactor", input_zoomFactor_.text.toString().toInt())
 ///user agent
         jsonObject.put("userAgent", user_agent_.toString())
         jsonArray.put(jsonObject)
