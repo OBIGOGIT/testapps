@@ -48,9 +48,6 @@ class MainActivity : ComponentActivity() {
     lateinit var input_whitelist_: EditText
     lateinit var user_agent_:String
 
-    //lateinit var ua_list : UserAgentList
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
@@ -66,6 +63,7 @@ class MainActivity : ComponentActivity() {
         txtview_log_ = findViewById<TextView>(R.id.view_json)
         Log.e("TAG" , "path : " + context_.getFilesDir().getPath())
         UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
+        SettingData.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
         user_agent_ = UserAgentList.getInstance().getUaList()[0]
 
         setDefaultValues()
