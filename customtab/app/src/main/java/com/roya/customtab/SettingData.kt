@@ -60,6 +60,7 @@ class SettingData {
         host_url_ = hurl
         zoom_factor_ = zoom
         white_list_ = wlist
+        user_agent_ = ua
     }
     fun makeIntetJsonData() : String {
         val jsonMain = JSONObject()

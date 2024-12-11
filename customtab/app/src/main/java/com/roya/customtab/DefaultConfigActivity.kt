@@ -32,7 +32,7 @@ class DefaultConfigActivity : AppCompatActivity() {
         }
         btn_save_ = findViewById<Button>(R.id.btn_default_config_save)
         btn_save_.setOnClickListener {
-            Log.e(TAG, "config finish")
+            Log.e(TAG, "config SAVE")
 
             SettingData.getInstance().setDataFromUi(input_default_config_width_.text.toString(),
                                                     input_default_config_height_.text.toString(),
@@ -48,6 +48,7 @@ class DefaultConfigActivity : AppCompatActivity() {
         input_default_config_host_url_ = findViewById<EditText>(R.id.input_default_config_hosturl)
         input_default_config_ua_ = findViewById<EditText>(R.id.input_default_config_ua)
         input_default_config_zoomfactor_ = findViewById<EditText>(R.id.input_default_config_zoomfactor)
+        input_default_config_white_list_ = findViewById<EditText>(R.id.input_default_config_whitelist)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.config)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
