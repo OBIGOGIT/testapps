@@ -34,6 +34,7 @@ class DefaultConfigData {
         Log.e("ROYA" , "Initialize")
         context_ = context
         default_value_file_ = path + "/default" + ".txt"
+        readDefaultValueFromFile()
 
     }
 
@@ -72,7 +73,7 @@ class DefaultConfigData {
         jsonObject.put("whiteList",wlist)
         return jsonObject.toString();
     }
-    fun saveDefaultValue(default :String) {
+    fun saveDefaultValueToFile(default :String) {
         var uafile =  File(default_value_file_)
         uafile.delete()
         uafile.createNewFile()
@@ -80,6 +81,56 @@ class DefaultConfigData {
         fileWriter.write(default + System.lineSeparator())
         Log.e("ROYA", "saveDefaultValue : " + default)
         fileWriter.close()
+    }
+
+    fun readDefaultValueFromFile() {
+        val file = File(default_value_file_)
+        if (!file.exists()) {
+            Log.e("ROYA","default_UaArray")
+            return;
+        }
+        var data = file.readText(Charsets.UTF_8)
+        parsingJsonData(data)
+        /*try {
+            BufferedReader(FileReader(file)).use { br ->
+                while (br.readLine().also { data = it } != null) {
+                    Log.e("ROYA","getline :" + data.toString())
+
+                }
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }*/
+    }
+    fun parsingJsonData(json : String) {
+        val jsonObject = JSONObject(json)
+        if(jsonObject.has("hosturl")) {
+            val url: String = jsonObject["hosturl"].toString()
+        }
+        if(jsonObject.has("zoomFactor")) {
+            val zoomf: String = jsonObject["zoomFactor"].toString()
+        }
+        if(jsonObject.has("userAgent")) {
+            val ua: String = jsonObject["userAgent"].toString()
+            Log.e("ROYA","json ua : " + ua)
+        }
+        if(jsonObject.has("whiteList")) {
+            val wlist: String = jsonObject["whiteList"].toString()
+            Log.e("ROYA","json white : " + wlist)
+        }
+
+        if(jsonObject.has("width")) {
+            val width: String = jsonObject["width"].toString()
+        }
+
+        if(jsonObject.has("height")) {
+            val width: String = jsonObject["height"].toString()
+        }
+
+
+
+
+
     }
     fun resetDefaultValue() {
         var uafile =  File(default_value_file_)

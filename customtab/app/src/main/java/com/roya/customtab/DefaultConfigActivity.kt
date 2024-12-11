@@ -41,7 +41,7 @@ class DefaultConfigActivity : AppCompatActivity() {
                                                     input_default_config_zoomfactor_.text.toString(),
                                                     input_default_config_white_list_.text.toString())
 
-            DefaultConfigData.getInstance().saveDefaultValue(DefaultConfigData.getInstance().makeIntetJsonData())
+            DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeIntetJsonData())
         }
         input_default_config_width_ = findViewById<EditText>(R.id.input_default_config_width)
         input_default_config_height_ = findViewById<EditText>(R.id.input_default_config_height)
