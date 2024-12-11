@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
         }
         setResultSignUp()
         findViewById<Button>(R.id.btn_config).setOnClickListener {
-            val intent = Intent(this, ConfigActivity::class.java)
+            val intent = Intent(this, DefaultConfigActivity::class.java)
             resultLauncher.launch(intent)
         }
         findViewById<Button>(R.id.btn_ua_config).setOnClickListener {

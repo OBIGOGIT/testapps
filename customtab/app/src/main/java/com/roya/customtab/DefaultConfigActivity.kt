@@ -2,21 +2,20 @@ package com.roya.customtab
 
 import android.os.Bundle
 import android.widget.Button
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.util.Log
-import android.widget.EditText
-import android.widget.Toast
 
-class ConfigActivity : AppCompatActivity() {
+class DefaultConfigActivity : AppCompatActivity() {
     var TAG = "CONFIG"
     lateinit var btn_close_: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.config_layout)
+        setContentView(R.layout.default_config_layout)
         btn_close_ = findViewById<Button>(R.id.btn_config_close)
         btn_close_.setOnClickListener {
             Log.e(TAG, "config finish")
@@ -29,5 +28,4 @@ class ConfigActivity : AppCompatActivity() {
             insets
         }
     }
-
 }
