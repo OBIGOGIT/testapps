@@ -1,11 +1,9 @@
 package com.roya.customtab
-import android.view.View
+
+
 
 import android.content.Context
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -13,14 +11,10 @@ import java.io.File
 import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
-import java.io.InputStream
-import java.io.PrintWriter
 
-class SettingData {
+class DefaultConfigData {
     lateinit var context_: Context
     lateinit var default_value_file_ : String
-
-
     lateinit var user_agent_: String
     lateinit var host_url_: String
     lateinit var zoom_factor_: String
@@ -29,9 +23,9 @@ class SettingData {
     lateinit var white_list_: String
 
     companion object {
-        private var instance: SettingData? = null
+        private var instance: DefaultConfigData? = null
         fun getInstance() =
-            instance ?: SettingData().also {
+            instance ?: DefaultConfigData().also {
                 instance = it
             }
     }
@@ -47,13 +41,7 @@ class SettingData {
         val splitData = input.split(";")
         return splitData
     }
-    /*
-        input_default_config_width_ = findViewById<EditText>(R.id.input_default_config_width)
-        input_default_config_height_ = findViewById<EditText>(R.id.input_default_config_height)
-        input_default_config_host_url_ = findViewById<EditText>(R.id.input_default_config_hosturl)
-        input_default_config_ua_ = findViewById<EditText>(R.id.input_default_config_ua)
-        input_default_config_zoomfactor_ = findViewById<EditText>(R.id.input_default_config_zoomfactor)
-*/
+
     fun setDataFromUi(width:String ,height:String,hurl:String,ua:String,zoom:String,wlist:String) {
         width_ = width;
         height_ = height;

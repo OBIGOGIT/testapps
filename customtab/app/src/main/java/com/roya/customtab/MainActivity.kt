@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
         txtview_log_ = findViewById<TextView>(R.id.view_json)
         Log.e("TAG" , "path : " + context_.getFilesDir().getPath())
         UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
-        SettingData.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
+        DefaultConfigData.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
         user_agent_ = UserAgentList.getInstance().getUaList()[0]
 
         setDefaultValues()

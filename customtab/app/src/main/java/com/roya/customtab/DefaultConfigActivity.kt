@@ -34,14 +34,14 @@ class DefaultConfigActivity : AppCompatActivity() {
         btn_save_.setOnClickListener {
             Log.e(TAG, "config SAVE")
 
-            SettingData.getInstance().setDataFromUi(input_default_config_width_.text.toString(),
+            DefaultConfigData.getInstance().setDataFromUi(input_default_config_width_.text.toString(),
                                                     input_default_config_height_.text.toString(),
                                                     input_default_config_host_url_.text.toString(),
                                                     input_default_config_ua_.text.toString(),
                                                     input_default_config_zoomfactor_.text.toString(),
                                                     input_default_config_white_list_.text.toString())
 
-            SettingData.getInstance().saveDefaultValue(SettingData.getInstance().makeIntetJsonData())
+            DefaultConfigData.getInstance().saveDefaultValue(DefaultConfigData.getInstance().makeIntetJsonData())
         }
         input_default_config_width_ = findViewById<EditText>(R.id.input_default_config_width)
         input_default_config_height_ = findViewById<EditText>(R.id.input_default_config_height)
