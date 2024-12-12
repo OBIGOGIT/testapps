@@ -29,6 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
+        android:id="@+id/input_user_agent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint="user agent"
+        android:text="" />
+
+    <EditText
         android:id="@+id/input_hosturl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

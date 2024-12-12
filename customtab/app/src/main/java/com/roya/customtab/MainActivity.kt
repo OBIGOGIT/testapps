@@ -46,7 +46,8 @@ class MainActivity : ComponentActivity() {
     lateinit var input_zoomFactor_: EditText
     lateinit var input_hosturl_: EditText
     lateinit var input_whitelist_: EditText
-    lateinit var user_agent_:String
+    lateinit var input_user_agent_: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,13 +61,12 @@ class MainActivity : ComponentActivity() {
         input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
         input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
         txtview_log_ = findViewById<TextView>(R.id.view_json)
+        input_user_agent_ = findViewById<EditText>(R.id.input_user_agent)
         Log.e("TAG" , "path : " + context_.getFilesDir().getPath())
         UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
         DefaultConfigData.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
-
-        user_agent_ = UserAgentList.getInstance().getUaList()[0]
-
         setDefaultValues()
+
         btn_idt_open_.setOnClickListener {
             openBrsByIntent()
         }
@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
             input_zoomFactor_.setText(DefaultConfigData.getInstance().zoom_factor_)
             input_whitelist_.setText("")
             input_whitelist_.setText(DefaultConfigData.getInstance().white_list_)
-            user_agent_ = DefaultConfigData.getInstance().user_agent_
+            input_user_agent_.setText(DefaultConfigData.getInstance().user_agent_)
             input_width_.setText(DefaultConfigData.getInstance().width_)
             input_height_.setText(DefaultConfigData.getInstance().height_)
 
@@ -97,7 +97,7 @@ class MainActivity : ComponentActivity() {
             DefaultConfigData.getInstance().setDataFromUi(input_width_.text.toString(),
                 input_height_.text.toString(),
                 input_hosturl_.text.toString(),
-                user_agent_,
+                input_user_agent_.text.toString(),
                 input_zoomFactor_.text.toString(),
                 input_whitelist_.text.toString())
             DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeIntetJsonData())
@@ -125,7 +125,7 @@ class MainActivity : ComponentActivity() {
                 id: Long
             ) {
                 val selectedItem = spinnerItems[position]
-                user_agent_ = selectedItem;
+                input_user_agent_.setText(selectedItem.toString())
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -157,7 +157,8 @@ class MainActivity : ComponentActivity() {
         input_height_ = findViewById<EditText>(R.id.input_height)
         input_height_.setText(deviceHeight.toString())
 
-        //input_ua_.setText("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML' like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36 ")
+        input_user_agent_.setText(UserAgentList.getInstance().getUaList()[0])
+
     }
     fun Wihtelist(input : String) : List<String> {
         val splitData = input.split(";")
@@ -180,7 +181,7 @@ class MainActivity : ComponentActivity() {
 ///zoom factor
         jsonObject.put("zoomFactor", input_zoomFactor_.text.toString().toInt())
 ///user agent
-        jsonObject.put("userAgent", user_agent_.toString())
+        jsonObject.put("userAgent", input_user_agent_.text.toString())
         jsonArray.put(jsonObject)
 ///white list
         Log.e("ROYA", "white list string: " + input_whitelist_.text.toString())
