@@ -72,7 +72,21 @@ class MainActivity : ComponentActivity() {
         }
         btn_load_default_setting_.setOnClickListener {
             Log.e("ROYA", "TODO load default setting value")
+            DefaultConfigData.getInstance().readDefaultValueFromFile()
+            input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
+            input_zoomFactor_.setText(DefaultConfigData.getInstance().zoom_factor_)
+            input_whitelist_.setText("")
+            input_whitelist_.setText(DefaultConfigData.getInstance().white_list_)
+            user_agent_ = DefaultConfigData.getInstance().user_agent_
+            input_width_.setText(DefaultConfigData.getInstance().width_)
+            input_height_.setText(DefaultConfigData.getInstance().height_)
 
+            //user_agent_.setText(DefaultConfigData.getInstance().user_agent_)
+            //val spinner = findViewById<Spinner>(R.id.spinner)
+            //spinner.
+
+            input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
+            input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
 
         }
         btn_json_.setOnClickListener {
@@ -80,7 +94,6 @@ class MainActivity : ComponentActivity() {
         }
         setResultSignUp()
         findViewById<Button>(R.id.btn_config).setOnClickListener {
-
             DefaultConfigData.getInstance().setDataFromUi(input_width_.text.toString(),
                 input_height_.text.toString(),
                 input_hosturl_.text.toString(),
@@ -118,6 +131,7 @@ class MainActivity : ComponentActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Do nothing
             }
+
         }
     }
     private fun setResultSignUp() {
