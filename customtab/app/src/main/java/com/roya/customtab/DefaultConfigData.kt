@@ -80,6 +80,10 @@ class DefaultConfigData {
         val jsonMain = JSONObject()
         val jsonArray = JSONArray()
         var jsonObject = JSONObject();
+//width.height
+        jsonObject.put("width", width_.toString())
+        jsonObject.put("height", height_.toString())
+
 //hostUrl
         jsonObject.put("hosturl", host_url_.toString())
 ///zoom factor
@@ -87,6 +91,7 @@ class DefaultConfigData {
 ///user agent
         jsonObject.put("userAgent", user_agent_.toString())
         jsonArray.put(jsonObject)
+
 ///white list
         Log.e("ROYA", "white list string: " + white_list_.toString())
         var user_wlist = Wihtelist(white_list_.toString())
@@ -129,6 +134,7 @@ class DefaultConfigData {
             user_agent_ = jsonObject["userAgent"].toString()
         }
         if(jsonObject.has("whiteList")) {
+            white_list_ = ""
             val wlist = jsonObject.getJSONArray("whiteList")
             for (i in 0..wlist.length() - 1) {
                 var w = wlist[i].toString()
@@ -143,11 +149,6 @@ class DefaultConfigData {
         if(jsonObject.has("height")) {
             height_ = jsonObject["height"].toString()
         }
-
-
-
-
-
     }
     fun resetDefaultValue() {
         var uafile =  File(default_value_file_)

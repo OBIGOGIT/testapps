@@ -68,7 +68,7 @@
         android:id="@+id/btn_load_default_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="load default value" />
+        android:text="load default" />
     <Button
         android:id="@+id/btn_idt_open"
         android:layout_width="match_parent"
@@ -80,10 +80,10 @@
         android:layout_height="wrap_content"
         android:text="json" />
     <Button
-        android:id="@+id/btn_config"
+        android:id="@+id/btn_config_save_as_default"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="default config" />
+        android:text="save as default" />
     <Button
         android:id="@+id/btn_ua_config"
         android:layout_width="match_parent"

@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
             txtview_log_.setText(makeIntetJsonData())
         }
         setResultSignUp()
-        findViewById<Button>(R.id.btn_config).setOnClickListener {
+        findViewById<Button>(R.id.btn_config_save_as_default).setOnClickListener {
             DefaultConfigData.getInstance().setDataFromUi(input_width_.text.toString(),
                 input_height_.text.toString(),
                 input_hosturl_.text.toString(),
@@ -111,7 +111,6 @@ class MainActivity : ComponentActivity() {
     fun setUaSpinner () {
         val spinner = findViewById<Spinner>(R.id.spinner)
         var spinnerItems = UserAgentList.getInstance().getUaList()
-
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -179,7 +178,7 @@ class MainActivity : ComponentActivity() {
 //hostUrl
         jsonObject.put("hosturl", input_hosturl_.text.toString())
 ///zoom factor
-        jsonObject.put("zoomFactor", input_zoomFactor_.text.toString().toInt())
+        jsonObject.put("zoomFactor", input_zoomFactor_.text.toString().toFloat())
 ///user agent
         jsonObject.put("userAgent", input_user_agent_.text.toString())
         jsonArray.put(jsonObject)
