@@ -65,7 +65,6 @@ class MainActivity : ComponentActivity() {
         UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
         DefaultConfigData.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
 
-
         user_agent_ = UserAgentList.getInstance().getUaList()[0]
 
         setDefaultValues()

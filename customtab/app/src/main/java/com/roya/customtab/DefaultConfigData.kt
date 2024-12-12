@@ -34,6 +34,13 @@ class DefaultConfigData {
         Log.e("ROYA" , "Initialize")
         context_ = context
         default_value_file_ = path + "/default" + ".txt"
+        width_ = "700";
+        height_ = "500";
+        host_url_ = ""
+        zoom_factor_ = "1"
+        white_list_ = ""
+        user_agent_ = ""
+
         readDefaultValueFromFile()
 
     }
@@ -41,6 +48,24 @@ class DefaultConfigData {
     fun Wihtelist(input : String) : List<String> {
         val splitData = input.split(";")
         return splitData
+    }
+    fun getWidth() :String {
+        return width_
+    }
+    fun getHeight() :String {
+        return height_
+    }
+    fun getHostUrl() :String {
+        return host_url_
+    }
+    fun getZoomfactor() :String {
+        return zoom_factor_
+    }
+    fun getWhitelist() :String {
+        return white_list_
+    }
+    fun getUserAgent() :String {
+        return user_agent_
     }
 
     fun setDataFromUi(width:String ,height:String,hurl:String,ua:String,zoom:String,wlist:String) {
@@ -91,40 +116,32 @@ class DefaultConfigData {
         }
         var data = file.readText(Charsets.UTF_8)
         parsingJsonData(data)
-        /*try {
-            BufferedReader(FileReader(file)).use { br ->
-                while (br.readLine().also { data = it } != null) {
-                    Log.e("ROYA","getline :" + data.toString())
-
-                }
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }*/
     }
     fun parsingJsonData(json : String) {
         val jsonObject = JSONObject(json)
         if(jsonObject.has("hosturl")) {
-            val url: String = jsonObject["hosturl"].toString()
+            host_url_ = jsonObject["hosturl"].toString()
         }
         if(jsonObject.has("zoomFactor")) {
-            val zoomf: String = jsonObject["zoomFactor"].toString()
+            zoom_factor_ = jsonObject["zoomFactor"].toString()
         }
         if(jsonObject.has("userAgent")) {
-            val ua: String = jsonObject["userAgent"].toString()
-            Log.e("ROYA","json ua : " + ua)
+            user_agent_ = jsonObject["userAgent"].toString()
         }
         if(jsonObject.has("whiteList")) {
-            val wlist: String = jsonObject["whiteList"].toString()
-            Log.e("ROYA","json white : " + wlist)
+            val wlist = jsonObject.getJSONArray("whiteList")
+            for (i in 0..wlist.length() - 1) {
+                var w = wlist[i].toString()
+                white_list_ = white_list_ + w + ";"
+            }
         }
 
         if(jsonObject.has("width")) {
-            val width: String = jsonObject["width"].toString()
+            width_ = jsonObject["width"].toString()
         }
 
         if(jsonObject.has("height")) {
-            val width: String = jsonObject["height"].toString()
+            height_ = jsonObject["height"].toString()
         }
 
 
