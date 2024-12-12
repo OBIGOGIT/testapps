@@ -56,7 +56,6 @@ class MainActivity : ComponentActivity() {
         btn_load_default_setting_ = findViewById<Button>(R.id.btn_load_default_setting)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
-        //input_ua_ = findViewById<EditText>(R.id.input_ua)
         input_hosturl_ = findViewById<EditText>(R.id.input_hosturl)
         input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
         input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
@@ -73,14 +72,22 @@ class MainActivity : ComponentActivity() {
         }
         btn_load_default_setting_.setOnClickListener {
             Log.e("ROYA", "TODO load default setting value")
+
+
         }
         btn_json_.setOnClickListener {
             txtview_log_.setText(makeIntetJsonData())
         }
         setResultSignUp()
         findViewById<Button>(R.id.btn_config).setOnClickListener {
-            val intent = Intent(this, DefaultConfigActivity::class.java)
-            resultLauncher.launch(intent)
+
+            DefaultConfigData.getInstance().setDataFromUi(input_width_.text.toString(),
+                input_height_.text.toString(),
+                input_hosturl_.text.toString(),
+                user_agent_,
+                input_zoomFactor_.text.toString(),
+                input_whitelist_.text.toString())
+            DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeIntetJsonData())
         }
         findViewById<Button>(R.id.btn_ua_config).setOnClickListener {
             val intent = Intent(this, UaActivity::class.java)
