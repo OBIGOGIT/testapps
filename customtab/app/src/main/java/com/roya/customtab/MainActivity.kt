@@ -188,7 +188,8 @@ class MainActivity : ComponentActivity() {
         var wlist = JSONArray();
 
         for(w in user_wlist) {
-            wlist.put(w.toString());
+            if(w.isNotEmpty())
+                wlist.put(w.toString());
         }
         jsonObject.put("whiteList",wlist)
         return jsonObject.toString();
