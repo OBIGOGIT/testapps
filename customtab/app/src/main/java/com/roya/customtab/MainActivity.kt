@@ -29,10 +29,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.ActivityResultLauncher
 
 class MainActivity : ComponentActivity() {
-    var TAG = "MAIN"
-    lateinit var context_: Context
+    private var tag = "MAIN"
     lateinit var btn_load_default_setting_: Button
-    var agb_installed = false
     lateinit var btn_idt_open_: Button
     lateinit var btn_json_: Button
     lateinit var txtview_log_: TextView
@@ -52,8 +50,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
-        context_ = getApplicationContext()
-        agb_installed = isPackageInstalled(context_,"com.obigo.automotivebrowser" )
+        var context = getApplicationContext()
         btn_load_default_setting_ = findViewById<Button>(R.id.btn_load_default_setting)
         btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
         btn_json_ = findViewById<Button>(R.id.btn_idt_json)
@@ -62,16 +59,16 @@ class MainActivity : ComponentActivity() {
         input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
         txtview_log_ = findViewById<TextView>(R.id.view_json)
         input_user_agent_ = findViewById<EditText>(R.id.input_user_agent)
-        Log.e("TAG" , "path : " + context_.getFilesDir().getPath())
-        UserAgentList.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
-        DefaultConfigData.getInstance().Initialize(context_.getFilesDir().getPath(), context_)
+        Log.e(tag , "path : " + context.getFilesDir().getPath())
+        UserAgentList.getInstance().Initialize(context.getFilesDir().getPath(), context)
+        DefaultConfigData.getInstance().Initialize(context.getFilesDir().getPath(), context)
         setDefaultValues()
 
         btn_idt_open_.setOnClickListener {
             openBrsByIntent()
         }
         btn_load_default_setting_.setOnClickListener {
-            Log.e("ROYA", "TODO load default setting value")
+            Log.e(tag, "TODO load default setting value")
             DefaultConfigData.getInstance().readDefaultValueFromFile()
             input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
             input_zoomFactor_.setText(DefaultConfigData.getInstance().zoom_factor_)
@@ -80,10 +77,6 @@ class MainActivity : ComponentActivity() {
             input_user_agent_.setText(DefaultConfigData.getInstance().user_agent_)
             input_width_.setText(DefaultConfigData.getInstance().width_)
             input_height_.setText(DefaultConfigData.getInstance().height_)
-
-            //user_agent_.setText(DefaultConfigData.getInstance().user_agent_)
-            //val spinner = findViewById<Spinner>(R.id.spinner)
-            //spinner.
 
             input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
             input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
@@ -137,7 +130,7 @@ class MainActivity : ComponentActivity() {
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if (result.resultCode == RESULT_OK) {
                 val name = result.data?.getStringExtra("from") ?: ""
-                Log.d("ROYA", "setResultSignUp " + name)
+                Log.d(tag, "setResultSignUp " + name)
                 if( name == "UaActivity") {
                     setUaSpinner()
                 }
@@ -183,7 +176,7 @@ class MainActivity : ComponentActivity() {
         jsonObject.put("userAgent", input_user_agent_.text.toString())
         jsonArray.put(jsonObject)
 ///white list
-        Log.e("ROYA", "white list string: " + input_whitelist_.text.toString())
+        Log.e(tag, "white list string: " + input_whitelist_.text.toString())
         var user_wlist = Wihtelist(input_whitelist_.text.toString())
         var wlist = JSONArray();
 
@@ -196,7 +189,6 @@ class MainActivity : ComponentActivity() {
     }
 
     fun openBrsByCustomTab(){
-        txtview_log_.setText("isChromeEnabled " + agb_installed)
         val uri = Uri.parse("https://rroya.tistory.com")
         val intentBuilder = CustomTabsIntent.Builder().setInitialActivityHeightPx(
             100,
@@ -228,7 +220,7 @@ class MainActivity : ComponentActivity() {
 
             //i.putExtra("oba.openurl.config",config)//KEY_EXTRA_OPENURL_CONFIG
             if (input_width_.text.toString().isEmpty() || input_height_.text.toString().isEmpty()) {
-                Log.e("ROYA", "please input width / height");
+                Log.e(tag, "please input width / height");
             } else {
                 var commandline = input_width_.text.toString() + "x" + input_height_.text.toString()
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
@@ -246,7 +238,7 @@ class MainActivity : ComponentActivity() {
             packageManager.getPackageInfo(packageName, 0)
             true
         } catch (e: Exception) {
-            Log.e("ROYA", "isPackageInstalled failed");
+            Log.e(tag, "isPackageInstalled failed");
             false
         }
 
