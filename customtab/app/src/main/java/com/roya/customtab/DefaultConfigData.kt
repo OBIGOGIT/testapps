@@ -13,7 +13,8 @@ import java.io.FileWriter
 import java.io.IOException
 
 class DefaultConfigData {
-    lateinit var context_: Context
+    private var tag = "DefaultConfig"
+    private lateinit var context_: Context
     lateinit var default_value_file_ : String
     lateinit var user_agent_: String
     lateinit var host_url_: String
@@ -31,7 +32,6 @@ class DefaultConfigData {
     }
 
     fun Initialize(path: String, context: Context) {
-        Log.e("ROYA" , "Initialize")
         context_ = context
         default_value_file_ = path + "/default" + ".txt"
         width_ = "700";
@@ -42,30 +42,11 @@ class DefaultConfigData {
         user_agent_ = ""
 
         readDefaultValueFromFile()
-
     }
 
-    fun Wihtelist(input : String) : List<String> {
+    private fun WihtelistArray(input : String) : List<String> {
         val splitData = input.split(";")
         return splitData
-    }
-    fun getWidth() :String {
-        return width_
-    }
-    fun getHeight() :String {
-        return height_
-    }
-    fun getHostUrl() :String {
-        return host_url_
-    }
-    fun getZoomfactor() :String {
-        return zoom_factor_
-    }
-    fun getWhitelist() :String {
-        return white_list_
-    }
-    fun getUserAgent() :String {
-        return user_agent_
     }
 
     fun setDataFromUi(width:String ,height:String,hurl:String,ua:String,zoom:String,wlist:String) {
@@ -76,31 +57,33 @@ class DefaultConfigData {
         white_list_ = wlist
         user_agent_ = ua
     }
-    fun makeIntetJsonData() : String {
+
+    fun makeJsonData() : String {
         val jsonMain = JSONObject()
         val jsonArray = JSONArray()
         var jsonObject = JSONObject();
-//width.height
-        jsonObject.put("width", width_.toString())
-        jsonObject.put("height", height_.toString())
 
-//hostUrl
-        jsonObject.put("hosturl", host_url_.toString())
-///zoom factor
-        jsonObject.put("zoomFactor", zoom_factor_.toString())
-///user agent
-        jsonObject.put("userAgent", user_agent_.toString())
+        if(width_.toString().isNotEmpty())
+            jsonObject.put("width", width_.toString())
+        if(height_.toString().isNotEmpty())
+            jsonObject.put("height", height_.toString())
+        if(host_url_.toString().isNotEmpty())
+            jsonObject.put("hosturl", host_url_.toString())
+        if(zoom_factor_.toString().isNotEmpty())
+            jsonObject.put("zoomFactor", zoom_factor_.toString())
+        if(user_agent_.toString().isNotEmpty())
+            jsonObject.put("userAgent", user_agent_.toString())
         jsonArray.put(jsonObject)
 
-///white list
-        Log.e("ROYA", "white list string: " + white_list_.toString())
-        var user_wlist = Wihtelist(white_list_.toString())
-        var wlist = JSONArray();
+        if(white_list_.toString().isNotEmpty()) {
+            var user_wlist = WihtelistArray(white_list_.toString())
+            var wlist = JSONArray();
 
-        for(w in user_wlist) {
-            wlist.put(w.toString());
+            for (w in user_wlist) {
+                wlist.put(w.toString());
+            }
+            jsonObject.put("whiteList", wlist)
         }
-        jsonObject.put("whiteList",wlist)
         return jsonObject.toString();
     }
     fun saveDefaultValueToFile(default :String) {
@@ -109,14 +92,13 @@ class DefaultConfigData {
         uafile.createNewFile()
         val fileWriter = FileWriter(uafile)
         fileWriter.write(default + System.lineSeparator())
-        Log.e("ROYA", "saveDefaultValue : " + default)
         fileWriter.close()
     }
 
     fun readDefaultValueFromFile() {
         val file = File(default_value_file_)
         if (!file.exists()) {
-            Log.e("ROYA","default_UaArray")
+            Log.e("ROYA","file is not exist..return default_value_file_")
             return;
         }
         var data = file.readText(Charsets.UTF_8)

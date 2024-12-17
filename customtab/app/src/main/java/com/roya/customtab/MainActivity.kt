@@ -92,7 +92,7 @@ class MainActivity : ComponentActivity() {
                 inputUserAgent.text.toString(),
                 inputZoomfactor.text.toString(),
                 inputWhitelist.text.toString())
-            DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeIntetJsonData())
+            DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeJsonData())
         }
         findViewById<Button>(R.id.btn_ua_config).setOnClickListener {
             val intent = Intent(this, UaActivity::class.java)
