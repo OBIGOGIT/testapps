@@ -11,10 +11,10 @@ import java.io.InputStream
 import java.io.PrintWriter
 
 class UserAgentList {
-    var TAG = "UA"
-    lateinit var context_: Context
-    lateinit var ua_list_file_ : String
-    var default_UaArray:Array<String> = arrayOf("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
+    var tag = "UA"
+    private lateinit var context_: Context
+    private lateinit var ua_list_file_ : String
+    private var default_UaArray:Array<String> = arrayOf("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
                                                 "Mozilla/5.0 (X11; ccIC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
                                                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
                                                 "Mozilla/5.0 (X11; CrOS x86_64 14526.89.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.133 Safari/537.36",
@@ -30,7 +30,7 @@ class UserAgentList {
             }
     }
     fun Initialize(path: String, context: Context) {
-        Log.e("ROYA" , "Initialize")
+        Log.e(tag , "Initialize")
         context_ = context
         ua_list_file_ = path + "/ua" + ".txt"
     }
@@ -38,17 +38,16 @@ class UserAgentList {
     fun getUaList() : Array<String> {
         val file = File(ua_list_file_)
         if (!file.exists()) {
-            Log.e("ROYA","default_UaArray")
             return default_UaArray;
         }
         var index = 0
-        var uaList = arrayOf<String>("","","","","","","","","","")
+        val uaList : Array<String> = emptyArray()
         try {
             BufferedReader(FileReader(file)).use { br ->
                 var line: String?
                 while (br.readLine().also { line = it } != null) {
-                    uaList[index++] = line.toString()
-                    Log.e("ROYA","getline :" +line)
+                    if(line.toString().toString().isNotEmpty())
+                        uaList[index++] = line.toString()
                 }
             }
         } catch (e: IOException) {
@@ -66,10 +65,8 @@ class UserAgentList {
         uafile.createNewFile()
         val fileWriter = FileWriter(uafile)
         for (s in uaArr) {
-            //uafile.writeText(s)
             if(s.isNotEmpty()) {
                 fileWriter.write(s + System.lineSeparator())
-                Log.e("ROYA", "file Write : " + s)
             }
         }
         fileWriter.close()

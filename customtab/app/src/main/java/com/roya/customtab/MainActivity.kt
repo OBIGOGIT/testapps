@@ -57,7 +57,9 @@ class MainActivity : ComponentActivity() {
         inputWhitelist = findViewById<EditText>(R.id.input_whitelist)
         txtviewLog = findViewById<TextView>(R.id.view_json)
         inputUserAgent = findViewById<EditText>(R.id.input_user_agent)
+
         Log.e(tag , "path : " + (context.filesDir.path))
+
         UserAgentList.getInstance().Initialize(context.filesDir.path, context)
         DefaultConfigData.getInstance().Initialize(context.filesDir.path, context)
         setDefaultValues()
@@ -149,11 +151,11 @@ class MainActivity : ComponentActivity() {
         inputUserAgent.setText(UserAgentList.getInstance().getUaList()[0])
 
     }
-    fun WihtelistArray(input : String) : List<String> {
+    private fun WihtelistArray(input : String) : List<String> {
         val splitData = input.split(";")
         return splitData
     }
-    fun checkInputData() :Boolean {
+    private fun checkInputData() :Boolean {
         if(inputZoomfactor.text.isEmpty() ||
             //input_ua_.text.isEmpty()||
             inputHosturl.text.isEmpty()||
@@ -162,7 +164,7 @@ class MainActivity : ComponentActivity() {
         return true
     }
 
-    fun makeIntentJsonData() : String {
+    private fun makeIntentJsonData() : String {
         if (!checkInputData()) {
             return "data missing";
         }
