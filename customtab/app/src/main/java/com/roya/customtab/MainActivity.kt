@@ -30,69 +30,66 @@ import androidx.activity.result.ActivityResultLauncher
 
 class MainActivity : ComponentActivity() {
     private var tag = "MAIN"
-    lateinit var btn_load_default_setting_: Button
-    lateinit var btn_idt_open_: Button
-    lateinit var btn_json_: Button
-    lateinit var txtview_log_: TextView
+    private lateinit var btnLoadDefaultSetting: Button
+    private lateinit var btnIdtOpen: Button
+    private lateinit var btnJson: Button
+    private lateinit var txtviewLog: TextView
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
-    //edittexts
-    lateinit var input_width_: EditText
-    lateinit var input_height_: EditText
-    //lateinit var input_ua_: EditText
-    lateinit var input_zoomFactor_: EditText
-    lateinit var input_hosturl_: EditText
-    lateinit var input_whitelist_: EditText
-    lateinit var input_user_agent_: EditText
+    private lateinit var inputWidth: EditText
+    private lateinit var inputHeight: EditText
+    private lateinit var inputZoomfactor: EditText
+    private lateinit var inputHosturl: EditText
+    private lateinit var inputWhitelist: EditText
+    private lateinit var inputUserAgent: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
-        var context = getApplicationContext()
-        btn_load_default_setting_ = findViewById<Button>(R.id.btn_load_default_setting)
-        btn_idt_open_ = findViewById<Button>(R.id.btn_idt_open)
-        btn_json_ = findViewById<Button>(R.id.btn_idt_json)
-        input_hosturl_ = findViewById<EditText>(R.id.input_hosturl)
-        input_zoomFactor_ = findViewById<EditText>(R.id.input_zoomfactor)
-        input_whitelist_ = findViewById<EditText>(R.id.input_whitelist)
-        txtview_log_ = findViewById<TextView>(R.id.view_json)
-        input_user_agent_ = findViewById<EditText>(R.id.input_user_agent)
-        Log.e(tag , "path : " + context.getFilesDir().getPath())
-        UserAgentList.getInstance().Initialize(context.getFilesDir().getPath(), context)
-        DefaultConfigData.getInstance().Initialize(context.getFilesDir().getPath(), context)
+        var context = applicationContext
+        btnLoadDefaultSetting = findViewById<Button>(R.id.btn_load_default_setting)
+        btnIdtOpen = findViewById<Button>(R.id.btn_idt_open)
+        btnJson = findViewById<Button>(R.id.btn_idt_json)
+        inputHosturl = findViewById<EditText>(R.id.input_hosturl)
+        inputZoomfactor = findViewById<EditText>(R.id.input_zoomfactor)
+        inputWhitelist = findViewById<EditText>(R.id.input_whitelist)
+        txtviewLog = findViewById<TextView>(R.id.view_json)
+        inputUserAgent = findViewById<EditText>(R.id.input_user_agent)
+        Log.e(tag , "path : " + (context.filesDir.path))
+        UserAgentList.getInstance().Initialize(context.filesDir.path, context)
+        DefaultConfigData.getInstance().Initialize(context.filesDir.path, context)
         setDefaultValues()
 
-        btn_idt_open_.setOnClickListener {
+        btnIdtOpen.setOnClickListener {
             openBrsByIntent()
         }
-        btn_load_default_setting_.setOnClickListener {
-            Log.e(tag, "TODO load default setting value")
+        btnLoadDefaultSetting.setOnClickListener {
             DefaultConfigData.getInstance().readDefaultValueFromFile()
-            input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
-            input_zoomFactor_.setText(DefaultConfigData.getInstance().zoom_factor_)
-            input_whitelist_.setText("")
-            input_whitelist_.setText(DefaultConfigData.getInstance().white_list_)
-            input_user_agent_.setText(DefaultConfigData.getInstance().user_agent_)
-            input_width_.setText(DefaultConfigData.getInstance().width_)
-            input_height_.setText(DefaultConfigData.getInstance().height_)
+            inputHosturl.setText(DefaultConfigData.getInstance().host_url_)
+            inputZoomfactor.setText(DefaultConfigData.getInstance().zoom_factor_)
+            inputWhitelist.setText("")
+            inputWhitelist.setText(DefaultConfigData.getInstance().white_list_)
+            inputUserAgent.setText(DefaultConfigData.getInstance().user_agent_)
+            inputWidth.setText(DefaultConfigData.getInstance().width_)
+            inputHeight.setText(DefaultConfigData.getInstance().height_)
 
-            input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
-            input_hosturl_.setText(DefaultConfigData.getInstance().host_url_)
+            inputHosturl.setText(DefaultConfigData.getInstance().host_url_)
+            inputHosturl.setText(DefaultConfigData.getInstance().host_url_)
 
         }
-        btn_json_.setOnClickListener {
-            txtview_log_.setText(makeIntetJsonData())
+        btnJson.setOnClickListener {
+            txtviewLog.text = makeIntentJsonData()
         }
         setResultSignUp()
         findViewById<Button>(R.id.btn_config_save_as_default).setOnClickListener {
-            DefaultConfigData.getInstance().setDataFromUi(input_width_.text.toString(),
-                input_height_.text.toString(),
-                input_hosturl_.text.toString(),
-                input_user_agent_.text.toString(),
-                input_zoomFactor_.text.toString(),
-                input_whitelist_.text.toString())
+            DefaultConfigData.getInstance().setDataFromUi(inputWidth.text.toString(),
+                inputHeight.text.toString(),
+                inputHosturl.text.toString(),
+                inputUserAgent.text.toString(),
+                inputZoomfactor.text.toString(),
+                inputWhitelist.text.toString())
             DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeIntetJsonData())
         }
         findViewById<Button>(R.id.btn_ua_config).setOnClickListener {
@@ -117,7 +114,7 @@ class MainActivity : ComponentActivity() {
                 id: Long
             ) {
                 val selectedItem = spinnerItems[position]
-                input_user_agent_.setText(selectedItem.toString())
+                inputUserAgent.setText(selectedItem.toString())
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -143,41 +140,49 @@ class MainActivity : ComponentActivity() {
         val deviceWidth = display?.widthPixels
         val deviceHeight = display?.heightPixels
 
-        input_width_ = findViewById<EditText>(R.id.input_width)
-        input_width_.setText(deviceWidth.toString())
+        inputWidth = findViewById<EditText>(R.id.input_width)
+        inputWidth.setText(deviceWidth.toString())
 
-        input_height_ = findViewById<EditText>(R.id.input_height)
-        input_height_.setText(deviceHeight.toString())
+        inputHeight = findViewById<EditText>(R.id.input_height)
+        inputHeight.setText(deviceHeight.toString())
 
-        input_user_agent_.setText(UserAgentList.getInstance().getUaList()[0])
+        inputUserAgent.setText(UserAgentList.getInstance().getUaList()[0])
 
     }
-    fun Wihtelist(input : String) : List<String> {
+    fun WihtelistArray(input : String) : List<String> {
         val splitData = input.split(";")
         return splitData
     }
     fun checkInputData() :Boolean {
-        if(input_zoomFactor_.text.isEmpty() ||
+        if(inputZoomfactor.text.isEmpty() ||
             //input_ua_.text.isEmpty()||
-            input_hosturl_.text.isEmpty()||
-            input_whitelist_.text.isEmpty())
+            inputHosturl.text.isEmpty()||
+            inputWhitelist.text.isEmpty())
             return false;
         return true
     }
-    fun makeIntetJsonData() : String {
+
+    fun makeIntentJsonData() : String {
+        if (!checkInputData()) {
+            return "data missing";
+        }
         val jsonMain = JSONObject()
         val jsonArray = JSONArray()
         var jsonObject = JSONObject();
-//hostUrl
-        jsonObject.put("hosturl", input_hosturl_.text.toString())
-///zoom factor
-        jsonObject.put("zoomFactor", input_zoomFactor_.text.toString().toFloat())
-///user agent
-        jsonObject.put("userAgent", input_user_agent_.text.toString())
+/*hostUrl*/
+        if(inputHosturl.text.isNotEmpty())
+            jsonObject.put("hosturl", inputHosturl.text.toString())
+/*zoom factor*/
+        if(inputZoomfactor.text.isNotEmpty())
+            jsonObject.put("zoomFactor", inputZoomfactor.text.toString().toFloat())
+/*user agent*/
+        if(inputUserAgent.text.isNotEmpty())
+            jsonObject.put("userAgent", inputUserAgent.text.toString())
+
         jsonArray.put(jsonObject)
-///white list
-        Log.e(tag, "white list string: " + input_whitelist_.text.toString())
-        var user_wlist = Wihtelist(input_whitelist_.text.toString())
+/*white list*/
+        Log.e(tag, "white list string: " + inputWhitelist.text.toString())
+        var user_wlist = WihtelistArray(inputWhitelist.text.toString())
         var wlist = JSONArray();
 
         for(w in user_wlist) {
@@ -195,7 +200,6 @@ class MainActivity : ComponentActivity() {
             ACTIVITY_HEIGHT_FIXED
         );
         intentBuilder.setUrlBarHidingEnabled(true)
-        //intentBuilder.putExtra("roya", "working.....") not working
         val customTabsIntent = intentBuilder.build()
         customTabsIntent.launchUrl(this, uri)
     }
@@ -206,7 +210,7 @@ class MainActivity : ComponentActivity() {
             return;
         }
         val i = Intent("com.obigo.automotivebrowser")
-        val uri = Uri.parse(input_hosturl_.text.toString())
+        val uri = Uri.parse(inputHosturl.text.toString())
         if(i == null ) {
         } else {
             /*
@@ -215,26 +219,26 @@ class MainActivity : ComponentActivity() {
 
             i.setAction(Intent.ACTION_VIEW);
             i.setData(uri);
-            i.putExtra("oba.openurl.url",input_hosturl_.text.toString())//KEY_EXTRA_OPENURL_URL
+            i.putExtra("oba.openurl.url",inputHosturl.text.toString())//KEY_EXTRA_OPENURL_URL
             i.putExtra("oba.openurl.type","1")//KEY_EXTRA_OPENURL_TYPE
 
             //i.putExtra("oba.openurl.config",config)//KEY_EXTRA_OPENURL_CONFIG
-            if (input_width_.text.toString().isEmpty() || input_height_.text.toString().isEmpty()) {
+            if (inputWidth.text.toString().isEmpty() || inputHeight.text.toString().isEmpty()) {
                 Log.e(tag, "please input width / height");
             } else {
-                var commandline = input_width_.text.toString() + "x" + input_height_.text.toString()
+                var commandline = inputWidth.text.toString() + "x" + inputHeight.text.toString()
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
             }
 
-            var json = makeIntetJsonData();
-            txtview_log_.setText(json)
+            var json = makeIntentJsonData();
+            txtviewLog.setText(json)
             i.putExtra("oba.content.config", json)
             startActivity(i);
         }
     }
     fun isPackageInstalled(ctx: Context, packageName: String): Boolean {
         return try {
-            txtview_log_.setText("isChromeEnabled " + 40)
+            txtviewLog.setText("isChromeEnabled " + 40)
             packageManager.getPackageInfo(packageName, 0)
             true
         } catch (e: Exception) {
