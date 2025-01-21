@@ -28,8 +28,11 @@ class JsonConfigListActivity : AppCompatActivity() {
         DisplayJonList()
     }
     fun DisplayJonList() {
-        var btnJson1 = findViewById<Button>(R.id.btn_json_sample1)
-        btnJson1.setText(JsonConfigDataArr[1]!!.InfoLog())
+        var Json0 = findViewById<TextView>(R.id.txtview_json_sample0)
+        Json0.setText(JsonConfigDataArr[0]!!.InfoLog())
+
+        var Json1 = findViewById<TextView>(R.id.txtview_json_sample1)
+        Json1.setText(JsonConfigDataArr[1]!!.InfoLog())
     }
     fun initListValue() {
 
