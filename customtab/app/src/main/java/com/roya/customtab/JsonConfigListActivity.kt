@@ -35,8 +35,14 @@ class JsonConfigListActivity : AppCompatActivity() {
         var Json2 = findViewById<TextView>(R.id.txtview_json_sample2)
         Json2.setText(JsonConfigDataArr[2]!!.InfoLog())
 
-        //var Json3 = findViewById<TextView>(R.id.txtview_json_sample3)
-        //Json3.setText(JsonConfigDataArr[3]!!.InfoLog())
+        var Json3 = findViewById<TextView>(R.id.txtview_json_sample3)
+        Json3.setText(JsonConfigDataArr[3]!!.InfoLog())
+
+        var Json4 = findViewById<TextView>(R.id.txtview_json_sample4)
+        Json4.setText(JsonConfigDataArr[4]!!.InfoLog())
+
+        var Json5 = findViewById<TextView>(R.id.txtview_json_sample5)
+        Json5.setText(JsonConfigDataArr[5]!!.InfoLog())
 
     }
     fun initListValue() {
@@ -92,7 +98,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
             "true",
-        );/*
+        );
         JsonConfigDataArr[4]!!.setJsonConfigData("","",
             "1",
             "https://music.amazon.com",
@@ -112,7 +118,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
             "true",
-        );*/
+        );
     }
 
 }
