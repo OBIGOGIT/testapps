@@ -144,11 +144,20 @@ class MainActivity : ComponentActivity() {
                     val json = result.data?.getStringExtra("json") ?: ""
                     Log.d(tag, ">>>> setResultSignUp  : JsongConfigListActivity")
                     Log.d(tag, ">>>>receive!! " + json)
-
+                    SetFillMainUIData(json)
                 }
             }
 
         }
+    }
+    fun SetFillMainUIData(json_str : String) {
+
+        val jsonObject = JSONObject(json_str)
+        //val jsonArray = jsonObject.getJSONArray("hosturl")
+        val data = jsonObject["hosturl"]
+
+        Log.d(tag, ">>>>receive!! " + data)
+
     }
 
     fun setDefaultValues() {
