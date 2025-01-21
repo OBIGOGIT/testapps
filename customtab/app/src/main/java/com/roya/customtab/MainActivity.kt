@@ -140,8 +140,11 @@ class MainActivity : ComponentActivity() {
                 Log.d(tag, "setResultSignUp " + name)
                 if (name == "UaActivity") {
                     setUaSpinner()
-                } else if (name == "JsongConfigListActivity") {
-                    Log.d(tag, "setResultSignUp  : JsongConfigListActivity")
+                } else if (name == "JsonConfigListActivity") {
+                    val json = result.data?.getStringExtra("json") ?: ""
+                    Log.d(tag, ">>>> setResultSignUp  : JsongConfigListActivity")
+                    Log.d(tag, ">>>>receive!! " + json)
+
                 }
             }
 

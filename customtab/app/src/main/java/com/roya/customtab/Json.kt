@@ -70,10 +70,21 @@ class JsonConfigData {
         if (mobile_page_.isNotEmpty()) {
             jsonObject.put("mobilePage", "true")
         }
+        /*width x height*/
+        if(width_.isNotEmpty())
+            jsonObject.put("width", width_.toString())
+        if(height_.isNotEmpty())
+            jsonObject.put("height", height_.toString())
+
         /*force scale */
         if (force_cale_.isNotEmpty()) {
             jsonObject.put("forceScale", "true")
         }
+        /*force scale */
+        if (embed_cookie_.isNotEmpty()) {
+            jsonObject.put("forceScale", "true")
+        }
+
         /*user agent*/
         if(user_agent_.isNotEmpty())
             jsonObject.put("userAgent", user_agent_.toString())

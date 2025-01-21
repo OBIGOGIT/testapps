@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.TextView
-
+import android.util.Log
 
 class JsonConfigListActivity : AppCompatActivity() {
     private var tag = "JsonConfigList"
@@ -36,8 +36,9 @@ class JsonConfigListActivity : AppCompatActivity() {
         JsonConfigDataBtnArr[3] = findViewById<Button>(R.id.btn_json_sample3)
         JsonConfigDataBtnArr[4] = findViewById<Button>(R.id.btn_json_sample4)
         JsonConfigDataBtnArr[5] = findViewById<Button>(R.id.btn_json_sample5)
-        for(i: Int in 0..5){
+        for(i: Int in 0..5) {
             JsonConfigDataBtnArr[i]!!.setOnClickListener {
+                Log.e(tag , "clicked! : " + i + " th " + JsonConfigDataArr[i]!!.MakeJsonData())
                 SetResIntent(JsonConfigDataArr[i]!!.MakeJsonData());
             }
         }
