@@ -11,7 +11,6 @@ import android.widget.TextView
 
 class JsonConfigListActivity : AppCompatActivity() {
     private lateinit var btnJsonOk: Button
-    //private lateinit var JsonConfigData1: JsonConfigData
     private val JsonConfigDataArr = arrayOfNulls<JsonConfigData>(6)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +35,8 @@ class JsonConfigListActivity : AppCompatActivity() {
         var Json2 = findViewById<TextView>(R.id.txtview_json_sample2)
         Json2.setText(JsonConfigDataArr[2]!!.InfoLog())
 
-        var Json3 = findViewById<TextView>(R.id.txtview_json_sample3)
-        Json3.setText(JsonConfigDataArr[3]!!.InfoLog())
+        //var Json3 = findViewById<TextView>(R.id.txtview_json_sample3)
+        //Json3.setText(JsonConfigDataArr[3]!!.InfoLog())
 
     }
     fun initListValue() {
@@ -93,7 +92,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
             "true",
-        );
+        );/*
         JsonConfigDataArr[4]!!.setJsonConfigData("","",
             "1",
             "https://music.amazon.com",
@@ -113,7 +112,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
             "true",
-        );
+        );*/
     }
 
 }
