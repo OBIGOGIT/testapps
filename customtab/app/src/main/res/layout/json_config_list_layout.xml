@@ -161,4 +161,10 @@
             android:layout_gravity="right"
             android:text="Select" />
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_json_configlist_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel" />
+
 </LinearLayout>

@@ -43,7 +43,8 @@ class JsonConfigData {
 
     }
 
-    fun MakeJsonData(json : JsonConfigData) {
+    fun MakeJsonData() : String {
+        return ""
 
     }
     fun InfoLog() : String {

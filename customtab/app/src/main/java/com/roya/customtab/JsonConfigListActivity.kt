@@ -1,5 +1,6 @@
 package com.roya.customtab
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,7 @@ import android.widget.TextView
 class JsonConfigListActivity : AppCompatActivity() {
     private lateinit var btnJsonOk: Button
     private val JsonConfigDataArr = arrayOfNulls<JsonConfigData>(6)
+    private val JsonConfigDataBtnArr = arrayOfNulls<Button>(6)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,29 @@ class JsonConfigListActivity : AppCompatActivity() {
         }
         initListValue()
         DisplayJonList()
+        AddBtnEvent()
     }
+    fun AddBtnEvent() {
+        JsonConfigDataBtnArr[0] = findViewById<Button>(R.id.btn_json_sample0)
+        JsonConfigDataBtnArr[1] = findViewById<Button>(R.id.btn_json_sample1)
+        JsonConfigDataBtnArr[2] = findViewById<Button>(R.id.btn_json_sample2)
+        JsonConfigDataBtnArr[3] = findViewById<Button>(R.id.btn_json_sample3)
+        JsonConfigDataBtnArr[4] = findViewById<Button>(R.id.btn_json_sample4)
+        JsonConfigDataBtnArr[5] = findViewById<Button>(R.id.btn_json_sample5)
+        for(i: Int in 0..5){
+            JsonConfigDataBtnArr[i]!!.setOnClickListener {
+                SetResIntent(JsonConfigDataArr[i]!!.MakeJsonData());
+            }
+        }
+    }
+    private fun SetResIntent(json_str : String) {
+        var intent = Intent(this@JsonConfigListActivity,MainActivity::class.java);
+        intent.putExtra("from", "JsonConfigListActivity");
+        intent.putExtra("json", json_str);
+
+        setResult(RESULT_OK , intent)
+    }
+
     fun DisplayJonList() {
         var Json0 = findViewById<TextView>(R.id.txtview_json_sample0)
         Json0.setText(JsonConfigDataArr[0]!!.InfoLog())

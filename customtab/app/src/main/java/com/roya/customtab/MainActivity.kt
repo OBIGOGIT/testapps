@@ -138,10 +138,13 @@ class MainActivity : ComponentActivity() {
             if (result.resultCode == RESULT_OK) {
                 val name = result.data?.getStringExtra("from") ?: ""
                 Log.d(tag, "setResultSignUp " + name)
-                if( name == "UaActivity") {
+                if (name == "UaActivity") {
                     setUaSpinner()
+                } else if (name == "JsongConfigListActivity") {
+                    Log.d(tag, "setResultSignUp  : JsongConfigListActivity")
                 }
             }
+
         }
     }
 
