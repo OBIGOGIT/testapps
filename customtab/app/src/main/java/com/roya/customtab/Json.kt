@@ -13,8 +13,6 @@ class JsonConfigData {
     lateinit var embed_cookie_: String
     lateinit var mobile_page_: String
 
-
-
     fun setUIJsonData(width : String,
                       height : String,
                       zoom_factor : String,
@@ -40,7 +38,13 @@ class JsonConfigData {
     fun parsingJsonData(json : JsonConfigData) {
 
     }
+
     fun MakeJsonData(json : JsonConfigData) {
+
+    }
+    fun InfoLog() : String {
+
+        return "";
 
     }
 }
