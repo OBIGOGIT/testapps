@@ -9,7 +9,7 @@ class JsonConfigData {
     lateinit var user_agent_: String
     lateinit var white_list_: String
     lateinit var block_list_: String
-    lateinit var forces_cale_: String
+    lateinit var force_cale_: String
     lateinit var embed_cookie_: String
     lateinit var mobile_page_: String
 
@@ -20,7 +20,7 @@ class JsonConfigData {
                       user_agent : String,
                       white_list : String,
                       block_list : String,
-                      forces_cale : String,
+                      force_cale : String,
                       embed_cookie: String,
                       mobile_page : String) {
         width_ = width
@@ -30,7 +30,7 @@ class JsonConfigData {
         user_agent_ = user_agent
         white_list_ = white_list
         block_list_ = block_list
-        forces_cale_ = forces_cale
+        force_cale_ = force_cale
         embed_cookie_ = embed_cookie
         mobile_page_ = mobile_page
     }
@@ -43,8 +43,16 @@ class JsonConfigData {
 
     }
     fun InfoLog() : String {
-
-        return "";
-
+        var log_str = "width : " + width_ + "\n" +
+                "height : " + height_  + "\n" +
+                "zoom factor : " + zoom_factor_  + "\n" +
+                "url : " + url_  + "\n" +
+                "user agent : " + user_agent_  + "\n" +
+                "white list : " + white_list_  + "\n" +
+                "block list : " + block_list_  + "\n" +
+                "force scale : " + force_cale_  + "\n" +
+                "embeded cookie : " + embed_cookie_  + "\n" +
+                "mobile page : " + mobile_page_;
+        return log_str;
     }
 }

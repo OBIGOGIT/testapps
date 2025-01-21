@@ -14,13 +14,13 @@
             android:layout_width="800dp"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="sample1..................."
+            android:text=""
             android:textSize="20sp" />
         <Button
             android:id="@+id/btn_json_sample1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="intent open" />
+            android:text="Select" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -31,13 +31,13 @@
             android:layout_width="800dp"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="sample1..................."
+            android:text=""
             android:textSize="20sp" />
         <Button
             android:id="@+id/btn_json_sample2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="intent open" />
+            android:text="Select" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -48,13 +48,13 @@
             android:layout_width="800dp"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="sample1..................."
+            android:text=""
             android:textSize="20sp" />
         <Button
             android:id="@+id/btn_json_sample3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="intent open" />
+            android:text="Select" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -65,13 +65,13 @@
             android:layout_width="800dp"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="sample1..................."
+            android:text=""
             android:textSize="20sp" />
         <Button
             android:id="@+id/btn_json_sample4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="intent open" />
+            android:text="Select" />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -82,12 +82,12 @@
             android:layout_width="800dp"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="sample1..................."
+            android:text=""
             android:textSize="20sp" />
         <Button
             android:id="@+id/btn_json_sample5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="intent open" />
+            android:text="Select" />
     </LinearLayout>
 </LinearLayout>

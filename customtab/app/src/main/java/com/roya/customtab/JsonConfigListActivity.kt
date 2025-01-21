@@ -11,21 +11,9 @@ import android.widget.TextView
 
 
 class JsonConfigListActivity : AppCompatActivity() {
-    private lateinit var txtviewJson: TextView
     private lateinit var btnJsonOk: Button
     //private lateinit var JsonConfigData1: JsonConfigData
     private val JsonConfigDataArr = arrayOfNulls<JsonConfigData>(5)
-/*
-    fun setUIJsonData(width : String,
-                      height : String,
-                      zoom_factor : String,
-                      url : String,
-                      user_agent : String,
-                      white_list : String,
-                      block_list : String,
-                      forces_cale : String,
-                      embed_cookie: String,
-                      mobile_page : String) */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +25,10 @@ class JsonConfigListActivity : AppCompatActivity() {
             insets
         }
         initListValue()
+        DisplayJonList()
+    }
+    fun DisplayJonList() {
+
     }
     fun initListValue() {
         JsonConfigDataArr[1]!!.setUIJsonData("","",
