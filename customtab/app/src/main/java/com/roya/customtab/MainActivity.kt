@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var inputUserAgent: EditText
     private lateinit var mobilePage: CheckBox
     private lateinit var forceScale: CheckBox
+    private lateinit var embededCookie: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,7 @@ class MainActivity : ComponentActivity() {
         inputUserAgent = findViewById<EditText>(R.id.input_user_agent)
         mobilePage = findViewById<CheckBox>(R.id.checkbox_mobilePage)
         forceScale = findViewById<CheckBox>(R.id.checkbox_forceScale)
+        embededCookie = findViewById<CheckBox>(R.id.checkbox_embededCookie)
 
         Log.e(tag , "path : " + (context.filesDir.path))
 
@@ -151,10 +153,26 @@ class MainActivity : ComponentActivity() {
         }
     }
     fun SetFillMainUIData(json_str : String) {
-        var JsonConfigData = JsonConfigData()
-        JsonConfigData.setJsonConfigData(json_str)
+        var uiData = JsonConfigData()
+        uiData.setJsonConfigUiData(json_str)
+        inputHosturl.setText(uiData.url_)
+        inputZoomfactor.setText(uiData.zoom_factor_)
+        inputWhitelist.setText(uiData.white_list_)
+        inputUserAgent.setText(uiData.user_agent_)
+        inputWhitelist.setText(uiData.white_list_)
+        if(uiData.mobile_page_ == "true")
+            mobilePage.setChecked(true);
+        else
+            mobilePage.setChecked(false);
+        if(uiData.embed_cookie_ == "true")
+            embededCookie.setChecked(true);
+        else
+            embededCookie.setChecked(false);
 
-
+        if(uiData.force_cale_ == "true")
+            forceScale.setChecked(true);
+        else
+            forceScale.setChecked(false);
 
     }
 

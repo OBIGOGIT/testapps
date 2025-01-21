@@ -45,7 +45,7 @@ class JsonConfigData {
         mobile_page_ = mobile_page
     }
 
-    fun setJsonConfigData(json_str : String) {
+    fun setJsonConfigUiData(json_str : String) {
         val jsonObject = JSONObject(json_str)
         url_ = jsonObject["hosturl"].toString()
         zoom_factor_ = jsonObject["zoomFactor"].toString()
@@ -77,10 +77,7 @@ class JsonConfigData {
         /*zoom factor*/
         if(zoom_factor_.isNotEmpty())
             jsonObject.put("zoomFactor", zoom_factor_.toString().toFloat())
-        /*mobile Page */
-        if (mobile_page_.isNotEmpty()) {
-            jsonObject.put("mobilePage", "true")
-        }
+
         /*width x height*/
         if(width_.isNotEmpty())
             jsonObject.put("width", width_.toString())
@@ -89,11 +86,21 @@ class JsonConfigData {
 
         /*force scale */
         if (force_cale_.isNotEmpty()) {
-            jsonObject.put("forceScale", "true")
+            jsonObject.put("forceScale", force_cale_.toString())
+        } else {
+            jsonObject.put("forceScale", "false")
         }
         /*embeded cookie */
         if (embed_cookie_.isNotEmpty()) {
-            jsonObject.put("embedCookie", "true")
+            jsonObject.put("embedCookie", embed_cookie_.toString())
+        } else {
+            jsonObject.put("embedCookie", "false")
+        }
+        /*mobile Page */
+        if (mobile_page_.isNotEmpty()) {
+            jsonObject.put("mobilePage", mobile_page_.toString())
+        } else {
+            jsonObject.put("mobilePage", "false")
         }
 
         /*user agent*/
