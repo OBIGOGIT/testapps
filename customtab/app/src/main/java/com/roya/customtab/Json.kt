@@ -45,7 +45,18 @@ class JsonConfigData {
         mobile_page_ = mobile_page
     }
 
-    fun parsingJsonData(json : JsonConfigData) {
+    fun setJsonConfigData(json_str : String) {
+        val jsonObject = JSONObject(json_str)
+        url_ = jsonObject["hosturl"].toString()
+        zoom_factor_ = jsonObject["zoomFactor"].toString()
+        user_agent_ = jsonObject["userAgent"].toString()
+        force_cale_ = jsonObject["forceScale"].toString()
+        embed_cookie_ = jsonObject["embedCookie"].toString()
+        mobile_page_ = jsonObject["mobilePage"].toString()
+
+        white_list_ = jsonObject["whiteList"].toString()
+        Log.e(tag , "clicked! : "  + white_list_)
+        //block_list_ = jsonObject["adBlockList"].toString() TODO
 
     }
     private fun WihtelistArray(input : String) : List<String> {
@@ -80,9 +91,9 @@ class JsonConfigData {
         if (force_cale_.isNotEmpty()) {
             jsonObject.put("forceScale", "true")
         }
-        /*force scale */
+        /*embeded cookie */
         if (embed_cookie_.isNotEmpty()) {
-            jsonObject.put("forceScale", "true")
+            jsonObject.put("embedCookie", "true")
         }
 
         /*user agent*/

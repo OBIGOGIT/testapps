@@ -151,12 +151,10 @@ class MainActivity : ComponentActivity() {
         }
     }
     fun SetFillMainUIData(json_str : String) {
+        var JsonConfigData = JsonConfigData()
+        JsonConfigData.setJsonConfigData(json_str)
 
-        val jsonObject = JSONObject(json_str)
-        //val jsonArray = jsonObject.getJSONArray("hosturl")
-        val data = jsonObject["hosturl"]
 
-        Log.d(tag, ">>>>receive!! " + data)
 
     }
 
