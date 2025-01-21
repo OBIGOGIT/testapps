@@ -25,14 +25,20 @@ class JsonConfigListActivity : AppCompatActivity() {
             insets
         }
         initListValue()
-        //DisplayJonList()
+        DisplayJonList()
     }
     fun DisplayJonList() {
         var btnJson1 = findViewById<Button>(R.id.btn_json_sample1)
         btnJson1.setText(JsonConfigDataArr[1]!!.InfoLog())
     }
     fun initListValue() {
+
+        JsonConfigDataArr[0] = JsonConfigData()
         JsonConfigDataArr[1] = JsonConfigData()
+        JsonConfigDataArr[2] = JsonConfigData()
+        JsonConfigDataArr[3] = JsonConfigData()
+        JsonConfigDataArr[4] = JsonConfigData()
+
 
         JsonConfigDataArr[1]!!.setConfigData(
             "1",
