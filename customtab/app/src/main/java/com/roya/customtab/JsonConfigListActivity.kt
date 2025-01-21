@@ -13,7 +13,7 @@ import android.widget.TextView
 class JsonConfigListActivity : AppCompatActivity() {
     private lateinit var btnJsonOk: Button
     //private lateinit var JsonConfigData1: JsonConfigData
-    private val JsonConfigDataArr = arrayOfNulls<JsonConfigData>(5)
+    private val JsonConfigDataArr = arrayOfNulls<JsonConfigData>(6)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +38,10 @@ class JsonConfigListActivity : AppCompatActivity() {
         JsonConfigDataArr[2] = JsonConfigData()
         JsonConfigDataArr[3] = JsonConfigData()
         JsonConfigDataArr[4] = JsonConfigData()
+        JsonConfigDataArr[5] = JsonConfigData()
 
 
-        JsonConfigDataArr[1]!!.setConfigData(
+        JsonConfigDataArr[0]!!.setJsonConfigData(
             "1",
             "2",
             "1.5",
@@ -52,8 +53,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false"
         );
-        /*
-        JsonConfigDataArr[1]!!.setUIJsonData("1","2",
+        JsonConfigDataArr[1]!!.setJsonConfigData("1","2",
             "1.5",
             "https://m.youtube.com",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
@@ -63,7 +63,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
         );
-        JsonConfigDataArr[2]!!.setUIJsonData("","",
+        JsonConfigDataArr[2]!!.setJsonConfigData("","",
             "1",
             "https://www.hotstar.com",
             "Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
@@ -73,7 +73,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
         );
-        JsonConfigDataArr[3]!!.setUIJsonData("","",
+        JsonConfigDataArr[3]!!.setJsonConfigData("","",
             "2",
             "https://open.spotify.com",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -85,7 +85,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "true",
         );
-        JsonConfigDataArr[4]!!.setUIJsonData("","",
+        JsonConfigDataArr[4]!!.setJsonConfigData("","",
             "1",
             "https://music.amazon.com",
             "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
@@ -95,7 +95,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "true",
         );
-        JsonConfigDataArr[5]!!.setUIJsonData("","",
+        JsonConfigDataArr[5]!!.setJsonConfigData("","",
             "2",
             "https://m.cricbuzz.com",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -104,7 +104,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
             "true",
-        );*/
+        );
     }
 
 }

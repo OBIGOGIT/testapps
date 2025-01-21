@@ -16,7 +16,8 @@ class JsonConfigData {
     fun JsonConfigData() {
 
     }
-    fun setConfigData(width : String,
+
+    fun setJsonConfigData(width : String,
                       height : String,
                       zoom_factor : String,
                       url : String,
