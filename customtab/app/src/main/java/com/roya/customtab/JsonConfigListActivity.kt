@@ -2,7 +2,6 @@ package com.roya.customtab
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,7 +31,7 @@ class JsonConfigListActivity : AppCompatActivity() {
         Json0.setText(JsonConfigDataArr[0]!!.InfoLog())
 
         var Json1 = findViewById<TextView>(R.id.txtview_json_sample1)
-        Json1.setText(JsonConfigDataAr r[1]!!.InfoLog())
+        Json1.setText(JsonConfigDataArr[1]!!.InfoLog())
 
         var Json2 = findViewById<TextView>(R.id.txtview_json_sample2)
         Json2.setText(JsonConfigDataArr[2]!!.InfoLog())
