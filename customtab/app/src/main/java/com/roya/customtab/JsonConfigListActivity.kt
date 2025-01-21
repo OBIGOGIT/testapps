@@ -25,13 +25,29 @@ class JsonConfigListActivity : AppCompatActivity() {
             insets
         }
         initListValue()
-        DisplayJonList()
+        //DisplayJonList()
     }
     fun DisplayJonList() {
-
+        var btnJson1 = findViewById<Button>(R.id.btn_json_sample1)
+        btnJson1.setText(JsonConfigDataArr[1]!!.InfoLog())
     }
     fun initListValue() {
-        JsonConfigDataArr[1]!!.setUIJsonData("","",
+        JsonConfigDataArr[1] = JsonConfigData()
+
+        JsonConfigDataArr[1]!!.setConfigData(
+            "1",
+            "2",
+            "1.5",
+            "https://m.youtube.com",
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+            "https://m.youtube.com;https://accounts.google.com;https://accounts.youtube.com;https://www.google.com/recaptcha;https://youtube.com/signin;https://gds.google.com",
+            "",
+            "false",
+            "false",
+            "false"
+        );
+        /*
+        JsonConfigDataArr[1]!!.setUIJsonData("1","2",
             "1.5",
             "https://m.youtube.com",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
@@ -75,14 +91,14 @@ class JsonConfigListActivity : AppCompatActivity() {
         );
         JsonConfigDataArr[5]!!.setUIJsonData("","",
             "2",
-            "https://m.cricbuzz.com\n",
+            "https://m.cricbuzz.com",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
             "https://m.cricbuzz.com;https://auth.cricbuzz.com;https://accounts.google.com;https://appleid.apple.com/auth/",
             "",
             "false",
             "false",
             "true",
-        );
+        );*/
     }
 
 }
