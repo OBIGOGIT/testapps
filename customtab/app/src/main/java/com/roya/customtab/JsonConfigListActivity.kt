@@ -32,7 +32,14 @@ class JsonConfigListActivity : AppCompatActivity() {
         Json0.setText(JsonConfigDataArr[0]!!.InfoLog())
 
         var Json1 = findViewById<TextView>(R.id.txtview_json_sample1)
-        Json1.setText(JsonConfigDataArr[1]!!.InfoLog())
+        Json1.setText(JsonConfigDataAr r[1]!!.InfoLog())
+
+        var Json2 = findViewById<TextView>(R.id.txtview_json_sample2)
+        Json2.setText(JsonConfigDataArr[2]!!.InfoLog())
+
+        var Json3 = findViewById<TextView>(R.id.txtview_json_sample3)
+        Json3.setText(JsonConfigDataArr[3]!!.InfoLog())
+
     }
     fun initListValue() {
 
