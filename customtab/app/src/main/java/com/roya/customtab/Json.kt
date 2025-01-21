@@ -55,20 +55,12 @@ class JsonConfigData {
         force_cale_ = jsonObject["forceScale"].toString()
         embed_cookie_ = jsonObject["embedCookie"].toString()
         mobile_page_ = jsonObject["mobilePage"].toString()
-        white_list_ = jsonObject["whiteList"].toString()
-        /*
+        white_list_ = ""
         val jsonArray = jsonObject.getJSONArray("whiteList")
-
         for (i in 0 until jsonArray.length()) {
-
-            Log.e(tag , "###w list !!! : "  + jsonArray[i].toString())
+            white_list_ = white_list_ + jsonArray[i].toString() + ";"
         }
 
-        white_list_ = jsonObject["whiteList"].toString()
-
-
-        //block_list_ = jsonObject["adBlockList"].toString() TODO
-*/
     }
     private fun WihtelistArray(input : String) : List<String> {
         val splitData = input.split(";")
@@ -135,11 +127,11 @@ class JsonConfigData {
         var log_str = "width : " + width_ + " x " +
                 "height : " + height_  + " , zoom factor : " + zoom_factor_  + "\n" +
                 "url : " + url_  + " , " +
-                "user agent : " + user_agent_  + "\n" +
-                "white list : " + white_list_  + "\n" +
+                "user agent : " + user_agent_ + "\n" +
+                "white list : " + white_list_ + "\n" +
                 //"block list : " + block_list_  + "\n" +
-                "force scale : " + force_cale_  +
-                "embeded cookie : " + embed_cookie_  +
+                "force scale : " + force_cale_ + " / " +
+                "embeded cookie : " + embed_cookie_+ " / " +
                 "mobile page : " + mobile_page_;
         return log_str;
     }

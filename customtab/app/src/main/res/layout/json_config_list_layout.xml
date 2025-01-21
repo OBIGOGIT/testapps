@@ -83,36 +83,6 @@
     <View android:layout_width="wrap_content"
         android:layout_height="0.3dp"
         android:background="#4682B4" />
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/txtview_json_sample3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:lines="5"
-            android:textSize="15sp" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/btn_json_sample3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Select" />
-        <View android:layout_width="wrap_content"
-            android:layout_height="0.3dp"
-            android:background="#4682B4" />
-
-    </LinearLayout>
-    <View android:layout_width="wrap_content"
-        android:layout_height="0.3dp"
-        android:background="#4682B4" />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -135,6 +105,32 @@
             android:layout_gravity="right"
             android:text="Select" />
     </LinearLayout>
+    <View android:layout_width="wrap_content"
+        android:layout_height="0.3dp"
+        android:background="#4682B4" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtview_json_sample3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:lines="5"
+            android:textSize="15sp" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/btn_json_sample3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Select" />
+    </LinearLayout>
+
     <View android:layout_width="wrap_content"
         android:layout_height="0.3dp"
         android:background="#4682B4" />

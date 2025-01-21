@@ -118,9 +118,9 @@ class JsonConfigListActivity : AppCompatActivity() {
             "2",
             "https://open.spotify.com",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
-            "https://open.spotify.com;https://accounts.google.com;https://www.facebook.com/login.php?;" +
-                    "https://appleid.apple.com/auth/;https://accounts.spotify.com;https://accounts.spotify.com;" +
-                    "https://policies.google.com/privacy;https://policies.google.com/terms;https://support.spotify.com;https://www.spotify.com",
+            "https://open.spotify.com;https://accounts.google.com;" +
+                    "https://appleid.apple.com/auth/;https://accounts.spotify.com;" +
+                    "https://www.spotify.com",
             "",
             "false",
             "false",
