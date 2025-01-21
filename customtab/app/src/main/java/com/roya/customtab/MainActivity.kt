@@ -32,8 +32,8 @@ import androidx.activity.result.ActivityResultLauncher
 class MainActivity : ComponentActivity() {
     private var tag = "MAIN"
     private lateinit var btnLoadDefaultSetting: Button
-    private lateinit var btnIdtOpen: Button
     private lateinit var btnJson: Button
+    private lateinit var btn_run_brs: Button
     private lateinit var txtviewLog: TextView
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -48,12 +48,13 @@ class MainActivity : ComponentActivity() {
     private lateinit var forceScale: CheckBox
     private lateinit var embededCookie: CheckBox
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
         var context = applicationContext
         btnLoadDefaultSetting = findViewById<Button>(R.id.btn_load_default_setting)
-        btnIdtOpen = findViewById<Button>(R.id.btn_idt_open)
+        btn_run_brs = findViewById<Button>(R.id.btn_run_brs)
         btnJson = findViewById<Button>(R.id.btn_idt_json)
         inputHosturl = findViewById<EditText>(R.id.input_hosturl)
         inputZoomfactor = findViewById<EditText>(R.id.input_zoomfactor)
@@ -70,14 +71,11 @@ class MainActivity : ComponentActivity() {
         DefaultConfigData.getInstance().Initialize(context.filesDir.path, context)
         setDefaultValues()
 
-        btnIdtOpen.setOnClickListener {
-            openBrsByIntent()
-        }
         btnLoadDefaultSetting.setOnClickListener {
             DefaultConfigData.getInstance().readDefaultValueFromFile()
             inputHosturl.setText(DefaultConfigData.getInstance().host_url_)
             inputZoomfactor.setText(DefaultConfigData.getInstance().zoom_factor_)
-            inputWhitelist.setText("")
+            //inputWhitelist.setText("")
             inputWhitelist.setText(DefaultConfigData.getInstance().white_list_)
             inputUserAgent.setText(DefaultConfigData.getInstance().user_agent_)
             inputWidth.setText(DefaultConfigData.getInstance().width_)
@@ -90,6 +88,10 @@ class MainActivity : ComponentActivity() {
         btnJson.setOnClickListener {
             txtviewLog.text = makeIntentJsonData()
         }
+        btn_run_brs.setOnClickListener {
+            openBrsByIntent()
+        }
+
         setResultSignUp()
         findViewById<Button>(R.id.btn_config_save_as_default).setOnClickListener {
             DefaultConfigData.getInstance().setDataFromUi(inputWidth.text.toString(),
@@ -100,10 +102,21 @@ class MainActivity : ComponentActivity() {
                 inputWhitelist.text.toString())
             DefaultConfigData.getInstance().saveDefaultValueToFile(DefaultConfigData.getInstance().makeJsonData())
         }
+        /*
+Should be add xml
+    <Button
+        android:id="@+id/btn_ua_config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ua config" />
+
+
         findViewById<Button>(R.id.btn_ua_config).setOnClickListener {
             val intent = Intent(this, UaActivity::class.java)
             resultLauncher.launch(intent)
         }
+
+         */
         findViewById<Button>(R.id.btn_json_list).setOnClickListener {
             val intent = Intent(this, JsonConfigListActivity::class.java)
             resultLauncher.launch(intent)
@@ -157,7 +170,7 @@ class MainActivity : ComponentActivity() {
         uiData.setJsonConfigUiData(json_str)
         inputHosturl.setText(uiData.url_)
         inputZoomfactor.setText(uiData.zoom_factor_)
-        inputWhitelist.setText(uiData.white_list_)
+        //inputWhitelist.setText(uiData.white_list_)
         inputUserAgent.setText(uiData.user_agent_)
         inputWhitelist.setText(uiData.white_list_)
         if(uiData.mobile_page_ == "true")

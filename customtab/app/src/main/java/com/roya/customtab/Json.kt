@@ -20,7 +20,9 @@ class JsonConfigData {
     lateinit var mobile_page_: String
 
     fun JsonConfigData() {
-
+        force_cale_ = "false"
+        embed_cookie_ = "false"
+        mobile_page_ = "false"
     }
 
     fun setJsonConfigData(width : String,
@@ -53,17 +55,25 @@ class JsonConfigData {
         force_cale_ = jsonObject["forceScale"].toString()
         embed_cookie_ = jsonObject["embedCookie"].toString()
         mobile_page_ = jsonObject["mobilePage"].toString()
+        white_list_ = jsonObject["whiteList"].toString()
+        /*
+        val jsonArray = jsonObject.getJSONArray("whiteList")
+
+        for (i in 0 until jsonArray.length()) {
+
+            Log.e(tag , "###w list !!! : "  + jsonArray[i].toString())
+        }
 
         white_list_ = jsonObject["whiteList"].toString()
-        Log.e(tag , "clicked! : "  + white_list_)
-        //block_list_ = jsonObject["adBlockList"].toString() TODO
 
+
+        //block_list_ = jsonObject["adBlockList"].toString() TODO
+*/
     }
     private fun WihtelistArray(input : String) : List<String> {
         val splitData = input.split(";")
         return splitData
     }
-
     fun MakeJsonData() : String {
 //        if (!checkInputData()) {
 //            return "data missing";

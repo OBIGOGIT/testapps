@@ -88,11 +88,6 @@
         android:layout_height="wrap_content"
         android:text="load default" />
     <Button
-        android:id="@+id/btn_idt_open"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="intent open" />
-    <Button
         android:id="@+id/btn_idt_json"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,13 +98,13 @@
         android:layout_height="wrap_content"
         android:text="save as default" />
     <Button
-        android:id="@+id/btn_ua_config"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ua config" />
-    <Button
         android:id="@+id/btn_json_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="json list" />
+    <Button
+        android:id="@+id/btn_run_brs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="open Brs with Data" />
 </LinearLayout>
