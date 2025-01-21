@@ -102,6 +102,10 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, UaActivity::class.java)
             resultLauncher.launch(intent)
         }
+        findViewById<Button>(R.id.btn_json_list).setOnClickListener {
+            val intent = Intent(this, JsonConfigListActivity::class.java)
+            resultLauncher.launch(intent)
+        }
         setUaSpinner()
     }
     fun setUaSpinner () {

@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:hint="host url"
+        android:hint="url"
         android:text="" />
     <EditText
         android:id="@+id/input_zoomfactor"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mobilePage"
-        android:id="@+id/checkbox_mobilePage"/>
+        android:id="@+id/checkbox_mobilePage"/> `
     <CheckBox
         android:textSize="20sp"
         android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
     <TextView
         android:id="@+id/view_json"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:maxLines="5"
         android:textSize="20sp"
         android:text="TextView" />
@@ -101,4 +101,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ua config" />
+    <Button
+        android:id="@+id/btn_json_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="json list" />
 </LinearLayout>
