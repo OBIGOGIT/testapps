@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.CheckBox
 import androidx.activity.ComponentActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_FIXED
@@ -43,7 +44,8 @@ class MainActivity : ComponentActivity() {
     private lateinit var inputHosturl: EditText
     private lateinit var inputWhitelist: EditText
     private lateinit var inputUserAgent: EditText
-
+    private lateinit var mobilePage: CheckBox
+    private lateinit var forceScale: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +59,8 @@ class MainActivity : ComponentActivity() {
         inputWhitelist = findViewById<EditText>(R.id.input_whitelist)
         txtviewLog = findViewById<TextView>(R.id.view_json)
         inputUserAgent = findViewById<EditText>(R.id.input_user_agent)
+        mobilePage = findViewById<CheckBox>(R.id.checkbox_mobilePage)
+        forceScale = findViewById<CheckBox>(R.id.checkbox_forceScale)
 
         Log.e(tag , "path : " + (context.filesDir.path))
 
@@ -177,6 +181,14 @@ class MainActivity : ComponentActivity() {
 /*zoom factor*/
         if(inputZoomfactor.text.isNotEmpty())
             jsonObject.put("zoomFactor", inputZoomfactor.text.toString().toFloat())
+/*mobile Page */
+        if (mobilePage.isChecked()) {
+            jsonObject.put("mobilePage", "true")
+        }
+/*force scale */
+        if (forceScale.isChecked()) {
+            jsonObject.put("forceScale", "true")
+        }
 /*user agent*/
         if(inputUserAgent.text.isNotEmpty())
             jsonObject.put("userAgent", inputUserAgent.text.toString())

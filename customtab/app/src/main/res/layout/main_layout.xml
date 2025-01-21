@@ -57,6 +57,18 @@
         android:textSize="20sp"
         android:hint="white list : seperate ;"
         android:text="" />
+    <CheckBox
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mobilePage"
+        android:id="@+id/checkbox_mobilePage"/>
+    <CheckBox
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="force-scale"
+        android:id="@+id/checkbox_forceScale"/>
     <TextView
         android:id="@+id/view_json"
         android:layout_width="match_parent"
@@ -89,5 +101,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ua config" />
-
 </LinearLayout>
