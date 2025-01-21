@@ -1,7 +1,13 @@
 package com.roya.customtab
 
+import android.util.Log
+import org.json.JSONArray
+import org.json.JSONObject
+
 
 class JsonConfigData {
+    private var tag = "DefaultConfig"
+
     lateinit var width_: String
     lateinit var height_: String
     lateinit var zoom_factor_: String
@@ -42,9 +48,48 @@ class JsonConfigData {
     fun parsingJsonData(json : JsonConfigData) {
 
     }
+    private fun WihtelistArray(input : String) : List<String> {
+        val splitData = input.split(";")
+        return splitData
+    }
 
     fun MakeJsonData() : String {
-        return ""
+//        if (!checkInputData()) {
+//            return "data missing";
+//        }
+        val jsonMain = JSONObject()
+        val jsonArray = JSONArray()
+        var jsonObject = JSONObject();
+        /*hostUrl*/
+        if(url_.isNotEmpty())
+            jsonObject.put("hosturl", url_.toString())
+        /*zoom factor*/
+        if(zoom_factor_.isNotEmpty())
+            jsonObject.put("zoomFactor", zoom_factor_.toString().toFloat())
+        /*mobile Page */
+        if (mobile_page_.isNotEmpty()) {
+            jsonObject.put("mobilePage", "true")
+        }
+        /*force scale */
+        if (force_cale_.isNotEmpty()) {
+            jsonObject.put("forceScale", "true")
+        }
+        /*user agent*/
+        if(user_agent_.isNotEmpty())
+            jsonObject.put("userAgent", user_agent_.toString())
+
+        jsonArray.put(jsonObject)
+        /*white list*/
+        Log.e(tag, "white list string: " + white_list_.toString())
+        var user_wlist = WihtelistArray(white_list_.toString())
+        var wlist = JSONArray();
+
+        for(w in user_wlist) {
+            if(w.isNotEmpty())
+                wlist.put(w.toString());
+        }
+        jsonObject.put("whiteList",wlist)
+        return jsonObject.toString();
 
     }
     fun InfoLog() : String {

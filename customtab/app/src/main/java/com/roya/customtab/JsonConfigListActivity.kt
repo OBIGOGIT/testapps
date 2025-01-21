@@ -11,6 +11,7 @@ import android.widget.TextView
 
 
 class JsonConfigListActivity : AppCompatActivity() {
+    private var tag = "JsonConfigList"
     private lateinit var btnJsonOk: Button
     private val JsonConfigDataArr = arrayOfNulls<JsonConfigData>(6)
     private val JsonConfigDataBtnArr = arrayOfNulls<Button>(6)
@@ -47,6 +48,7 @@ class JsonConfigListActivity : AppCompatActivity() {
         intent.putExtra("json", json_str);
 
         setResult(RESULT_OK , intent)
+        finish()
     }
 
     fun DisplayJonList() {

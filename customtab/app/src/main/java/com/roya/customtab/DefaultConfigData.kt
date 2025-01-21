@@ -13,7 +13,6 @@ import java.io.FileWriter
 import java.io.IOException
 
 class DefaultConfigData {
-    private var tag = "DefaultConfig"
     private lateinit var context_: Context
     lateinit var default_value_file_ : String
     lateinit var user_agent_: String
