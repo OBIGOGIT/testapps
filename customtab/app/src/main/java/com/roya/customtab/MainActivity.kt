@@ -248,11 +248,9 @@ Should be add xml
         if (forceScale.isChecked()) {
             jsonObject.put("forceScale", "true")
         }
-
-        /*user agent*/
+/*user agent*/
         if(inputUserAgent.text.isNotEmpty())
             jsonObject.put("userAgent", inputUserAgent.text.toString())
-
         jsonArray.put(jsonObject)
 /*white list*/
         Log.e(tag, "white list string: " + inputWhitelist.text.toString())
