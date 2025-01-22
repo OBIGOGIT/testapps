@@ -243,9 +243,10 @@ Should be add xml
         if (embededCookie.isChecked()) {
             jsonObject.put("embedCookie", "true")
         }
-        /*mobile Page */
-        if (mobilePage.isChecked()) {
-            jsonObject.put("mobilePage", "true")
+
+/*force scale */
+        if (forceScale.isChecked()) {
+            jsonObject.put("forceScale", "true")
         }
 
         /*user agent*/
