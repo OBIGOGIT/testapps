@@ -42,6 +42,11 @@ class JsonConfigListActivity : AppCompatActivity() {
                 SetResIntent(JsonConfigDataArr[i]!!.MakeJsonData());
             }
         }
+
+        var btn_cancel = findViewById<Button>(R.id.btn_json_configlist_cancel)
+        btn_cancel.setOnClickListener {
+            finish()
+        }
     }
     private fun SetResIntent(json_str : String) {
         var intent = Intent(this@JsonConfigListActivity,MainActivity::class.java);
@@ -88,7 +93,8 @@ class JsonConfigListActivity : AppCompatActivity() {
             "1.5",
             "https://m.youtube.com",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-            "https://m.youtube.com;https://accounts.google.com;https://accounts.youtube.com;https://www.google.com/recaptcha;https://youtube.com/signin;https://gds.google.com",
+            "https://m.youtube.com;https://accounts.google.com;https://accounts.youtube.com;" + "\n" +
+                    "https://www.google.com/recaptcha;https://youtube.com/signin;https://gds.google.com",
             "",
             "false",
             "false",
@@ -98,7 +104,8 @@ class JsonConfigListActivity : AppCompatActivity() {
             "1.5",
             "https://m.youtube.com",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-            "https://m.youtube.com;https://accounts.google.com;https://accounts.youtube.com;https://www.google.com/recaptcha;https://youtube.com/signin;https://gds.google.com",
+            "https://m.youtube.com;https://accounts.google.com;https://accounts.youtube.com;https://www.google.com/recaptcha;" + "\n" +
+                    "https://youtube.com/signin;https://gds.google.com",
             "",
             "false",
             "false",

@@ -78,7 +78,7 @@
     <TextView
         android:id="@+id/txtView_encoded_json_text"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:maxLines="5"
         android:textSize="20sp"
         android:text="TextView" />
