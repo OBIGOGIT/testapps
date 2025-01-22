@@ -5,9 +5,14 @@
     android:layout_height="match_parent">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
-        android:background="@drawable/border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="width : " />
         <EditText
             android:id="@+id/input_width"
             android:inputType="number"
@@ -16,6 +21,12 @@
             android:textSize="20sp"
             android:hint="width"
             android:text="" />
+        <TextView
+            android:id="@+id/textview_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="height : " />
         <EditText
             android:id="@+id/input_height"
             android:layout_width="wrap_content"
@@ -24,35 +35,94 @@
             android:hint="height"
             android:text="" />
     </LinearLayout>
-    <EditText
-        android:id="@+id/input_user_agent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="user agent"
-        android:text="" />
-
-    <EditText
-        android:id="@+id/input_hosturl"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="User agent" />
+        <EditText
+            android:id="@+id/input_user_agent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="user agent"
+            android:text="" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="url"
-        android:text="" />
-    <EditText
-        android:id="@+id/input_zoomfactor"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="url : " />
+        <EditText
+            android:id="@+id/input_hosturl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="url"
+            android:text="https://google.com" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="zoom factor"
-        android:text="" />
-    <EditText
-        android:id="@+id/input_whitelist"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="zoom factor : " />
+        <EditText
+            android:id="@+id/input_zoomfactor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="zoom factor"
+            android:text="1" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="white list : seperate ;"
-        android:text="" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="white list : (seperate ;)" />
+        <EditText
+            android:id="@+id/input_whitelist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="https://google.com;https://google.com/KR;" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_block_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="block list : (seperate ;)" />
+        <EditText
+            android:id="@+id/input_block_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="TODO..." />
+    </LinearLayout>
     <CheckBox
         android:textSize="20sp"
         android:layout_width="wrap_content"
