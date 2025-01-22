@@ -128,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mobilePage"
-        android:id="@+id/checkbox_mobilePage"/> `
+        android:id="@+id/checkbox_mobilePage"/>
     <CheckBox
         android:textSize="20sp"
         android:layout_width="wrap_content"
@@ -144,20 +144,20 @@
     <TextView
         android:id="@+id/txtView_encoded_json_text"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:maxLines="5"
         android:textSize="20sp"
         android:text="TextView" />
-    <Button
-        android:id="@+id/btn_load_default_setting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="load default" />
     <Button
         android:id="@+id/btn_idt_json"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="json" />
+    <Button
+        android:id="@+id/btn_load_default_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="load default" />
     <Button
         android:id="@+id/btn_config_save_as_default"
         android:layout_width="match_parent"

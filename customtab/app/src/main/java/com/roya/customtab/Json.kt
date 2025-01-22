@@ -124,9 +124,9 @@ class JsonConfigData {
 
     }
     fun InfoLog() : String {
-        var log_str = "width : " + width_ + " x " +
-                "height : " + height_  + " , zoom factor : " + zoom_factor_  + "\n" +
-                "url : " + url_  + " , " +
+        var log_str = "url : " + url_  +  "\n" +
+                //"width : " + width_ + " x " +
+                 "zoom factor : " + zoom_factor_  + "\n" +
                 "user agent : " + user_agent_ + "\n" +
                 "white list : " + white_list_ + "\n" +
                 //"block list : " + block_list_  + "\n" +

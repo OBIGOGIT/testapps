@@ -1,15 +1,5 @@
 package com.roya.customtab
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
 /*
 <Spinner
 android:id="@+id/spinner"
@@ -17,10 +7,21 @@ android:layout_width="match_parent"
 android:layout_height="wrap_content"/>
 
 import android.widget.Spinner*/
+//for config
+
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.CheckBox
 import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsIntent.ACTIVITY_HEIGHT_FIXED
 import androidx.compose.material3.Text
@@ -30,10 +31,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.roya.customtab.ui.theme.CustomtabTheme
 import org.json.JSONArray
 import org.json.JSONObject
-//for config
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.ActivityResultLauncher
 
 class MainActivity : ComponentActivity() {
     private var tag = "MAIN"
