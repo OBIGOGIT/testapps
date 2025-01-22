@@ -88,8 +88,6 @@ class JsonConfigListActivity : AppCompatActivity() {
 
 
         JsonConfigDataArr[0]!!.setJsonConfigData(
-            "1",
-            "2",
             "1.5",
             "https://m.youtube.com",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
@@ -100,7 +98,7 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false"
         );
-        JsonConfigDataArr[1]!!.setJsonConfigData("1","2",
+        JsonConfigDataArr[1]!!.setJsonConfigData(
             "1.5",
             "https://m.youtube.com",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
@@ -111,17 +109,17 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "false",
         );
-        JsonConfigDataArr[2]!!.setJsonConfigData("","",
+        JsonConfigDataArr[2]!!.setJsonConfigData(
             "1",
-            "https://www.hotstar.com",
+            "https://www.nate.com/",
             "Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Mobile Safari/537.36",
-            "https://www.hotstar.com/in",
+            "https://www.nate.com/",
             "",
             "false",
             "false",
             "false",
         );
-        JsonConfigDataArr[3]!!.setJsonConfigData("","",
+        JsonConfigDataArr[3]!!.setJsonConfigData(
             "2",
             "https://open.spotify.com",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -133,8 +131,8 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "true",
         );
-        JsonConfigDataArr[4]!!.setJsonConfigData("","",
-            "1",
+        JsonConfigDataArr[4]!!.setJsonConfigData(
+            "1.2",
             "https://music.amazon.com",
             "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
             "https://music.amazon.com;https://www.amazon.com",
@@ -143,8 +141,8 @@ class JsonConfigListActivity : AppCompatActivity() {
             "false",
             "true",
         );
-        JsonConfigDataArr[5]!!.setJsonConfigData("","",
-            "2",
+        JsonConfigDataArr[5]!!.setJsonConfigData(
+            "1.3",
             "https://m.cricbuzz.com",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
             "https://m.cricbuzz.com;https://auth.cricbuzz.com;https://accounts.google.com;https://appleid.apple.com/auth/",

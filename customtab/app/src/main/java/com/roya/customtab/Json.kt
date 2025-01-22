@@ -8,8 +8,6 @@ import org.json.JSONObject
 class JsonConfigData {
     private var tag = "DefaultConfig"
 
-    lateinit var width_: String
-    lateinit var height_: String
     lateinit var zoom_factor_: String
     lateinit var url_: String
     lateinit var user_agent_: String
@@ -25,9 +23,7 @@ class JsonConfigData {
         mobile_page_ = "false"
     }
 
-    fun setJsonConfigData(width : String,
-                      height : String,
-                      zoom_factor : String,
+    fun setJsonConfigData(zoom_factor : String,
                       url : String,
                       user_agent : String,
                       white_list : String,
@@ -35,8 +31,6 @@ class JsonConfigData {
                       force_cale : String,
                       embed_cookie: String,
                       mobile_page : String) {
-        width_ = width
-        height_ = height
         zoom_factor_ = zoom_factor
         url_ = url
         user_agent_ = user_agent
@@ -80,12 +74,6 @@ class JsonConfigData {
         if(zoom_factor_.isNotEmpty())
             jsonObject.put("zoomFactor", zoom_factor_.toString().toFloat())
 
-        /*width x height*/
-        if(width_.isNotEmpty())
-            jsonObject.put("width", width_.toString())
-        if(height_.isNotEmpty())
-            jsonObject.put("height", height_.toString())
-
         /*force scale */
         if (force_cale_.isNotEmpty()) {
             jsonObject.put("forceScale", force_cale_.toString())
@@ -125,7 +113,6 @@ class JsonConfigData {
     }
     fun InfoLog() : String {
         var log_str = "url : " + url_  +  "\n" +
-                //"width : " + width_ + " x " +
                  "zoom factor : " + zoom_factor_  + "\n" +
                 "user agent : " + user_agent_ + "\n" +
                 "white list : " + white_list_ + "\n" +

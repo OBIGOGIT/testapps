@@ -216,8 +216,7 @@ Should be add xml
     private fun checkInputData() :Boolean {
         if(inputZoomfactor.text.isEmpty() ||
             //input_ua_.text.isEmpty()||
-            inputHosturl.text.isEmpty()||
-            inputWhitelist.text.isEmpty())
+            inputHosturl.text.isEmpty())
             return false;
         return true
     }
