@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var btnLoadDefaultSetting: Button
     private lateinit var btnJson: Button
     private lateinit var btn_run_brs: Button
-    private lateinit var txtviewLog: TextView
+    private lateinit var txtView_encoded_json_text: TextView
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
         inputHosturl = findViewById<EditText>(R.id.input_hosturl)
         inputZoomfactor = findViewById<EditText>(R.id.input_zoomfactor)
         inputWhitelist = findViewById<EditText>(R.id.input_whitelist)
-        txtviewLog = findViewById<TextView>(R.id.view_json)
+        txtView_encoded_json_text = findViewById<TextView>(R.id.txtView_encoded_json_text)
         inputUserAgent = findViewById<EditText>(R.id.input_user_agent)
         mobilePage = findViewById<CheckBox>(R.id.checkbox_mobilePage)
         forceScale = findViewById<CheckBox>(R.id.checkbox_forceScale)
@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
 
         }
         btnJson.setOnClickListener {
-            txtviewLog.text = makeIntentJsonData()
+            txtView_encoded_json_text.text = makeIntentJsonData()
         }
         btn_run_brs.setOnClickListener {
             openBrsByIntent()
@@ -162,7 +162,6 @@ Should be add xml
                     SetFillMainUIData(json)
                 }
             }
-
         }
     }
     fun SetFillMainUIData(json_str : String) {
@@ -186,7 +185,7 @@ Should be add xml
             forceScale.setChecked(true);
         else
             forceScale.setChecked(false);
-
+        txtView_encoded_json_text.setText("")
     }
 
     fun setDefaultValues() {
@@ -293,14 +292,13 @@ Should be add xml
             }
 
             var json = makeIntentJsonData();
-            txtviewLog.setText(json)
+            txtView_encoded_json_text.setText(json)
             i.putExtra("oba.content.config", json)
             startActivity(i);
         }
     }
     fun isPackageInstalled(ctx: Context, packageName: String): Boolean {
         return try {
-            txtviewLog.setText("isChromeEnabled " + 40)
             packageManager.getPackageInfo(packageName, 0)
             true
         } catch (e: Exception) {

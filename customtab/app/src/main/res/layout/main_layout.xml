@@ -76,7 +76,7 @@
         android:text="force-scale"
         android:id="@+id/checkbox_forceScale"/>
     <TextView
-        android:id="@+id/view_json"
+        android:id="@+id/txtView_encoded_json_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:maxLines="5"
