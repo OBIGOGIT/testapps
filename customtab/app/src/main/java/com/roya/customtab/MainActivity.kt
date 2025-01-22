@@ -10,7 +10,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
+/*
+<Spinner
+android:id="@+id/spinner"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"/>
+
+import android.widget.Spinner*/
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.CheckBox
@@ -121,8 +127,9 @@ Should be add xml
             val intent = Intent(this, JsonConfigListActivity::class.java)
             resultLauncher.launch(intent)
         }
-        setUaSpinner()
+        //setUaSpinner()
     }
+    /*
     fun setUaSpinner () {
         val spinner = findViewById<Spinner>(R.id.spinner)
         var spinnerItems = UserAgentList.getInstance().getUaList()
@@ -147,14 +154,14 @@ Should be add xml
             }
 
         }
-    }
+    }*/
     private fun setResultSignUp() {
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if (result.resultCode == RESULT_OK) {
                 val name = result.data?.getStringExtra("from") ?: ""
                 Log.d(tag, "setResultSignUp " + name)
                 if (name == "UaActivity") {
-                    setUaSpinner()
+                    //setUaSpinner()
                 } else if (name == "JsonConfigListActivity") {
                     val json = result.data?.getStringExtra("json") ?: ""
                     Log.d(tag, ">>>> setResultSignUp  : JsongConfigListActivity")
@@ -232,11 +239,16 @@ Should be add xml
         if (mobilePage.isChecked()) {
             jsonObject.put("mobilePage", "true")
         }
-/*force scale */
-        if (forceScale.isChecked()) {
-            jsonObject.put("forceScale", "true")
+/*embeded cookie */
+        if (embededCookie.isChecked()) {
+            jsonObject.put("embedCookie", "true")
         }
-/*user agent*/
+        /*mobile Page */
+        if (mobilePage.isChecked()) {
+            jsonObject.put("mobilePage", "true")
+        }
+
+        /*user agent*/
         if(inputUserAgent.text.isNotEmpty())
             jsonObject.put("userAgent", inputUserAgent.text.toString())
 
