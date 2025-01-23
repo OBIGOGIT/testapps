@@ -303,10 +303,10 @@ Should be add xml
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
             }
             //ROYA HERE
-            var brs_commandline = inputBrsCommandline.text.toString()
-            i.putExtra(brs_commandline.toString(),"true")
-
-
+            if(inputBrsCommandline.text.toString().isNotEmpty()) {
+                var brs_commandline = inputBrsCommandline.text.toString()
+                i.putExtra(brs_commandline.toString(),"true")
+            }
             var json = makeIntentJsonData();
             txtView_encoded_json_text.setText(json)
             i.putExtra("oba.content.config", json)
