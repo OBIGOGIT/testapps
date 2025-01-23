@@ -50,6 +50,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var inputHosturl: EditText
     private lateinit var inputWhitelist: EditText
     private lateinit var inputUserAgent: EditText
+    private lateinit var inputBrsCommandline: EditText
     private lateinit var mobilePage: CheckBox
     private lateinit var forceScale: CheckBox
     private lateinit var embededCookie: CheckBox
@@ -67,6 +68,7 @@ class MainActivity : ComponentActivity() {
         inputWhitelist = findViewById<EditText>(R.id.input_whitelist)
         txtView_encoded_json_text = findViewById<TextView>(R.id.txtView_encoded_json_text)
         inputUserAgent = findViewById<EditText>(R.id.input_user_agent)
+        inputBrsCommandline = findViewById<EditText>(R.id.input_brs_commandline)
         mobilePage = findViewById<CheckBox>(R.id.checkbox_mobilePage)
         forceScale = findViewById<CheckBox>(R.id.checkbox_forceScale)
         embededCookie = findViewById<CheckBox>(R.id.checkbox_embededCookie)
@@ -300,6 +302,10 @@ Should be add xml
                 var commandline = inputWidth.text.toString() + "x" + inputHeight.text.toString()
                 i.putExtra("agb-content-window-size", commandline.toString())//width,height
             }
+            //ROYA HERE
+            var brs_commandline = inputBrsCommandline.text.toString()
+            i.putExtra(brs_commandline.toString(),"true")
+
 
             var json = makeIntentJsonData();
             txtView_encoded_json_text.setText(json)
