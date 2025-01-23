@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/textview_display"
+            android:id="@+id/textview_display_z"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/textview_display"
+            android:id="@+id/textview_display_w"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -123,24 +123,36 @@
             android:textSize="20sp"
             android:text="TODO..." />
     </LinearLayout>
-    <CheckBox
-        android:textSize="20sp"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mobilePage"
+            android:id="@+id/checkbox_mobilePage"/>
+        <CheckBox
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="embeded cookie"
+            android:id="@+id/checkbox_embededCookie"/> `
+        <CheckBox
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="force-scale"
+            android:id="@+id/checkbox_forceScale"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/input_brs_commandline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mobilePage"
-        android:id="@+id/checkbox_mobilePage"/>
-    <CheckBox
         android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="embeded cookie"
-        android:id="@+id/checkbox_embededCookie"/> `
-    <CheckBox
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="force-scale"
-        android:id="@+id/checkbox_forceScale"/>
+        android:hint="command line"
+        android:text="--show-fps-counter" />
     <TextView
         android:id="@+id/txtView_encoded_json_text"
         android:layout_width="match_parent"
