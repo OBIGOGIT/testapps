@@ -51,9 +51,10 @@ class MainActivity : ComponentActivity() {
     private lateinit var inputWhitelist: EditText
     private lateinit var inputUserAgent: EditText
     private lateinit var inputBrsCommandline: EditText
+    private lateinit var embededCookie: EditText
     private lateinit var mobilePage: CheckBox
     private lateinit var forceScale: CheckBox
-    private lateinit var embededCookie: CheckBox
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +72,7 @@ class MainActivity : ComponentActivity() {
         inputBrsCommandline = findViewById<EditText>(R.id.input_brs_commandline)
         mobilePage = findViewById<CheckBox>(R.id.checkbox_mobilePage)
         forceScale = findViewById<CheckBox>(R.id.checkbox_forceScale)
-        embededCookie = findViewById<CheckBox>(R.id.checkbox_embededCookie)
+        embededCookie = findViewById<EditText>(R.id.input_embeded_Cookie)
 
         Log.e(tag , "path : " + (context.filesDir.path))
 
@@ -154,7 +155,6 @@ Should be add xml
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Do nothing
             }
-
         }
     }*/
     private fun setResultSignUp() {
@@ -185,10 +185,6 @@ Should be add xml
             mobilePage.setChecked(true);
         else
             mobilePage.setChecked(false);
-        if(uiData.embed_cookie_ == "true")
-            embededCookie.setChecked(true);
-        else
-            embededCookie.setChecked(false);
 
         if(uiData.force_cale_ == "true")
             forceScale.setChecked(true);
@@ -240,15 +236,17 @@ Should be add xml
         if (mobilePage.isChecked()) {
             jsonObject.put("mobilePage", "true")
         }
-/*embeded cookie */
-        if (embededCookie.isChecked()) {
-            jsonObject.put("embedCookie", "true")
-        }
 
 /*force scale */
         if (forceScale.isChecked()) {
             jsonObject.put("forceScale", "true")
         }
+        /*embeded cookie */
+        if (embededCookie.text.isNotEmpty()) {
+            jsonObject.put("embededCookie", embededCookie.text.toString())
+        }
+
+
 /*user agent*/
         if(inputUserAgent.text.isNotEmpty())
             jsonObject.put("userAgent", inputUserAgent.text.toString())

@@ -110,23 +110,6 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/textview_block_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="block list : (seperate ;)" />
-        <EditText
-            android:id="@+id/input_block_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="TODO..." />
-    </LinearLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
         <CheckBox
             android:textSize="20sp"
             android:layout_width="wrap_content"
@@ -137,14 +120,25 @@
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="embeded cookie"
-            android:id="@+id/checkbox_embededCookie"/> `
-        <CheckBox
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="force-scale"
             android:id="@+id/checkbox_forceScale"/>
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textview_embeded_cookie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="embeded cookie"/>
+        <EditText
+            android:id="@+id/input_embeded_Cookie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="close-popup=1;test=0" />
     </LinearLayout>
     <EditText
         android:id="@+id/input_brs_commandline"
