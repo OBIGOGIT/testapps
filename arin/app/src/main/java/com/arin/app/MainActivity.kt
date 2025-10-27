@@ -29,9 +29,13 @@ import java.io.FileReader
 import kotlin.math.log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.ActivityResultLauncher
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+
 //import androidx.core.content.ContextCompat
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     var TAG = "MAIN"
     lateinit var context_: Context
     var mom_number_: String = "01095444074"
@@ -59,7 +63,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getActionBar()!!.setTitle("장아린 전용 앱")
         setResultSignUp()
         setContentView(R.layout.main)
         context_ = getApplicationContext();
@@ -70,6 +73,11 @@ class MainActivity : ComponentActivity() {
         setBtnColor()
         setCallButton()
         setSmsTextValue()
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "장아린 전용 앱"
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.black))
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)

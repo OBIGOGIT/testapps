@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.arin.app-mergeReleaseResources-65:/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "/home/obigo/.gradle/caches/transforms-4/0137735f6d38a644fd32e6e9360d904a/transformed/appcompat-1.7.0/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}

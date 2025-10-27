@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/obigo/.gradle/daemon/8.7/com.arin.app-mergeDebugResources-70:/layout/activity_edit_sms.xml",
+        "source": "/home/obigo/.gradle/daemon/8.7/com.arin.app-main-73:/layout/activity_edit_sms.xml"
+    },
+    {
+        "merged": "/home/obigo/.gradle/daemon/8.7/com.arin.app-mergeDebugResources-70:/layout/activity_setting.xml",
+        "source": "/home/obigo/.gradle/daemon/8.7/com.arin.app-main-73:/layout/activity_setting.xml"
+    },
+    {
+        "merged": "com.arin.app-mergeDebugResources-70:/layout/main.xml",
+        "source": "com.arin.app-main-73:/layout/main.xml"
+    },
+    {
+        "merged": "/home/obigo/.gradle/daemon/8.7/com.arin.app-mergeDebugResources-70:/layout/main.xml",
+        "source": "/home/obigo/.gradle/daemon/8.7/com.arin.app-main-73:/layout/main.xml"
+    }
+]
