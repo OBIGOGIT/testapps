@@ -8,8 +8,15 @@
     android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".SettingActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:titleTextColor="@color/colorOnPrimary" />
     <Button
         android:id="@+id/btn_bgColor"
         android:layout_width="match_parent"

@@ -20,6 +20,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -44,6 +45,10 @@ class SettingActivity : AppCompatActivity() {
         context_ = getApplicationContext();
         //getActionBar()!!.setTitle("앱설정")
         setContentView(R.layout.activity_setting)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "장아린 전용 앱"
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.black))
         //Log.e(TAG, "save dir : " + getContext().getFilesDir().getPath().toString())
         current_bg_image_ = findViewById(R.id.imageView_bg)
         var bBgColor = findViewById<Button>(R.id.btn_bgColor)
