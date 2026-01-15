@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mURL = "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_login_form_modal";
         mWebView = findViewById(R.id.wvLayout);
+        /*
         mWebView!!.settings.javaScriptEnabled = true
         mWebView!!.settings.domStorageEnabled = true
         mWebView!!.settings.useWideViewPort = true
@@ -32,8 +33,15 @@ class MainActivity : AppCompatActivity() {
         mWebView!!.settings.loadWithOverviewMode = true
         mWebView!!.settings.mediaPlaybackRequiresUserGesture = false
         mWebView!!.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false)
-        mWebView!!.setInitialScale(100)
+        mWebView!!.setInitialScale(100)*/
+        mWebView!!.getSettings().setJavaScriptEnabled(true);
+        // mWebView.getSettings().setUserAgentString("Mozilla/5.0 (X11; ccNC; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36");
+        mWebView!!.getSettings().setDomStorageEnabled(true);
+        mWebView!!.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        mWebView!!.getSettings().setSupportMultipleWindows(true);
+
         mWebView!!.loadUrl(mURL.toString());
+        mWebView!!.requestFocus();
         /*mObaJsInterface = ObaJsInterface(mWebView, this)
         mWebView!!.addJavascriptInterface(mObaJsInterface, ObaJsInterface.interfaceName)
         if (mObaJsInterface.isConnectedGamepad()) {
