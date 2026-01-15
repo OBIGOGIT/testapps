@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         mURL = "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_login_form_modal";
-
+        mWebView = findViewById(R.id.wvLayout);
         mWebView!!.settings.javaScriptEnabled = true
         mWebView!!.settings.domStorageEnabled = true
         mWebView!!.settings.useWideViewPort = true
