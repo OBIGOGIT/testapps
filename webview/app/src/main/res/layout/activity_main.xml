@@ -26,27 +26,7 @@
             android:selectAllOnFocus="true"
             android:inputType="textUri"
             android:imeOptions="actionGo" />
-        <ImageButton android:id="@+id/prev"
-            android:contentDescription="@null"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:src="@android:drawable/ic_media_previous"
-            android:scaleType="center" />
-        <ImageButton android:id="@+id/next"
-            android:contentDescription="@null"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:src="@android:drawable/ic_media_next"
-            android:scaleType="center" />
     </LinearLayout>
-    <!--
-        <com.obigo.WebView android:id="@+id/wv1"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.obigo.WebView>
-
-         -->
 
 </LinearLayout>
 
