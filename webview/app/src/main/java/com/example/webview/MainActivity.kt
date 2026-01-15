@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         mWebView!!.settings.mediaPlaybackRequiresUserGesture = false
         mWebView!!.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false)
         mWebView!!.setInitialScale(100)
+        mWebView!!.loadUrl(mURL.toString());
         /*mObaJsInterface = ObaJsInterface(mWebView, this)
         mWebView!!.addJavascriptInterface(mObaJsInterface, ObaJsInterface.interfaceName)
         if (mObaJsInterface.isConnectedGamepad()) {
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         mWebView!!.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView, loadedUrl: String) {
+            override fun onPageFinished(view: WebView, loadedUrl: String) {/*
                 try {
                     val sLoadedUrl = URL(loadedUrl)
                     val sRequestUrl = URL(mURL)
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 } catch (e: Exception) {
                     Log.e(TAG, "[URL parse Error] URL : $mURL, loaded Url : $loadedUrl")
-                }
+                }*/
             }
 
             override fun onReceivedError(
